@@ -1,0 +1,148 @@
+/* Hide scrollbar */
+.Nav-navbar::-webkit-scrollbar {
+	display: none;
+}
+
+.Nav-navbar {
+	position: fixed;
+	width: 100%;
+	height: 60px;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(250, 250, 250, 1); /* #e8eaed */
+	overflow-x: auto;
+	overflow-y: hidden;
+	white-space: nowrap; /* Make the overflow contents going to the right instead of wrapping to new line */
+    scrollbar-width: none; /* Hide scrollbar on firefox */
+}
+
+.Nav-logo {
+	display: none;
+}
+
+.Nav-item {
+	display: inline-block; /* Make the items inline (next to each other) and scalable */
+	width: 25%;
+	height: 100%;
+	position: relative; /* to position the child elements with top, left */
+	color: rgba(100, 100, 100);
+	fill: rgba(100, 100, 100);
+	cursor: pointer;
+}
+
+.Nav-item.active {
+	color: #3b65bf;
+	fill: #3b65bf; /* Change svg path color */
+	border-bottom: 2px solid blue
+}
+
+.Nav-icon {
+	position: absolute;
+	display: block;
+	height: 50%;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.Nav-label {
+	font-size: 12px;
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	transform: translate(-50%, -40%);
+}
+
+.Nav-sidebar-header {
+	display: none;
+}
+
+.Nav-section-divider {
+	display: none;
+}
+
+/* Large devices (tablets, 800px and up) */
+@media only screen and (min-width: 800px) {
+
+	.Nav-navbar {
+		overflow-x: hidden;
+		overflow-y: auto;
+		width: 180px;
+		height: 100%;
+		top: 0;
+	}
+
+	.Nav-logo {
+		display: block;
+		width: 30%;
+		margin: auto;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+
+	.Nav-item {
+		display: block; /* Each block takes its own line */
+		width: 100%;
+		height: 40px;
+		border-width: 0px;
+		/* border-bottom: 1.5px solid black; */
+	}
+
+	.Nav-item.active {
+		color: rgb(250, 250, 250);
+		fill: rgb(250, 250, 250);
+		border: 0;
+		background-color: #3b65bf;
+	}
+
+	.Nav-icon {
+		left: 10%;
+		top: 50%;
+		transform: translate(0, -50%);
+	}
+
+	.Nav-label {
+		display: block;
+		position: absolute;
+		top: 50%;
+		left: 60px;
+		bottom: unset;
+		transform: translate(0, -50%);
+		font-size: 15px;
+	}
+
+	.Nav-sidebar-header {
+		display: block;
+		text-align: center;
+		padding: 10px;
+		font-size: 12px;
+		font-weight: bold;
+	}
+
+	.Nav-section-divider {
+		display: block;
+	}
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+	.Nav-navbar {
+		width: 240px;
+	}
+
+	.Nav-item {
+		height: 60px;
+	}
+
+	.Nav-label {
+		left: 90px;
+	}
+
+	.Nav-item:hover:not(.active) {
+		background-color: #c7d3eb;
+		fill: black;
+		color: black;
+	}
+}
