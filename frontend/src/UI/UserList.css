@@ -1,0 +1,249 @@
+/*=================================================================
+								TOP BAR
+===================================================================*/
+
+
+/* =============== Search section ================ */
+
+.UserList-controlbar {
+	width: 100%;
+	background-color: rgba(250, 250, 250, 1); /* #e8eaed */
+	padding: 10px;
+	padding-top: 20px;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.9);
+	overflow-x: auto;
+	overflow-y: hidden;
+	white-space: nowrap; /* Make the overflow contents going to the right instead of wrapping to new line */
+}
+
+.UserList-controlbar-row {
+	display: flex;
+	min-height: 40px;
+}
+
+.UserList-controlbar-row:not(:first-child) {
+	margin-top: 10px;
+}
+
+.UserList-adduser-btn-container {
+	position: relative;
+	margin-left: 15px;
+	padding-left: 15px;
+	border-left: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.UserList-adduser-btn {
+	position: absolute;
+	width: 75%;
+	height: 80%;
+	max-width: 80px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: unset;
+	color: rgba(0,0,0,0.5);
+	font-weight: bold;
+	display: inline-block;
+	padding: 2px;
+}
+
+.UserList-adduser-btn:active {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.UserList-search-txt-inp {
+	padding-left: 10px;
+	background: unset;
+}
+
+.UserList-search-txt-inp:focus {
+	padding-left: 20px;
+}
+
+.UserList-search-filter {
+	outline: none;
+	border: none;
+	height: 100%;
+	width: 45%;
+	margin-left: 5%;
+	background: unset;
+	border-bottom: 2px solid #d8dce3;
+	transition: .4s;
+}
+
+.UserList-search-filter:hover {
+	border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.UserList-search-filter:focus {
+	border-bottom-color: #487be8;
+	transform: translate(0, -5px);
+}
+
+
+/* =============== View filter section ================ */
+
+
+
+
+
+/*=================================================================
+							MAIN CONTENT
+===================================================================*/
+
+.UserList-info-container {
+	width: 100%;
+	margin-top: 5px;
+	overflow: auto;
+	padding: 1px;
+}
+
+
+/*============ Table ============*/
+
+.UserList-info-table {
+	background-color: #e8eaed;
+	border-collapse: collapse;
+	width: 100%;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+}
+
+.UserList-info-header, .UserList-info-data {
+	border-bottom: 1px solid black;
+	padding: 15px 10px 15px 10px;
+	text-align: left;
+}
+
+.UserList-info-header:first-child, .UserList-info-data:first-child {
+	padding-left: 20px;
+}
+
+.UserList-info-header {
+	background-color: #3b65bf;
+	color: white;
+	font-size: 18px;
+}
+
+/*
+.UserList-info-row:nth-child(even) {
+	background-color: #c7d3eb;
+}
+*/
+
+.UserList-info-row:hover {
+	background-color: lightyellow;
+}
+
+.UserList-action {
+	color: blue;
+	cursor: pointer;
+}
+
+
+/*============ Modal ============*/
+
+.UserList-modal-container {
+	width: 90%;
+	max-width: 800px;
+}
+
+
+/*============ Form ============*/
+
+/* Hide arrow button for number input on Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide arrow button for number input on Firefox */
+input[type=number] {
+  -moz-appearance:textfield;
+}
+
+.UserList-adduser-form {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.UserList-adduser-section {
+	display: inline-block;
+	padding: 0px 10% 25px 10%;
+}
+
+.UserList-adduser-section-title {
+	font-weight: bold;
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
+
+.UserList-adduser-inp-container {
+	display: inline-block;
+	margin-bottom: 10px;
+	padding-left: 5px;
+}
+
+.UserList-adduser-file-inp-default {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	z-index: -1;
+	overflow: hidden;
+	position: absolute;
+}
+
+.UserList-adduser-avatar-container {
+	margin: auto;
+	text-align: center;
+}
+
+.UserList-adduser-avatar-img {
+	border-radius: 20px;
+	width: 250px;
+	height: 250px;
+	cursor: pointer;
+}
+
+.UserList-adduser-btn-group {
+	margin: auto;
+}
+
+.UserList-adduser-modal-btn {
+	width: 100px;
+	height: 50px;
+	background-color: #0d61a3;
+	color: white;
+	font-weight: bold;
+	padding: 10px;
+	margin: auto;
+	margin-top: -20px;
+	text-align: center;
+}
+
+
+/* Large devices (tablets, 800px and up) */
+@media only screen and (min-width: 800px) {
+
+	.UserList-info-header {
+		font-size: 20px;
+	}
+
+	.UserList-adduser-section {
+		padding: 0 25px 25px 25px;
+	}
+
+	.UserList-adduser-btn-group {
+		margin-top: 30px;
+	}
+
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+
+}
