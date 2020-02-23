@@ -80,3 +80,9 @@ venv
 
 __pycache__
 */__pycache__
+
+# Django backend
+backend/.vscode/
+backend/media/
+backend/db.sqlite3
+backend/*/migrations/ 
