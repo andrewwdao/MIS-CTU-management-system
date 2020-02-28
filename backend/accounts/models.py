@@ -24,6 +24,8 @@ class User(AbstractUser):
 	phonenumber = PhoneNumberField('User phonenumber', blank=True, null=True)
 	gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default='M')
 	avatar = models.ImageField(upload_to='avatars', blank=True, null=True)
+	rfid = models.CharField('RFID Card number', max_length=10, unique=True, null=True)
+	fingerprint_pattern = models.IntegerField(unique=True, null=True)
 
 	USERNAME_FIELD = 'email'
 	REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
@@ -37,11 +39,12 @@ class School(models.Model):
 class Major(models.Model):
 	major_id = models.CharField(max_length=10, primary_key=True)
 	major_name = models.CharField(max_length=100, unique=True)
-	school = models.ForeignKey(School, on_delete=models.SET_NULL, null=True)
+	school = models.ForeignKey(School, on_delete=models.CASCADE, related_name='majors')
 
 
 class StudentInfo(models.Model):
 	student_id = models.CharField(max_length=10, unique=True)
+	class_id = models.CharField(max_length=10)
 	school = models.ForeignKey(School, on_delete=models.SET_NULL, null=True, related_name='students')
 	major = models.ForeignKey(Major, on_delete=models.SET_NULL, null=True, related_name='students')
 	user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='student_info')
@@ -51,7 +54,6 @@ class ExtraInfo(models.Model):
 	identity_card = models.CharField(max_length=12, unique=True)
 	workplace = models.CharField(max_length=200)
 	user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='extra_info')
-
 
 
 class TimeLog(models.Model):
