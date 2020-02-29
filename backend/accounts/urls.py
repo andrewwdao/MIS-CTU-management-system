@@ -11,3 +11,11 @@ urlpatterns = [
     path('auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh')
 ] + router.urls
+
+"""
+@api {post} /auth/token/ Đăng nhập lấy token
+@apiGroup Authentication 
+
+@apiParam {String} email Email bắt buộc.
+@apiParam {String} password Password bắt buộc
+"""

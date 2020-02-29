@@ -67,6 +67,30 @@ class ResetPasswordSerializer(serializers.Serializer):
 
 
 class UserCreateSerializerForAdmin(serializers.ModelSerializer):
+    """
+    @api {post} /users/ Tạo user mới sử dụng phân quyền admin
+    @apiName CreateUser
+    @apiGroup User
+
+    @apiHeader {String} Authorization Access JSON Web token.
+
+    @apiParam {String} email Email bắt buộc.
+    @apiParam {Number=2,3,4} role Vai trò user bắt buộc.
+    @apiParam {String} [first_name] Tên User không bắt buộc.
+    @apiParam {String} [last_name] Họ User không bắt buộc.
+    @apiParam {String} [birthdate] Ngày sinh User không bắt buộc.
+    @apiParam {String} [phonenumber] Số điện thoại User không bắt buộc.
+    @apiParam {String="M","F"} gender Giới tính User.
+    @apiParam {File} [avatar] Avatar User không bắt buộc.
+    @apiParam {Object} student_info Thông tin sinh viên.
+    @apiParam {String} student_info[student_id] Mã số sinh viên.
+    @apiParam {String} student_info[class_id] Mã số lớp.
+    @apiParam {String} student_info[major] Mã nghành.
+    @apiParam {String} student_info[school] Mã khoa.
+    @apiParam {Object} extra_info Thông tin sử dụng ngoài.
+    @apiParam {String} extra_info[identity_id] Mã chứng minh nhân dân.
+    @apiParam {String} extra_info[workplace] Nơi làm việc.
+    """
     ROLE_CHOICES = (
         (2, 'Kỹ thuật viên'),
         (3, 'Sinh viên'),
