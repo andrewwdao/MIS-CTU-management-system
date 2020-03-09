@@ -86,3 +86,4 @@ backend/.vscode/
 backend/media/
 backend/db.sqlite3
 backend/*/migrations/ 
+backend/*/__pycache__/
