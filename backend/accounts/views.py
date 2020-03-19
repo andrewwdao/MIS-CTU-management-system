@@ -4,34 +4,33 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import get_user_model
-from .models import School
+from .models import School, Major
 from .permissions import IsStaff
-from .serializers import (SchoolSerializer, MajorSerializer, ResetPasswordSerializer,
-UserDetailSerializer, UserListSerializer, UserCreateSerializerForTechnician, UserCreateSerializerForAdmin)
+from .serializers import *
 
 User = get_user_model()
 
 
 class SchoolViewSet(ModelViewSet):
     queryset = School.objects.all()
-    serializer_class = SchoolSerializer
     
-    @action(detail=True, methods=['get', 'post'])
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return SchoolListSerializer
+        else:
+            return SchoolDetailSerializer
+    
+    @action(detail=True, methods=['get'])
     def majors(self, request, pk=None):
         if request.method == 'GET':
             instance = self.get_object()
             serializer = MajorSerializer(instance.majors, many=True)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
 
-        else:
-            instance = self.get_object()
-            serializer = MajorSerializer(data=request.data, context={'school': instance})
-            if serializer.is_valid():
-                serializer.save()
-                return Response(data=serializer.data, status=status.HTTP_201_CREATED)
 
-            else:
-                return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class MajorViewSet(ModelViewSet):
+    queryset = Major.objects.all()
+    serializer_class = MajorSerializer
 
 
 class UserViewSet(ModelViewSet):

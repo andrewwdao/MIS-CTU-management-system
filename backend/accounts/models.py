@@ -20,7 +20,7 @@ class User(AbstractUser):
 
 	email = models.EmailField('Email address', unique=True)
 	role = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, default=3)
-	birthdate = models.DateField('User birthdate', null=True)
+	birth_date = models.DateField('User birthdate', null=True)
 	phonenumber = PhoneNumberField('User phonenumber', blank=True, null=True)
 	gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default='M')
 	avatar = models.ImageField(upload_to='avatars', blank=True, null=True)

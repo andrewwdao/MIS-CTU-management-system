@@ -7,17 +7,20 @@ User = get_user_model()
 
 
 class MajorSerializer(serializers.ModelSerializer):
+    school = serializers.PrimaryKeyRelatedField(queryset=School.objects.all())
+
     class Meta:
         model = Major
-        fields = ['major_id', 'major_name']
-
-    def create(self, validated_data):
-        school = self.context['school']
-        instance = school.majors.create(**validated_data)
-        return instance
+        fields = ['school', 'major_id', 'major_name']
 
 
-class SchoolSerializer(serializers.ModelSerializer):
+class SchoolListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = School
+        fields = ['school_id', 'school_name']
+
+
+class SchoolDetailSerializer(serializers.ModelSerializer):
     majors = MajorSerializer(many=True, read_only=True)
 
     class Meta:
@@ -67,30 +70,6 @@ class ResetPasswordSerializer(serializers.Serializer):
 
 
 class UserCreateSerializerForAdmin(serializers.ModelSerializer):
-    """
-    @api {post} /users/ Tạo user mới sử dụng phân quyền admin
-    @apiName CreateUser
-    @apiGroup User
-
-    @apiHeader {String} Authorization Access JSON Web token.
-
-    @apiParam {String} email Email bắt buộc.
-    @apiParam {Number=2,3,4} role Vai trò user bắt buộc.
-    @apiParam {String} [first_name] Tên User không bắt buộc.
-    @apiParam {String} [last_name] Họ User không bắt buộc.
-    @apiParam {String} [birthdate] Ngày sinh User không bắt buộc.
-    @apiParam {String} [phonenumber] Số điện thoại User không bắt buộc.
-    @apiParam {String="M","F"} gender Giới tính User.
-    @apiParam {File} [avatar] Avatar User không bắt buộc.
-    @apiParam {Object} student_info Thông tin sinh viên.
-    @apiParam {String} student_info[student_id] Mã số sinh viên.
-    @apiParam {String} student_info[class_id] Mã số lớp.
-    @apiParam {String} student_info[major] Mã nghành.
-    @apiParam {String} student_info[school] Mã khoa.
-    @apiParam {Object} extra_info Thông tin sử dụng ngoài.
-    @apiParam {String} extra_info[identity_id] Mã chứng minh nhân dân.
-    @apiParam {String} extra_info[workplace] Nơi làm việc.
-    """
     ROLE_CHOICES = (
         (2, 'Kỹ thuật viên'),
         (3, 'Sinh viên'),
@@ -103,7 +82,7 @@ class UserCreateSerializerForAdmin(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['email', 'role', 'first_name', 'last_name', 
-        'birthdate', 'phonenumber', 'gender', 'avatar', 
+        'birth_date', 'phonenumber', 'gender', 'avatar', 
         'student_info', 'extra_info']
     
     def validate(self, data):
@@ -147,7 +126,7 @@ class UserCreateSerializerForTechnician(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['email', 'role', 'first_name', 'last_name', 
-        'birthdate', 'phonenumber', 'gender', 'avatar', 
+        'birth_date', 'phonenumber', 'gender', 'avatar', 
         'student_info', 'extra_info']
     
     def validate(self, data):
@@ -181,12 +160,12 @@ class UserCreateSerializerForTechnician(serializers.ModelSerializer):
 class UserListSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['email', 'role', 'first_name', 'last_name', 'birthdate']
+        fields = ['email', 'role', 'first_name', 'last_name', 'birth_date']
 
 
 class UserDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['email', 'username', 'role', 'first_name', 'last_name',
-        'birthdate', 'phonenumber', 'gender', 'avatar', 'student_info',
+        'birth_date', 'phonenumber', 'gender', 'avatar', 'student_info',
         'extra_info']

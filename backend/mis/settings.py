@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'accounts',
     #'equipments',
     'rest_framework',
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -130,3 +131,6 @@ STATIC_URL = '/static/'
 
 # Define User model
 AUTH_USER_MODEL = 'accounts.User'
+
+# CORS Headers
+CORS_ORIGIN_ALLOW_ALL = True
