@@ -30,16 +30,25 @@ class User(AbstractUser):
 	USERNAME_FIELD = 'email'
 	REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 
+	def __str__(self):
+		return self.email
+
 
 class School(models.Model):
-	school_id = models.CharField(max_length=10, primary_key=True)
+	school_id = models.CharField(max_length=10, unique=True)
 	school_name = models.CharField(max_length=100, unique=True)
+
+	def __str__(self):
+		return "{}: {}".format(self.school_id, self.school_name)
 
 
 class Major(models.Model):
-	major_id = models.CharField(max_length=10, primary_key=True)
+	major_id = models.CharField(max_length=10, unique=True)
 	major_name = models.CharField(max_length=100, unique=True)
 	school = models.ForeignKey(School, on_delete=models.CASCADE, related_name='majors')
+
+	def __str__(self):
+		return "{}: {}".format(self.major_id, self.major_name)
 
 
 class StudentInfo(models.Model):

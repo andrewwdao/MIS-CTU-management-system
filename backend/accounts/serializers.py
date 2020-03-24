@@ -11,13 +11,13 @@ class MajorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Major
-        fields = ['school', 'major_id', 'major_name']
+        fields = ['id', 'school', 'major_id', 'major_name']
 
 
 class SchoolListSerializer(serializers.ModelSerializer):
     class Meta:
         model = School
-        fields = ['school_id', 'school_name']
+        fields = ['id', 'school_id', 'school_name']
 
 
 class SchoolDetailSerializer(serializers.ModelSerializer):
@@ -25,12 +25,12 @@ class SchoolDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = School
-        fields = ['school_id', 'school_name', 'majors']
+        fields = ['id', 'school_id', 'school_name', 'majors']
 
 
 class StudentInfoSerializer(serializers.ModelSerializer):
     school = serializers.PrimaryKeyRelatedField(
-        queryset=School.objects.all()
+        read_only=True
     )
     
     major = serializers.PrimaryKeyRelatedField(
@@ -40,12 +40,6 @@ class StudentInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentInfo
         fields = ['student_id', 'class_id', 'school', 'major']
-
-    def validate(self, data):
-        if data['major'].school.school_id != data['school'].school_id:
-            raise serializers.ValidationError('Major school not match.')
-
-        return data
 
 
 class ExtraInfoSerializer(serializers.ModelSerializer):
@@ -105,7 +99,8 @@ class UserCreateSerializerForAdmin(serializers.ModelSerializer):
 
         if validated_data['role'] in [2, 3]:
             instance = User.objects.create_user(**validated_data)
-            StudentInfo.objects.create(user=instance, **student_data)
+            StudentInfo.objects.create(user=instance, 
+            school=student_data['major'].school, **student_data)
         
         else:
             instance = User.objects.create_user(**validated_data)
@@ -149,7 +144,8 @@ class UserCreateSerializerForTechnician(serializers.ModelSerializer):
 
         if validated_data['role'] == 3:
             instance = User.objects.create_user(**validated_data)
-            StudentInfo.objects.create(user=instance, **student_data)
+            StudentInfo.objects.create(user=instance, 
+            school=student_data['major'].school, **student_data)
         
         else:
             instance = User.objects.create_user(**validated_data)
@@ -157,15 +153,38 @@ class UserCreateSerializerForTechnician(serializers.ModelSerializer):
         
         return instance
 
+
 class UserListSerializer(serializers.ModelSerializer):
+    role_name = serializers.SerializerMethodField()
+
     class Meta:
         model = User
-        fields = ['email', 'role', 'first_name', 'last_name', 'birth_date']
+        fields = ['id', 'email', 'role', 'role_name', 'first_name', 'last_name', 'birth_date']
+
+    def get_role_name(self, obj):
+        return obj.get_role_display()
+
+
+class StudentInfoReadSerializer(serializers.ModelSerializer):
+    school = SchoolListSerializer(read_only=True)
+    major = MajorSerializer(read_only=True)
+
+    class Meta:
+        model = StudentInfo
+        fields = ['student_id', 'class_id', 'school', 'major']
+
 
 
 class UserDetailSerializer(serializers.ModelSerializer):
+    role_name = serializers.SerializerMethodField()
+    student_info = StudentInfoReadSerializer(read_only=True)
+    extra_info = ExtraInfoSerializer(read_only=True)
+
     class Meta:
         model = User
-        fields = ['email', 'username', 'role', 'first_name', 'last_name',
+        fields = ['id', 'email', 'username', 'role', 'role_name', 'first_name', 'last_name',
         'birth_date', 'phonenumber', 'gender', 'avatar', 'student_info',
         'extra_info']
+
+    def get_role_name(self, obj):
+        return obj.get_role_display()

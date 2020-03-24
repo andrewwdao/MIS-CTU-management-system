@@ -6,10 +6,13 @@ User = get_user_model()
 
 
 class Equipment(models.Model):
-    equipment_id = models.CharField(max_length=10, primary_key=True)
+    equipment_id = models.CharField(max_length=10, unique=True)
     equipment_name = models.CharField(max_length=100, unique=True)
     amount = models.PositiveSmallIntegerField()
     picture = models.ImageField('Equipment picture', upload_to='equipments', blank=True, null=True)
+
+    def __str__(self):
+        return "{}: {}".format(self.equipment_id, self.equipment_name)
 
 
 class Device(models.Model):
@@ -24,6 +27,9 @@ class Device(models.Model):
 
     class Meta:
         unique_together = ['device_number', 'equipment']
+
+    def __str__(self):
+        return "{}: {}".format(self.equipment.equipment_id, self.device_number)
 
 
 class Rent(models.Model):
