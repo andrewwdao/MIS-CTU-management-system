@@ -4,27 +4,39 @@
 
 .UserList-top {
 	width: 100%;
-	height: 65px;
-	border-bottom: 1.5px solid rgba(200, 200, 200, 0.7);
+	height: 60px;
+	border-bottom: 1.5px solid rgba(200, 200, 200, 0.7);  /* Divide this section with the one below it */
 }
 
 .UserList-top-search-section, .UserList-top-filter-section {
 	display: inline-block;
 	width: 50%;
 	height: 100%;
-	border: 1px solid red;
 	float: left;
 }
 
 .UserList-top-search-section form {
 	width: 100%;
 	height: 100%;
+	padding-left: 2%;
 }
 
 .UserList-top-search-text-input {
-	width: 80%;
-	height: 100%;
+	width: 90%;
+	height: 75%;
+	padding-left: 3%;
+	transition: .4s;
+	border: 1.5px solid lightgrey;
+	border-right: 0;
+	margin-top: 1%;
+}
 
+.UserList-top-search-text-input:hover {
+	border: 1.5px solid lightblue;
+}
+
+.UserList-top-search-text-input:focus {
+	padding-left: 5%;
 }
 
 /* Hide default submit button */
@@ -33,7 +45,21 @@
 }
 
 .UserList-top-search-button {
-	display: none;
+	width: 10%;
+	height: 75%;
+	float: right;    /* Line borken without this, don't know why */
+	display: inline-block;   /* To change to width, height and let float attribute works */
+	padding: 12px;   /* Make the icon smaller or bigger */
+	fill: rgba(170, 170, 170);
+	background-color: rgba(240, 240, 240);
+	border: 2px solid lightgrey;
+	transition: .4s;
+	margin-top: 1%;
+}
+
+.UserList-top-search-button:hover, .UserList-top-search-button:focus {
+	border: 2px solid lightblue;
+	background-color: rgba(240, 240, 240);
 }
 
 
@@ -50,6 +76,7 @@
 						ADD USER MODAL
 ===================================================================*/
 
+/* Modal container like the name said */
 .UserList-modal-container {
 	width: 90%;
 	max-width: 800px;
@@ -61,51 +88,66 @@
 /* Hide arrow button for number input on Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+	-webkit-appearance: none;
+ 	margin: 0;
 }
 
 /* Hide arrow button for number input on Firefox */
 input[type=number] {
-  -moz-appearance:textfield;
+	-moz-appearance:textfield;
 }
 
+/* Form in the modal */
 .UserList-adduser-form {
 	display: flex;
 	flex-wrap: wrap;
 }
 
+/* Common class for the 2 sections in the form */
 .UserList-adduser-section {
 	display: inline-block;
 	padding: 0px 10% 25px 10%;
 }
 
+/* Style the title for the 2 sections */
 .UserList-adduser-section-title {
 	font-weight: bold;
 	margin-bottom: 10px;
 	margin-left: 5px;
 }
 
+/* Align, positioning the text field containers */
 .UserList-adduser-inp-container {
 	display: inline-block;
 	margin-bottom: 10px;
 	padding-left: 5px;
 }
 
+/* Hide the default file input for the avatar upload button */
 .UserList-adduser-file-inp-default {
 	width: 0.1px;
 	height: 0.1px;
-	opacity: 0;
+	opacity: 0;			/* Hide the element */
 	z-index: -1;
 	overflow: hidden;
-	position: absolute;
+	position: absolute;  /* Prevent the element creating a gap between other elements  */
+						 /* This file upload button cannot be hidden by display and visibility attribute */
+						 /* because doing so will make the button stops working */
 }
 
+/* Container for user's avatar */
 .UserList-adduser-avatar-container {
 	margin: auto;
 	text-align: center;
+	border: 2px solid white;	/* Hide the border when not focused (on the file upload button) or when not hovered */
 }
 
+.UserList-adduser-file-inp-default:focus ~ .UserList-adduser-avatar-container,
+.UserList-adduser-avatar-container:hover {
+	border: 2px solid lightgrey;	/* Show the border in response to interactions */
+}
+
+/* User avatar block */
 .UserList-adduser-avatar-img {
 	border-radius: 20px;
 	width: 250px;
@@ -113,10 +155,12 @@ input[type=number] {
 	cursor: pointer;
 }
 
+/* Button groups (Reset, Add, Cancel) (NOT YET IMPLEMENTED) */
 .UserList-adduser-btn-group {
-	margin: auto;
+	margin: auto;  /* Center the button groups */
 }
 
+/* Add user button (submit button) */
 .UserList-adduser-modal-btn {
 	width: 100px;
 	height: 50px;

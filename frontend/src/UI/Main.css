@@ -42,22 +42,10 @@
 	right: 0;
 	height: calc(100vh - 60px);
 	overflow: auto;
+
+	/* Old design needs this */
 	/*background-image: linear-gradient(to bottom, #3b65bf, #6c93e6);
 	background-image: linear-gradient(to bottom, #3b65bf, #fff);*/
-}
-
-.topbar-avatar {
-	position: fixed;
-	right: 10px;
-	top: 10px;
-	width: 35px;
-	height: 35px;
-	color: rgb(240, 240, 240);
-	background-color: #235961;
-}
-
-.hide {
-	display: none;
 }
 
 
@@ -90,11 +78,14 @@
 	border-radius: 5px;
 	z-index: 1;
 	transition: .4s ease-in-out;
+	display: none;  /* Fix the tabbing problem temporarily, without this tabbing can focus on modal fields
+					/* Lost the animation with display: none; */
 }
 
 .active > .modal-container {
 	top: 50px;
 	bottom: 50px;
+	display: unset;
 }
 
 .modal-close-btn {
@@ -254,6 +245,7 @@
 
 /* ==============================================
 					Checkbox
+			WARNING : NOT YET FINISED
 ================================================= */
 
 .checkbox-label {

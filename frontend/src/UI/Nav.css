@@ -11,26 +11,27 @@
 	left: 0;
 	background-color: rgba(255, 255, 255, 1); /* #e8eaed */
 	overflow-x: auto;
-	overflow-y: hidden;
+	overflow-y: auto;	/* Allow scrolling up/down, left, right if content is overflowed */
 	white-space: nowrap; /* Make the overflow contents going to the right instead of wrapping to new line */
     scrollbar-width: none; /* Hide scrollbar on firefox */
-	overflow-x: hidden;
-	overflow-y: auto;
 	border-right: 1.5px solid rgba(200, 200, 200, 0.7);
 }
 
+/* Contain logo and settings icon */
 .Nav-top {
-	height: 65px;
+	height: 60px;
 	padding-bottom: 5px;
 	border-bottom: 1.5px solid rgba(200, 200, 200, 0.4);
 }
 
+/* Logo on the top */
 .Nav-top-logo {
 	margin-top: 2%;
 	margin-left: 5%;
 	height: 90%;
 }
 
+/* Settings icon on the top */
 .Nav-top-item {
 	padding: 4%;
 	cursor: pointer;
@@ -55,6 +56,7 @@
 	border-radius: 50%;
 }
 
+/* Group headers for features */
 .Nav-item-group-header {
 	margin: 10% 0 2% 8%;
 	width: 85%;
@@ -66,6 +68,7 @@
 	/*border-bottom: 1.5px solid rgba(200, 200, 200, 0.7);*/
 }
 
+/* Features on the side bar, contain feature label and icon */
 .Nav-item {
 	padding-left: 12%;
 	padding-top: 10%;
@@ -91,6 +94,7 @@
 }
 
 
+/* Features' icon */
 .Nav-item  .Nav-item-icon {
 	width: 10%;
 	display: inline-block;
@@ -105,6 +109,7 @@
 	fill: rgba(0, 104, 168);
 }
 
+/* Features' label */
 .Nav-item  .Nav-item-label {
 	color: rgba(100, 100, 100);
 	font-weight: bold;

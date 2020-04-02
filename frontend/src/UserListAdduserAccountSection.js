@@ -11,6 +11,9 @@ class UserListAdduserAccountSection extends React.Component {
           Account information
         </div>
         <div className="UserList-adduser-inp-container col-12-sm">
+          {/*=========================================================
+                   WARNING : THIS FEATURE IS NOT YET FINISHED
+            ==========================================================*/}
           <UserListPhotoInput
             handleChange={this.props.handleChange}
             img={this.props.avatar} />
