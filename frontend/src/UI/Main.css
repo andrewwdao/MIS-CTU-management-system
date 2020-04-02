@@ -1,7 +1,7 @@
 * {
 	box-sizing: border-box;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 16px;
+	font-size: 17px;
 	padding: 0;
 	margin: 0;
 }
@@ -41,8 +41,9 @@
 	left: 0;
 	right: 0;
 	height: calc(100vh - 60px);
-	background-image: linear-gradient(to bottom, #3b65bf, #6c93e6);
-	background-image: linear-gradient(to bottom, #3b65bf, #fff);
+	overflow: auto;
+	/*background-image: linear-gradient(to bottom, #3b65bf, #6c93e6);
+	background-image: linear-gradient(to bottom, #3b65bf, #fff);*/
 }
 
 .topbar-avatar {
@@ -328,7 +329,7 @@
 @media only screen and (min-width: 800px) {
 
 	.main {
-		left: 180px;
+		left: 220px;
 		height: 100%;
 	}
 

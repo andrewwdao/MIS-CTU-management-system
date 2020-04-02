@@ -15,13 +15,14 @@ class UserListAdduserForm extends React.Component {
       password: '',
       repassword: '',
       email: '',
-      role: 'member',
+      role: '4',
       expDate: '',
 
-      imgSrc: imgBtn,
-      name: '',
+      avatar: imgBtn,
+      firstName: '',
+      lastName: '',
       dob: '',
-      gender: "male",
+      gender: "M",
       phone: '',
 
       workPlace: 'ctu',
@@ -49,7 +50,7 @@ class UserListAdduserForm extends React.Component {
 
           reader.onloadend = function(e) {
             this.setState({
-              imgSrc: [reader.result]
+              avatar: [reader.result]
             });
 
           }.bind(this);
@@ -63,14 +64,48 @@ class UserListAdduserForm extends React.Component {
 
   handleFormSubmit(e) {
     e.preventDefault();
-    console.log(e);
+    
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + this.props.accessToken,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: this.state.email,
+        role: this.state.role,
+        first_name: this.state.firstName,
+        last_name: this.state.lastName,
+        birth_date: this.state.dob,
+        phonenumber: this.state.phone,
+        gender: this.state.gender,
+        avatar: this.state.avatar,
+        student_info: {
+          student_id: this.state.studentID,
+          class_id: this.state.classID,
+          major: this.state.major,
+          school: this.state.faculty
+        },
+        extra_info: {
+          identity_card: this.state.identityCard,
+          workplace: this.state.organization
+        }
+      })
+    };
+
+    fetch('http://127.0.0.1:8000/users/', requestOptions).then(
+      res => res.json()
+    ).then(
+      data => console.log(data)
+    );
+
   }
 
   render() {
     return (
-      <form className="UserList-adduser-form" onSubmit={this.handleFormSubmit}>
+      <form method="POST" className="UserList-adduser-form" onSubmit={this.handleFormSubmit}>
         <UserListAdduserAccountSection
-          imgSrc={this.state.imgSrc}
+          avatar={this.state.avatar}
           username={this.state.username}
           password={this.state.password}
           repassword={this.state.repassword}
@@ -80,7 +115,8 @@ class UserListAdduserForm extends React.Component {
           handleChange={this.handleInputChange} />
 
         <UserListAdduserPersonalSection
-          name={this.state.name}
+          firstName={this.state.firstName}
+          lastName={this.state.lastName}
           dob={this.state.dob}
           gender={this.state.gender}
           phone={this.state.phone}
@@ -91,6 +127,9 @@ class UserListAdduserForm extends React.Component {
           major={this.state.major}
           organization={this.state.organization}
           identityCard={this.state.identityCard}
+
+          accessToken={this.props.accessToken}
+
           handleChange={this.handleInputChange} />
 
         <div className="UserList-adduser-btn-group">

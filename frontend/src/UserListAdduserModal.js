@@ -12,7 +12,8 @@ class UserListAdduserModal extends React.Component {
           <button onClick={this.props.toggleModal} className="modal-close-btn">✖</button>
           <div className="modal-header">Add</div>
             <div className="modal-body UserList-adduser-modal-body">
-              <UserListAdduserForm />
+              <UserListAdduserForm
+                accessToken={this.props.accessToken} />
             </div>
         </div>
       </div>

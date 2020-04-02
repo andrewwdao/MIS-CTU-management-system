@@ -24,7 +24,14 @@ class UserList extends React.Component {
       <div className="main">
         <UserListAdduserModal
           modalActive={this.state.adduserModalActive}
-          toggleModal={this.toggleAdduserModal} />
+          toggleModal={this.toggleAdduserModal}
+          accessToken={this.props.accessToken} />
+
+        <div className="UserList-top">
+          
+        </div>
+
+        {/* OLD DESIGN
         <div className="UserList-controlbar">
           <div className="UserList-controlbar-row">
             <div className="txt-inp-container col-9-sm col-10-md col-11-lg">
@@ -96,6 +103,7 @@ class UserList extends React.Component {
             </table>
           </div>
         </div>
+        */}
       </div>
     );
   }

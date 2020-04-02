@@ -5,123 +5,136 @@
 
 .Nav-navbar {
 	position: fixed;
-	width: 100%;
-	height: 60px;
+	width: 250px;
+	height: 100%;
 	bottom: 0;
 	left: 0;
-	background-color: rgba(250, 250, 250, 1); /* #e8eaed */
+	background-color: rgba(255, 255, 255, 1); /* #e8eaed */
 	overflow-x: auto;
 	overflow-y: hidden;
 	white-space: nowrap; /* Make the overflow contents going to the right instead of wrapping to new line */
     scrollbar-width: none; /* Hide scrollbar on firefox */
+	overflow-x: hidden;
+	overflow-y: auto;
+	border-right: 1.5px solid rgba(200, 200, 200, 0.7);
 }
 
-.Nav-logo {
-	display: none;
+.Nav-top {
+	height: 65px;
+	padding-bottom: 5px;
+	border-bottom: 1.5px solid rgba(200, 200, 200, 0.4);
+}
+
+.Nav-top-logo {
+	margin-top: 2%;
+	margin-left: 5%;
+	height: 90%;
+}
+
+.Nav-top-item {
+	padding: 4%;
+	cursor: pointer;
+	fill: rgba(100, 100, 100, 0.8);
+	height: 70%;
+	float: right;
+	margin-top: 5%;
+	margin-right: 3%;
+	transition: .3s;
+	outline: none;
+}
+
+.Nav-top-item:hover {
+	fill: rgba(80, 80, 80);
+	background-color: rgba(220, 220, 220);
+	border-radius: 50%;
+}
+
+.Nav-top-item:focus {
+	fill: rgba(80, 80, 80, 0.9);
+	background-color: rgba(220, 220, 220);
+	border-radius: 50%;
+}
+
+.Nav-item-group-header {
+	margin: 10% 0 2% 8%;
+	width: 85%;
+	padding-bottom: 2%;
+	padding-left: 2%;
+	color: rgba(125, 125, 125);
+	font-size: 80%;
+	font-weight: bold;
+	/*border-bottom: 1.5px solid rgba(200, 200, 200, 0.7);*/
 }
 
 .Nav-item {
-	display: inline-block; /* Make the items inline (next to each other) and scalable */
-	width: 25%;
-	height: 100%;
-	position: relative; /* to position the child elements with top, left */
-	color: rgba(100, 100, 100);
-	fill: rgba(100, 100, 100);
+	padding-left: 12%;
+	padding-top: 10%;
+	margin-bottom: 2px;
+	width: 95%;
+	border-radius: 0 40px 40px 0;
+	transition: .2s;
+	outline:none;
+}
+
+
+.Nav-item:hover, .Nav-item:focus {
 	cursor: pointer;
+	background-color: rgba(220, 220, 220, 0.8);
 }
 
 .Nav-item.active {
-	color: #3b65bf;
-	fill: #3b65bf; /* Change svg path color */
-	border-bottom: 2px solid blue
+	background-color: rgba(184, 222, 245, 0.25);
 }
 
-.Nav-icon {
-	position: absolute;
-	display: block;
-	height: 50%;
-	top: 40%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+.Nav-item.active:hover, .Nav-item.active:focus {
+	background-color: rgba(184, 222, 245, 0.55);
 }
 
-.Nav-label {
-	font-size: 12px;
-	position: absolute;
-	left: 50%;
-	bottom: 0;
-	transform: translate(-50%, -40%);
+
+.Nav-item  .Nav-item-icon {
+	width: 10%;
+	display: inline-block;
+	transform: translate(0, -50%);
 }
 
-.Nav-sidebar-header {
-	display: none;
+.Nav-item.active  .Nav-item-icon {
+	fill: rgba(32, 137, 201);
 }
 
-.Nav-section-divider {
-	display: none;
+.Nav-item.active:hover  .Nav-item-icon, .Nav-item.active:focus  .Nav-item-icon {
+	fill: rgba(0, 104, 168);
 }
+
+.Nav-item  .Nav-item-label {
+	color: rgba(100, 100, 100);
+	font-weight: bold;
+	display: inline-block;
+	transform: translate(0, -70%);
+	margin-left: 20px;
+}
+
+.Nav-item:hover  .Nav-item-label, .Nav-item:focus  .Nav-item-label {
+	color: rgba(20, 20, 20);
+}
+
+.Nav-item.active  .Nav-item-label {
+	color: rgba(32, 137, 201);
+}
+
+.Nav-item.active:hover  .Nav-item-label, .Nav-item.active:focus  .Nav-item-label {
+	color: rgba(0, 104, 168);
+}
+
+
+
 
 /* Large devices (tablets, 800px and up) */
 @media only screen and (min-width: 800px) {
 
 	.Nav-navbar {
-		overflow-x: hidden;
-		overflow-y: auto;
-		width: 180px;
-		height: 100%;
-		top: 0;
+		width: 220px;
 	}
-
-	.Nav-logo {
-		display: block;
-		width: 30%;
-		margin: auto;
-		margin-top: 10px;
-		margin-bottom: 10px;
-	}
-
-	.Nav-item {
-		display: block; /* Each block takes its own line */
-		width: 100%;
-		height: 40px;
-		border-width: 0px;
-		/* border-bottom: 1.5px solid black; */
-	}
-
-	.Nav-item.active {
-		color: rgb(250, 250, 250);
-		fill: rgb(250, 250, 250);
-		border: 0;
-		background-color: #3b65bf;
-	}
-
-	.Nav-icon {
-		left: 10%;
-		top: 50%;
-		transform: translate(0, -50%);
-	}
-
-	.Nav-label {
-		display: block;
-		position: absolute;
-		top: 50%;
-		left: 60px;
-		bottom: unset;
-		transform: translate(0, -50%);
-		font-size: 15px;
-	}
-
-	.Nav-sidebar-header {
-		display: block;
-		text-align: center;
-		padding: 10px;
-		font-size: 12px;
-		font-weight: bold;
-	}
-
-	.Nav-section-divider {
-		display: block;
-	}
+	
 }
 
 
@@ -132,17 +145,4 @@
 		width: 240px;
 	}
 
-	.Nav-item {
-		height: 60px;
-	}
-
-	.Nav-label {
-		left: 90px;
-	}
-
-	.Nav-item:hover:not(.active) {
-		background-color: #c7d3eb;
-		fill: black;
-		color: black;
-	}
 }

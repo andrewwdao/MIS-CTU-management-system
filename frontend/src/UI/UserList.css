@@ -2,88 +2,39 @@
 								TOP BAR
 ===================================================================*/
 
-
-/* =============== Search section ================ */
-
-.UserList-controlbar {
+.UserList-top {
 	width: 100%;
-	background-color: rgba(250, 250, 250, 1); /* #e8eaed */
-	padding: 10px;
-	padding-top: 20px;
-	box-shadow: 1px 1px 5px rgba(0,0,0,0.9);
-	overflow-x: auto;
-	overflow-y: hidden;
-	white-space: nowrap; /* Make the overflow contents going to the right instead of wrapping to new line */
+	height: 65px;
+	border-bottom: 1.5px solid rgba(200, 200, 200, 0.7);
 }
 
-.UserList-controlbar-row {
-	display: flex;
-	min-height: 40px;
-}
-
-.UserList-controlbar-row:not(:first-child) {
-	margin-top: 10px;
-}
-
-.UserList-adduser-btn-container {
-	position: relative;
-	margin-left: 15px;
-	padding-left: 15px;
-	border-left: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-.UserList-adduser-btn {
-	position: absolute;
-	width: 75%;
-	height: 80%;
-	max-width: 80px;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	background-color: unset;
-	color: rgba(0,0,0,0.5);
-	font-weight: bold;
+.UserList-top-search-section, .UserList-top-filter-section {
 	display: inline-block;
-	padding: 2px;
-}
-
-.UserList-adduser-btn:active {
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-.UserList-search-txt-inp {
-	padding-left: 10px;
-	background: unset;
-}
-
-.UserList-search-txt-inp:focus {
-	padding-left: 20px;
-}
-
-.UserList-search-filter {
-	outline: none;
-	border: none;
+	width: 50%;
 	height: 100%;
-	width: 45%;
-	margin-left: 5%;
-	background: unset;
-	border-bottom: 2px solid #d8dce3;
-	transition: .4s;
+	border: 1px solid red;
+	float: left;
 }
 
-.UserList-search-filter:hover {
-	border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+.UserList-top-search-section form {
+	width: 100%;
+	height: 100%;
 }
 
-.UserList-search-filter:focus {
-	border-bottom-color: #487be8;
-	transform: translate(0, -5px);
+.UserList-top-search-text-input {
+	width: 80%;
+	height: 100%;
+
 }
 
+/* Hide default submit button */
+.UserList-top-search-section form input[type="submit"] {
+	display: none;
+}
 
-/* =============== View filter section ================ */
+.UserList-top-search-button {
+	display: none;
+}
 
 
 
@@ -93,56 +44,11 @@
 							MAIN CONTENT
 ===================================================================*/
 
-.UserList-info-container {
-	width: 100%;
-	margin-top: 5px;
-	overflow: auto;
-	padding: 1px;
-}
 
 
-/*============ Table ============*/
-
-.UserList-info-table {
-	background-color: #e8eaed;
-	border-collapse: collapse;
-	width: 100%;
-	box-shadow: 1px 1px 5px rgba(0,0,0,0.4);
-}
-
-.UserList-info-header, .UserList-info-data {
-	border-bottom: 1px solid black;
-	padding: 15px 10px 15px 10px;
-	text-align: left;
-}
-
-.UserList-info-header:first-child, .UserList-info-data:first-child {
-	padding-left: 20px;
-}
-
-.UserList-info-header {
-	background-color: #3b65bf;
-	color: white;
-	font-size: 18px;
-}
-
-/*
-.UserList-info-row:nth-child(even) {
-	background-color: #c7d3eb;
-}
-*/
-
-.UserList-info-row:hover {
-	background-color: lightyellow;
-}
-
-.UserList-action {
-	color: blue;
-	cursor: pointer;
-}
-
-
-/*============ Modal ============*/
+/*=================================================================
+						ADD USER MODAL
+===================================================================*/
 
 .UserList-modal-container {
 	width: 90%;
@@ -226,10 +132,6 @@ input[type=number] {
 
 /* Large devices (tablets, 800px and up) */
 @media only screen and (min-width: 800px) {
-
-	.UserList-info-header {
-		font-size: 20px;
-	}
 
 	.UserList-adduser-section {
 		padding: 0 25px 25px 25px;

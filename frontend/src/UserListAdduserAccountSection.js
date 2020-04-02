@@ -13,7 +13,7 @@ class UserListAdduserAccountSection extends React.Component {
         <div className="UserList-adduser-inp-container col-12-sm">
           <UserListPhotoInput
             handleChange={this.props.handleChange}
-            img={this.props.imgSrc} />
+            img={this.props.avatar} />
         </div>
         <div className="UserList-adduser-inp-container col-12-sm">
           <InputFilled
@@ -51,8 +51,8 @@ class UserListAdduserAccountSection extends React.Component {
           <div className="inp-filled-container">
             <label>
               <select value={this.props.role} name="role" onChange={this.props.handleChange} className="inp-filled">
-                <option value="technician">Technician</option>
-                <option value="member">Member</option>
+                <option value="3">Technician</option>
+                <option value="4">Member</option>
               </select>
               <span className="inp-filled-label inp-has-content">Role</span>
             </label>

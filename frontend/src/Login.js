@@ -5,7 +5,7 @@ class Login extends React.Component {
     super(props);
 
     this.state = {
-      username: '',
+      email: '',
       password: ''
     };
 
@@ -19,10 +19,40 @@ class Login extends React.Component {
     });
   }
 
+  handleFailLogin() {
+
+  }
+
   handleSubmit(e) {
     e.preventDefault();
 
-    this.props.handleSuccessfulLogin(1);
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: e.target.email.value,
+        password: e.target.password.value
+      })
+    };
+
+    fetch('http://127.0.0.1:8000/auth/token/', requestOptions).then(
+      res => {
+        if (res.status === 401) {
+          alert("Wrong username/password");
+        }
+        else if (res.status !== 200) {
+          console.log("Unexpected error.");
+        }
+        return res.json();
+      }
+    ).then(
+      token => {
+        this.props.handleSuccessfulLogin(token);
+      }
+    );
+    
   }
 
   render() {
@@ -34,11 +64,11 @@ class Login extends React.Component {
             <div className="txt-inp-container Login-txt-inp-container">
               <input
                 autoComplete="off"
-                className={`txt-inp ${this.state.username ? 'has-content' : null}`}
-                placeholder="Username"
+                className={`txt-inp ${this.state.email ? 'has-content' : null}`}
+                placeholder="Email"
                 type="text"
-                name="username"
-                value={this.state.username}
+                name="email"
+                value={this.state.email}
                 onChange={this.handleInputChange} />
               <span className="focus-bot"></span>
             </div>
@@ -49,7 +79,7 @@ class Login extends React.Component {
                 autoComplete="off"
                 className={`txt-inp ${this.state.password ? 'has-content' : null}`}
                 placeholder="Password"
-                type="text"
+                type="password"
                 name="password"
                 value={this.state.password}
                 onChange={this.handleInputChange} />
