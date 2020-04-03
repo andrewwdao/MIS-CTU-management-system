@@ -13,6 +13,7 @@ User = get_user_model()
 
 class SchoolViewSet(ModelViewSet):
     queryset = School.objects.all()
+    permission_classes = [IsAuthenticated, IsStaff]
     
     def get_serializer_class(self):
         if self.action == 'list':
@@ -31,6 +32,7 @@ class SchoolViewSet(ModelViewSet):
 class MajorViewSet(ModelViewSet):
     queryset = Major.objects.all()
     serializer_class = MajorSerializer
+    permission_classes = [IsAuthenticated, IsStaff]
 
 
 class UserViewSet(ModelViewSet):

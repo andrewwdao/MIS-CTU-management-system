@@ -23,8 +23,8 @@
     "url": "",
     "version": "0.0.0",
     "filename": "./docs/api/main.js",
-    "group": "/home/lucas/Documents/GitHub/MIS-CTU-management-system/backend/docs/api/main.js",
-    "groupTitle": "/home/lucas/Documents/GitHub/MIS-CTU-management-system/backend/docs/api/main.js",
+    "group": "/home/lucas/Documents/Projects/MIS-CTU-management-system/backend/docs/api/main.js",
+    "groupTitle": "/home/lucas/Documents/Projects/MIS-CTU-management-system/backend/docs/api/main.js",
     "name": ""
   },
   {
@@ -200,6 +200,88 @@
   },
   {
     "type": "get",
+    "url": "/majors/:id/",
+    "title": "Lay thong tin mot nghanh hoc",
+    "name": "GetAMajor",
+    "group": "Major",
+    "permission": [
+      {
+        "name": "admin technician"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Access JSON Web token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID nghanh hoc</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID nghanh hoc</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "school",
+            "description": "<p>ID khoa vien</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "major_id",
+            "description": "<p>Ma nghanh hoc</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "major_name",
+            "description": "<p>Ten nghanh hoc</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response",
+          "content": "HTTP/1.1 200 OK\n{\n    \"id\": 3,\n    \"school\": 3,\n    \"major_id\": \"IT\",\n    \"major_name\": \"Cong nghe thong tin\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./accounts/urls.py",
+    "groupTitle": "Major"
+  },
+  {
+    "type": "get",
     "url": "/majors/",
     "title": "Lấy danh sách các nghành học",
     "name": "GetMajorList",
@@ -234,6 +316,338 @@
     "version": "0.0.0",
     "filename": "./accounts/urls.py",
     "groupTitle": "Major"
+  },
+  {
+    "type": "post",
+    "url": "/majors/",
+    "title": "Tao nghanh hoc moi",
+    "name": "CreateAMajor",
+    "group": "Majors",
+    "permission": [
+      {
+        "name": "admin technician"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Access JSON Web token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "school",
+            "description": "<p>ID Khoa vien</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "major_id",
+            "description": "<p>Ma nghanh hoc</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "major_name",
+            "description": "<p>Ten nghanh hoc</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"school\": 3,\n    \"major_id\": \"HTTT\",\n    \"major_name\": \"He thong thong tin\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID nghanh hoc</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "school",
+            "description": "<p>ID khoa vien</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "major_id",
+            "description": "<p>Ma nghanh hoc</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "major_name",
+            "description": "<p>Ten nghanh hoc</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 201 Created\n{\n    \"id\": 4,\n    \"school\": 3,\n    \"major_id\": \"HTTT\",\n    \"major_name\": \"He thong thong tin\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./accounts/urls.py",
+    "groupTitle": "Majors"
+  },
+  {
+    "type": "delete",
+    "url": "/majors/:id/",
+    "title": "Xoa nghanh hoc",
+    "name": "DeleteAMajor",
+    "group": "Majors",
+    "permission": [
+      {
+        "name": "admin technician"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Access JSON Web token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID nghanh hoc</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response",
+          "content": "HTTP/1.1 204 No Content",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./accounts/urls.py",
+    "groupTitle": "Majors"
+  },
+  {
+    "type": "get",
+    "url": "/majors/",
+    "title": "Lay danh sach cac nghanh hoc",
+    "name": "GetMajorList",
+    "group": "Majors",
+    "permission": [
+      {
+        "name": "admin technician"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Access JSON Web token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID nghanh hoc</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "school",
+            "description": "<p>ID khoa vien</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "major_id",
+            "description": "<p>Ma nghanh hoc</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "major_name",
+            "description": "<p>Ten nghanh hoc</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n[\n    {\n        \"id\": 1,\n        \"school\": 2,\n        \"major_id\": \"XHH\",\n        \"major_name\": \"Xã hội học\"\n    },\n    {\n        \"id\": 2,\n        \"school\": 3,\n        \"major_id\": \"KTPM\",\n        \"major_name\": \"Ky thuat phan mem\"\n    },\n    {\n        \"id\": 3,\n        \"school\": 3,\n        \"major_id\": \"IT\",\n        \"major_name\": \"Cong nghe thong tin\"\n    }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./accounts/urls.py",
+    "groupTitle": "Majors"
+  },
+  {
+    "type": "patch",
+    "url": "/majors/:id/",
+    "title": "Cap nhat nghanh hoc",
+    "name": "UpdateAMajor",
+    "group": "Majors",
+    "permission": [
+      {
+        "name": "admin technician"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Access JSON Web token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID nghanh hoc</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "school",
+            "description": "<p>ID khoa vien</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "major_id",
+            "description": "<p>Ma nghanh hoc</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "major_name",
+            "description": "<p>Ten nghanh hoc</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"major_id\": \"IT\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID nghanh hoc</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "school",
+            "description": "<p>ID khoa vien</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "major_id",
+            "description": "<p>Ma nghanh hoc</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "major_name",
+            "description": "<p>Ten nghanh hoc</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"id\": 3,\n    \"school\": 3,\n    \"major_id\": \"IT\",\n    \"major_name\": \"Cong nghe thong tin\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./accounts/urls.py",
+    "groupTitle": "Majors"
   },
   {
     "type": "post",
