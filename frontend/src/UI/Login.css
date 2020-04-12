@@ -28,7 +28,7 @@
 
 	background-color: white;
 	border-radius: 10px;
-	box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+	box-shadow: 2px 2px 15px #8f8f8f;
 	border: 0px solid red; /* For debugging */
 }
 

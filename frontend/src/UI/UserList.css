@@ -5,7 +5,7 @@
 .UserList-top {
 	width: 100%;
 	height: 60px;
-	border-bottom: 1.5px solid rgba(200, 200, 200, 0.7);  /* Divide this section with the one below it */
+	border-bottom: 1.5px solid #dedede;  /* Divide this section with the one below it */
 }
 
 .UserList-top-search-section, .UserList-top-filter-section {
@@ -23,16 +23,18 @@
 
 .UserList-top-search-text-input {
 	width: 90%;
-	height: 75%;
+	height: 70%;
 	padding-left: 3%;
 	transition: .4s;
-	border: 1.5px solid lightgrey;
+	border: 1.5px solid #dedede;
+	border-radius: 20px 0 0 20px;
 	border-right: 0;
-	margin-top: 1%;
+	margin-top: 10px;
+	outline: none;
 }
 
-.UserList-top-search-text-input:hover {
-	border: 1.5px solid lightblue;
+.UserList-top-search-text-input:hover, .UserList-top-search-text-input:focus {
+	border: 1.5px solid #37a2d4;
 }
 
 .UserList-top-search-text-input:focus {
@@ -46,29 +48,168 @@
 
 .UserList-top-search-button {
 	width: 10%;
-	height: 75%;
+	height: 70%;
 	float: right;    /* Line borken without this, don't know why */
 	display: inline-block;   /* To change to width, height and let float attribute works */
-	padding: 12px;   /* Make the icon smaller or bigger */
-	fill: rgba(170, 170, 170);
-	background-color: rgba(240, 240, 240);
-	border: 2px solid lightgrey;
+	padding: 1.7%;   /* Make the icon smaller or bigger */
+	fill: #aaa;
+	background-color: #f0f0f0;
+	border: 2px solid #dedede;
+	border-radius: 0 20px 20px 0;
 	transition: .4s;
-	margin-top: 1%;
+	margin-top: 10px;
+	outline: none;  /* MAY GET PROBLEM WITH FOCUS (ACCESSIBILITY) */
 }
 
 .UserList-top-search-button:hover, .UserList-top-search-button:focus {
-	border: 2px solid lightblue;
-	background-color: rgba(240, 240, 240);
+	border: 2px solid #37a2d4;
+	fill: #8c8c8c;
+	background-color: #d2d2d2;
 }
 
+.UserList-top-filter-switch {
+	position: relative;   /* for position:absolute; in .UserList-top-filter-switch-slider works correctly */
+	display: inline-block;
+	float: right;
+	width: 110px;
+	height: 65%;
+	background-color: #2196F3;
+	border-radius: 5px;
+	margin: 10px 2% 0 5%;
+	cursor: pointer;
+}
 
+.UserList-top-filter-switch-half {
+	display: inline-block;
+	width: 50%;
+	height: 100%;
+	font-weight: bold;
+	padding: 10%;
+	color: white;
+}
+
+.UserList-top-filter-switch-slider {
+	position: absolute;
+	width: 45%;
+	height: 80%;
+	border-radius: 5px;
+	background-color: #f2f4f7;
+	top: 9.5%;
+	left: 53%;
+}
 
 
 
 /*=================================================================
 							MAIN CONTENT
 ===================================================================*/
+
+.UserList-body {
+	width: 100%;
+	width: calc(100% - 41px);
+	margin: 20px;
+	overflow-x: hidden;
+}
+
+.UserList-inlab-users-list {
+	width: 60%;
+	position: relative;
+	border-collapse: collapse;
+}
+
+.UserList-list-header, .UserList-list-data {
+	text-align: left;
+	display: inline-block;
+	padding: 20px 2% 20px 2%;
+}
+
+.UserList-list-header {
+	top: 0;
+	position: sticky;
+	font-weight: bold;
+	/*border: 1px solid red;*/
+}
+
+.UserList-list-data {
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 90%;
+	/*border: 1px solid blue;*/
+}
+
+
+.UserList-list-main-row:nth-child(odd) {
+	background-color: #f5f5f5;
+}
+
+.UserList-list-data.id, .UserList-list-header.id {
+	width: 20%;
+	/*overflow-wrap: break-word;*/
+}
+
+.UserList-list-data.name, .UserList-list-header.name {
+	width: 30%;
+}
+
+.UserList-list-data.major, .UserList-list-header.major {
+	width: 25%;
+}
+
+.UserList-list-data.faculty, .UserList-list-header.faculty {
+	width: 25%;
+}
+
+.UserList-inlab-data-expansion {
+	width: 100%;
+	padding: 10px 2% 10px 4%;
+	/*border: 1px solid red;*/
+}
+
+.UserList-inlab-data-expansion-header {
+	font-size: 90%;
+	font-weight: bold;
+	font-style: italic;
+	margin-bottom: 5px;
+}
+
+.UserList-inlab-data-expansion-item {
+	width: 80%;
+	margin-top: 10px;
+}
+
+.UserList-inlab-data-expansion-cell {
+	display: inline-block;
+	font-size: 90%;
+	font-weight: bold;
+	padding: 0px 2% 5px 4%;
+	width: 25%;
+	font-style: italic;
+}
+
+.UserList-inlab-data-expansion-cell.action {
+	color: blue;
+}
+
+.UserList-inlab-data-expansion-txt-inp {
+	margin-left: 4%;
+	width: 70%;
+	border-radius: 5px;
+	border: 1px solid grey;
+	height: 30px;
+	padding-left: 2%;
+}
+
+.UserList-inlab-data-expansion-btn {
+	width: 13%;
+	height: 30px;
+	border-radius: 5px;
+	border: 0;
+	background-color: #26bd50;
+	color: white;
+	font-weight: bold;
+	font-style: italic;
+	margin-left: 1%;
+}
 
 
 
@@ -139,7 +280,7 @@ input[type=number] {
 .UserList-adduser-avatar-container {
 	margin: auto;
 	text-align: center;
-	border: 2px solid white;	/* Hide the border when not focused (on the file upload button) or when not hovered */
+	border: 2px solid rgb(250, 250, 250);	/* Hide the border when not focused (on the file upload button) or when not hovered */
 }
 
 .UserList-adduser-file-inp-default:focus ~ .UserList-adduser-avatar-container,

@@ -9,19 +9,19 @@
 	height: 100%;
 	bottom: 0;
 	left: 0;
-	background-color: rgba(255, 255, 255, 1); /* #e8eaed */
+	background-color: #fff; /* #e8eaed */
 	overflow-x: auto;
 	overflow-y: auto;	/* Allow scrolling up/down, left, right if content is overflowed */
 	white-space: nowrap; /* Make the overflow contents going to the right instead of wrapping to new line */
     scrollbar-width: none; /* Hide scrollbar on firefox */
-	border-right: 1.5px solid rgba(200, 200, 200, 0.7);
+	border-right: 1.5px solid #dedede;
 }
 
 /* Contain logo and settings icon */
 .Nav-top {
 	height: 60px;
 	padding-bottom: 5px;
-	border-bottom: 1.5px solid rgba(200, 200, 200, 0.4);
+	border-bottom: 1.5px solid #dedede;
 }
 
 /* Logo on the top */
@@ -35,7 +35,7 @@
 .Nav-top-item {
 	padding: 4%;
 	cursor: pointer;
-	fill: rgba(100, 100, 100, 0.8);
+	fill: #858585;
 	height: 70%;
 	float: right;
 	margin-top: 5%;
@@ -44,17 +44,12 @@
 	outline: none;
 }
 
-.Nav-top-item:hover {
-	fill: rgba(80, 80, 80);
-	background-color: rgba(220, 220, 220);
+.Nav-top-item:hover, .Nav-top-item:focus {
+	fill: #505050;
+	background-color: #dcdcdc;
 	border-radius: 50%;
 }
 
-.Nav-top-item:focus {
-	fill: rgba(80, 80, 80, 0.9);
-	background-color: rgba(220, 220, 220);
-	border-radius: 50%;
-}
 
 /* Group headers for features */
 .Nav-item-group-header {
@@ -62,7 +57,7 @@
 	width: 85%;
 	padding-bottom: 2%;
 	padding-left: 2%;
-	color: rgba(125, 125, 125);
+	color: #7d7d7d;
 	font-size: 80%;
 	font-weight: bold;
 	/*border-bottom: 1.5px solid rgba(200, 200, 200, 0.7);*/
@@ -82,15 +77,15 @@
 
 .Nav-item:hover, .Nav-item:focus {
 	cursor: pointer;
-	background-color: rgba(220, 220, 220, 0.8);
+	background-color: #dfdfdf;
 }
 
 .Nav-item.active {
-	background-color: rgba(184, 222, 245, 0.25);
+	background-color: #d5e7f5;
 }
 
 .Nav-item.active:hover, .Nav-item.active:focus {
-	background-color: rgba(184, 222, 245, 0.55);
+	background-color: #a7cce8;
 }
 
 
@@ -102,16 +97,16 @@
 }
 
 .Nav-item.active  .Nav-item-icon {
-	fill: rgba(32, 137, 201);
+	fill: #286b9e;
 }
 
 .Nav-item.active:hover  .Nav-item-icon, .Nav-item.active:focus  .Nav-item-icon {
-	fill: rgba(0, 104, 168);
+	fill: #015385;
 }
 
 /* Features' label */
 .Nav-item  .Nav-item-label {
-	color: rgba(100, 100, 100);
+	color: #646464;
 	font-weight: bold;
 	display: inline-block;
 	transform: translate(0, -70%);
@@ -119,15 +114,15 @@
 }
 
 .Nav-item:hover  .Nav-item-label, .Nav-item:focus  .Nav-item-label {
-	color: rgba(20, 20, 20);
+	color: #141414;
 }
 
 .Nav-item.active  .Nav-item-label {
-	color: rgba(32, 137, 201);
+	color: #286b9e;
 }
 
 .Nav-item.active:hover  .Nav-item-label, .Nav-item.active:focus  .Nav-item-label {
-	color: rgba(0, 104, 168);
+	color: #0c4775;
 }
 
 

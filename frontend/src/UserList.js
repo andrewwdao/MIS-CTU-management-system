@@ -36,6 +36,88 @@ class UserList extends React.Component {
             </form>
           </div>
           <div className="UserList-top-filter-section">
+            <div className="UserList-top-filter-switch">
+              <div className="UserList-top-filter-switch-half">
+                LAB
+              </div>
+              <div className="UserList-top-filter-switch-slider">
+              </div>
+              <div className="UserList-top-filter-switch-half">
+                ALL
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="UserList-body">
+          <div className="UserList-user-detail">
+            
+          </div>
+          <div className="UserList-inlab-users-list">
+            <div className="UserList-list-main-row">
+              <div className="UserList-list-header id">ID</div>
+              <div className="UserList-list-header name">Name</div>
+              <div className="UserList-list-header major">Major</div>
+              <div className="UserList-list-header faculty">Faculty</div>
+            </div>
+            <div className="UserList-list-main-row">
+              <div className="UserList-list-data id">B123456</div>
+              <div className="UserList-list-data name">Just A Name</div>
+              <div className="UserList-list-data major">Just major</div>
+              <div className="UserList-list-data faculty">This is Faculty</div>
+
+              <div className="UserList-inlab-data-expansion">
+                <div className="UserList-inlab-data-expansion-header">
+                  Currently using
+                </div>
+                <div className="UserList-inlab-data-expansion-body">
+                  <div className="UserList-inlab-data-expansion-item">
+                    <div className="UserList-inlab-data-expansion-cell">
+                      WH0001
+                    </div>
+                    <div className="UserList-inlab-data-expansion-cell">
+                      Hand drill
+                    </div>
+                    <div className="UserList-inlab-data-expansion-cell">
+                      09:42 AM
+                    </div>
+                    <div className="UserList-inlab-data-expansion-cell action">
+                      Return
+                    </div>
+                  </div>
+                  <div className="UserList-inlab-data-expansion-item">
+                    <div className="UserList-inlab-data-expansion-cell">
+                      WH0001
+                    </div>
+                    <div className="UserList-inlab-data-expansion-cell">
+                      Hand drill
+                    </div>
+                    <div className="UserList-inlab-data-expansion-cell">
+                      09:42 AM
+                    </div>
+                    <div className="UserList-inlab-data-expansion-cell action">
+                      Return
+                    </div>
+                  </div>
+                  <div className="UserList-inlab-data-expansion-item">
+                    <input className="UserList-inlab-data-expansion-txt-inp" placeholder="Add by ID" />
+                    <button className="UserList-inlab-data-expansion-btn">Check</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="UserList-list-main-row">
+              <div className="UserList-list-data id">B123456</div>
+              <div className="UserList-list-data name">Just A Name</div>
+              <div className="UserList-list-data major">Just major</div>
+              <div className="UserList-list-data faculty">This is Faculty</div>
+            </div>
+            <div className="UserList-list-main-row">
+              <div className="UserList-list-data id">B123456</div>
+              <div className="UserList-list-data name">Just A Name</div>
+              <div className="UserList-list-data major">Just major</div>
+              <div className="UserList-list-data faculty">This is Faculty</div>
+            </div>
           </div>
         </div>
 
