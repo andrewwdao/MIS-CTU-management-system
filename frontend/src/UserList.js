@@ -2,6 +2,8 @@ import React from 'react';
 
 import UserListAdduserModal from './UserListAdduserModal';
 
+import imgPlaceholder from './UI/icons/photo.png';
+
 class UserList extends React.Component {
   constructor(props) {
     super(props);
@@ -50,7 +52,99 @@ class UserList extends React.Component {
         </div>
 
         <div className="UserList-body">
-          <div className="UserList-user-detail">
+          <div className="UserList-detail-info-container">
+            <div className="UserList-detail-info-picture-container">
+              <img className="UserList-detail-info-picture" src={imgPlaceholder} />
+            </div>
+            
+            <div className="UserList-detail-info center">
+              <div className="UserList-detail-info-label">
+                ID:
+              </div>
+              <div className="UserList-detail-info-content">
+                ____________
+              </div>
+            </div>
+            <div className="UserList-detail-info center">
+              <div className="UserList-detail-info-label">
+                Name:
+              </div>
+              <div className="UserList-detail-info-content">
+                ___________________
+              </div>
+            </div>
+            <div className="UserList-detail-info center">
+              <div className="UserList-detail-info-label">
+                DOB:
+              </div>
+              <div className="UserList-detail-info-content">
+                ________________
+              </div>
+            </div>
+            <div className="UserList-detail-info center">
+              <div className="UserList-detail-info-label">
+                Phone:
+              </div>
+              <div className="UserList-detail-info-content">
+                ________________
+              </div>
+            </div>
+            <div className="UserList-detail-info center">
+              <div className="UserList-detail-info-label">
+                Major:
+              </div>
+              <div className="UserList-detail-info-content">
+                _____________________
+              </div>
+            </div>
+            <div className="UserList-detail-info center">
+              <div className="UserList-detail-info-label">
+                Faculty:
+              </div>
+              <div className="UserList-detail-info-content">
+                ________________
+              </div>
+            </div>
+
+            <div className="UserList-inlab-data-expansion detail">
+              <div className="UserList-inlab-data-expansion-header">
+                Currently using
+              </div>
+              <div className="UserList-inlab-data-expansion-body">
+                <div className="UserList-inlab-data-expansion-item detail">
+                  <div className="UserList-inlab-data-expansion-cell id">
+                    WH0001
+                  </div>
+                  <div className="UserList-inlab-data-expansion-cell">
+                    Hand drill
+                  </div>
+                  <div className="UserList-inlab-data-expansion-cell">
+                    09:42 AM
+                  </div>
+                  <div className="UserList-inlab-data-expansion-cell action">
+                    Return
+                  </div>
+                </div>
+                <div className="UserList-inlab-data-expansion-item detail">
+                  <div className="UserList-inlab-data-expansion-cell id">
+                    WH0001
+                  </div>
+                  <div className="UserList-inlab-data-expansion-cell">
+                    Hand drill
+                  </div>
+                  <div className="UserList-inlab-data-expansion-cell">
+                    09:42 AM
+                  </div>
+                  <div className="UserList-inlab-data-expansion-cell action">
+                    Return
+                  </div>
+                </div>
+                <div className="UserList-inlab-data-expansion-item detail">
+                  <input className="UserList-inlab-data-expansion-txt-inp" placeholder="Add by ID" />
+                  <button className="UserList-inlab-data-expansion-btn">Check</button>
+                </div>
+              </div>
+            </div>
             
           </div>
           <div className="UserList-inlab-users-list">
@@ -72,7 +166,7 @@ class UserList extends React.Component {
                 </div>
                 <div className="UserList-inlab-data-expansion-body">
                   <div className="UserList-inlab-data-expansion-item">
-                    <div className="UserList-inlab-data-expansion-cell">
+                    <div className="UserList-inlab-data-expansion-cell id">
                       WH0001
                     </div>
                     <div className="UserList-inlab-data-expansion-cell">
@@ -86,7 +180,7 @@ class UserList extends React.Component {
                     </div>
                   </div>
                   <div className="UserList-inlab-data-expansion-item">
-                    <div className="UserList-inlab-data-expansion-cell">
+                    <div className="UserList-inlab-data-expansion-cell id">
                       WH0001
                     </div>
                     <div className="UserList-inlab-data-expansion-cell">

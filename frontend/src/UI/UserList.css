@@ -105,11 +105,77 @@
 ===================================================================*/
 
 .UserList-body {
+	/*position: relative;   To set position for UserList-detail-info */
 	width: 100%;
 	width: calc(100% - 41px);
 	margin: 20px;
 	overflow-x: hidden;
 }
+
+
+/*============================= DETAIL VIEW ===========================*/
+
+.UserList-detail-info-container {
+	position: absolute;
+	top: 60px;
+	bottom: 0;
+	right: 0;
+	width: 37%;
+	background-color: #fafafa;
+	padding: 2%;
+	/*border: 2px solid red;*/
+}
+
+.UserList-detail-info-picture-container {
+	height: 25%;
+	margin: auto;
+	text-align: center;
+	margin-bottom: 20px;
+	/*border: 1px solid red;*/
+}
+
+.UserList-detail-info-picture {
+	height: 100%;
+}
+
+.UserList-detail-info {
+	padding: 2%;
+}
+
+.UserList-detail-info.center {
+	margin-left: 5%;
+	width: 80%;
+	/*border: 1px solid red;*/
+}
+
+.UserList-detail-info-label {
+	display: inline-block;
+	text-align: right;
+	width: 30%;
+	font-weight: bold;
+	font-style: italic;
+	/*border: 1px solid red;*/
+}
+
+.UserList-detail-info-content {
+	display: inline-block;
+	text-align: left;
+	float: right;
+	width: 60%;
+	font-style: italic;
+	/*border: 1px solid red;*/
+}
+
+.UserList-inlab-data-expansion.detail {
+	margin-top: 20px;
+}
+
+.UserList-inlab-data-expansion-item.detail {
+	width: 100%;
+}
+
+
+/*============================= LIST VIEW ===========================*/
 
 .UserList-inlab-users-list {
 	width: 60%;
@@ -145,6 +211,11 @@
 .UserList-list-data.id, .UserList-list-header.id {
 	width: 20%;
 	/*overflow-wrap: break-word;*/
+}
+
+.UserList-list-data.id {
+	color: #428fcf;
+	cursor: pointer;
 }
 
 .UserList-list-data.name, .UserList-list-header.name {
@@ -186,6 +257,10 @@
 	font-style: italic;
 }
 
+.UserList-inlab-data-expansion-cell.id {
+	color: #395fbd;
+}
+
 .UserList-inlab-data-expansion-cell.action {
 	color: blue;
 }
@@ -200,7 +275,7 @@
 }
 
 .UserList-inlab-data-expansion-btn {
-	width: 13%;
+	width: 20%;
 	height: 30px;
 	border-radius: 5px;
 	border: 0;
@@ -208,7 +283,7 @@
 	color: white;
 	font-weight: bold;
 	font-style: italic;
-	margin-left: 1%;
+	margin-left: 1px;
 }
 
 
