@@ -6,9 +6,9 @@ import './UI/Nav.css';
 import './UI/Dashboard.css';
 import './UI/Login.css';
 
-import Login from './Login';
+// import Login from './Login';
 import Nav from './Nav';
-import UserList from './UserList';
+import UserList from './UserList/UserList';
 
 class App extends React.Component {
   constructor(props) {
@@ -68,23 +68,23 @@ class App extends React.Component {
   }
 
   render() {
-    var def = (
-      <div>
-        {
-          this.state.accessToken ? (
-          <div>
-            <UserList
-              accessToken={this.state.accessToken} />
-            <Nav
-              handleLogout={this.handleLogout} />
-          </div>
-          ) : (
-          <Login
-            handleSuccessfulLogin={this.handleSuccessfulLogin} /> 
-          )
-        }
-      </div>
-    );
+    // var def = (
+    //   <div>
+    //     {
+    //       this.state.accessToken ? (
+    //       <div>
+    //         <UserList
+    //           accessToken={this.state.accessToken} />
+    //         <Nav
+    //           handleLogout={this.handleLogout} />
+    //       </div>
+    //       ) : (
+    //       <Login
+    //         handleSuccessfulLogin={this.handleSuccessfulLogin} /> 
+    //       )
+    //     }
+    //   </div>
+    // );
 
     return (
       <div>
