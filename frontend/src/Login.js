@@ -37,19 +37,22 @@ class Login extends React.Component {
       })
     };
 
-    fetch('http://127.0.0.1:8000/auth/token/', requestOptions).then(
+    fetch(this.props.host + 'auth/token/', requestOptions).then(
       res => {
         if (res.status === 401) {
           alert("Wrong username/password");
+          return '';
         }
         else if (res.status !== 200) {
           console.log("Unexpected error.");
+          return '';
         }
-        return res.json();
+        else return res.json();
       }
     ).then(
       token => {
-        this.props.handleSuccessfulLogin(token);
+        if (token)
+          this.props.handleSuccessfulLogin(token);
       }
     );
     

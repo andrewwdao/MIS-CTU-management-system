@@ -17,18 +17,30 @@ class App extends React.Component {
     this.state = {
       accessToken: '',
       refreshToken: '',
+      host: 'http://localhost:8000/', // Backend API host
     };
 
     this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.refreshToken = this.refreshToken.bind(this);
+
+    // FOR DEBUG PURPOSES ONLY
+    this.__DEBUG = this.__DEBUG.bind(this);
+  }
+
+  componentDidMount() {
+    // FOR DEBUG PURPOSES ONLY
+    this.__DEBUG();
   }
 
   componentWillUnmount() {
+    // Clear the tokenRefresher interval set on handleSuccessfulLogin
     clearInterval(this.tokenRefresher);
   }
 
+  // Get the new access token using refresh token
   refreshToken() {
+    // If there is a valid refresh token, do the refresh to update access token
     if (this.state.refreshToken) {
       const requestOptions = {
         method: 'POST',
@@ -40,12 +52,36 @@ class App extends React.Component {
         })
       };
 
-      fetch('http://127.0.0.1:8000/auth/token/refresh/', requestOptions).then(
+      fetch(this.state.host + 'auth/token/refresh/', requestOptions).then(
         res => res.json()
       ).then(
-        token => this.setState({accessToken: token.access})
+        token => {
+          // The 'Bearer ' prefix is required
+          this.setState({accessToken: 'Bearer ' + token.access});
+        }
       );
     }
+  }
+
+  // Bypass the login with the token we already got (superuser permission)
+  __DEBUG() {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        refresh: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTU4NzM1NTIyNCwianRpIjoiMjFmZDljOTZkNDlmNDRmYjkwM2U4NGYyYzMyMWQzN2QiLCJ1c2VyX2lkIjoxfQ.2DAvuCZWtRzeUnrvPUCHWIi3bfDe5Qp8CWIyYyoqw1o'
+      })
+    };
+
+    fetch(this.state.host + 'auth/token/refresh/', requestOptions).then(
+      res => res.json()
+    ).then(
+      token => {
+        this.setState({accessToken: 'Bearer ' + token.access});
+      }
+    );
   }
 
   handleSuccessfulLogin(token) {
@@ -54,7 +90,10 @@ class App extends React.Component {
       refreshToken: token.refresh
     });
 
+    // Get the new access token immediately
     this.refreshToken();
+
+    // Refresh the token every 5 mins
     this.tokenRefresher = setInterval(this.refreshToken, 300000);
   }
 
@@ -64,6 +103,7 @@ class App extends React.Component {
       refreshToken: ''
     })
 
+    // Stop the token refresher on log out
     clearInterval(this.tokenRefresher);
   }
 
@@ -88,7 +128,9 @@ class App extends React.Component {
 
     return (
       <div>
-        <UserList />
+        <UserList
+          accessToken={this.state.accessToken}
+          host={this.state.host} />
         <Nav />
       </div>
     );

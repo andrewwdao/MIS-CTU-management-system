@@ -17,7 +17,7 @@ class UserListDetailPannel extends React.Component {
             ID:
           </div>
           <div className="UserList-detail-info-content">
-            {this.props.selectedUser.id ? this.props.selectedUser.id : '____________'}
+            ____________
           </div>
         </div>
         <div className="UserList-detail-info center">
@@ -25,7 +25,7 @@ class UserListDetailPannel extends React.Component {
             Name:
           </div>
           <div className="UserList-detail-info-content">
-            {this.props.selectedUser.name ? this.props.selectedUser.name : '___________________'}
+            ___________________
           </div>
         </div>
         <div className="UserList-detail-info center">
@@ -49,7 +49,7 @@ class UserListDetailPannel extends React.Component {
             Major:
           </div>
           <div className="UserList-detail-info-content">
-            {this.props.selectedUser.major ? this.props.selectedUser.major : '_____________________'}
+            _____________________
           </div>
         </div>
         <div className="UserList-detail-info center">
@@ -57,7 +57,7 @@ class UserListDetailPannel extends React.Component {
             Faculty:
           </div>
           <div className="UserList-detail-info-content">
-            {this.props.selectedUser.faculty ? this.props.selectedUser.faculty : '________________'}
+            ________________
           </div>
         </div>
 

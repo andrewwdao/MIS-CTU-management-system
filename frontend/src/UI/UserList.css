@@ -77,6 +77,13 @@
 	border-radius: 5px;
 	margin: 10px 2% 0 5%;
 	cursor: pointer;
+	color: white;
+	transition: .2s;
+	user-select: none;
+}
+
+.UserList-top-filter-switch.active {
+	background-color: #1ebd49;
 }
 
 .UserList-top-filter-switch-half {
@@ -85,7 +92,7 @@
 	height: 100%;
 	font-weight: bold;
 	padding: 10%;
-	color: white;
+	pointer-events: none;  /* Click through the element */
 }
 
 .UserList-top-filter-switch-slider {
@@ -96,6 +103,12 @@
 	background-color: #f2f4f7;
 	top: 9.5%;
 	left: 53%;
+	transition: .2s;
+	pointer-events: none;  /* Click through the element */
+}
+
+.UserList-top-filter-switch.active > .UserList-top-filter-switch-slider {
+	left: 3%;
 }
 
 
@@ -196,14 +209,6 @@
 	/*border: 1px solid red;*/
 }
 
-.UserList-list-data {
-	cursor: pointer;
-	font-weight: bold;
-	font-size: 90%;
-	pointer-events: none;  /* Click through the element */
-	/*border: 1px solid blue;*/
-}
-
 .UserList-list-main-row {
 	cursor: pointer;
 	user-select: none;
@@ -223,15 +228,31 @@
 	background-color: #d7e3f7;
 }
 
+.UserList-list-data {
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 90%;
+	pointer-events: none;  /* Click through the element */
+	/*border: 1px solid blue;*/
+}
+
 .UserList-list-data.id, .UserList-list-header.id {
 	width: 20%;
 	/*overflow-wrap: break-word;*/
 }
 
 .UserList-list-data.id {
-	color: #428fcf;
+	color: #8a8a8a;
 	cursor: pointer;
 	pointer-events: unset;
+}
+
+.UserList-list-data.id.active {
+	color: #428fcf;
+}
+
+.UserList-list-data.id.expired {
+	color: #ed2d2d;
 }
 
 .UserList-list-data.name, .UserList-list-header.name {
@@ -249,8 +270,6 @@
 .UserList-inlab-data-expansion {
 	width: 100%;
 	/*display: none;*/
-	height: 0;
-	z-index: -1;
 	overflow:hidden;
 	display: none;
 	cursor: default;
@@ -258,7 +277,7 @@
 }
 
 .UserList-list-main-row.active  > .UserList-inlab-data-expansion, .UserList-inlab-data-expansion.detail {
-	display: unset;
+	display: block;
 }
 
 .UserList-inlab-data-expansion-header {
