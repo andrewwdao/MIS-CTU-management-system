@@ -1,11 +1,11 @@
 import React from 'react';
 
-import UserListAdduserPersonalSection from './UserListAdduserPersonalSection';
-import UserListAdduserAccountSection from './UserListAdduserAccountSection';
+import AdduserPersonalSection from './AdduserPersonalSection';
+import AdduserAccountSection from './AdduserAccountSection';
 
 import imgBtn from '../UI/icons/image.png';
 
-class UserListAdduserForm extends React.Component {
+class AdduserForm extends React.Component {
 
   constructor(props) {
     super(props);
@@ -104,7 +104,7 @@ class UserListAdduserForm extends React.Component {
   render() {
     return (
       <form method="POST" className="UserList-adduser-form" onSubmit={this.handleFormSubmit}>
-        <UserListAdduserAccountSection
+        <AdduserAccountSection
           avatar={this.state.avatar}
           username={this.state.username}
           password={this.state.password}
@@ -114,7 +114,7 @@ class UserListAdduserForm extends React.Component {
           expDate={this.state.expDate}
           handleChange={this.handleInputChange} />
 
-        <UserListAdduserPersonalSection
+        <AdduserPersonalSection
           firstName={this.state.firstName}
           lastName={this.state.lastName}
           dob={this.state.dob}
@@ -145,4 +145,4 @@ class UserListAdduserForm extends React.Component {
 
 }
 
-export default UserListAdduserForm;
+export default AdduserForm;

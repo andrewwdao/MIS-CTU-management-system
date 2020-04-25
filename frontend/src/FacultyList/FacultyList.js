@@ -3,11 +3,10 @@ import React from 'react';
 import Top from './Top';
 import Body from './Body';
 
-class UserList extends React.Component {
+class FacultyList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inlabFilter: true,  // Show inlab users only or all users flag
       searchFilter: ''        // Filter users by their IDs
     };
 
@@ -37,7 +36,6 @@ class UserList extends React.Component {
       <div className="main">
         <Top
           toggleInlabFilter={this.toggleInlabFilter}
-          inlabFilter={this.state.inlabFilter}
           searchFilter={this.state.searchFilter}
           handleFilterChange={this.handleFilterChange}
           />
@@ -45,7 +43,6 @@ class UserList extends React.Component {
         <Body
           accessToken={this.props.accessToken}
           host={this.props.host}
-          inlabFilter={this.state.inlabFilter}
           searchFilter={this.state.searchFilter}
           />
       </div>
@@ -53,4 +50,4 @@ class UserList extends React.Component {
   }
 }
 
-export default UserList;
+export default FacultyList;

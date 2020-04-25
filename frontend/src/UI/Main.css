@@ -6,6 +6,10 @@
 	margin: 0;
 }
 
+/* ======================================================
+						SCROLL BAR
+=======================================================*/
+
 ::-webkit-scrollbar {
 	width: 10px;
 	height: 10px;
@@ -35,17 +39,15 @@
 .col-11-sm {width: 91.66%;}
 .col-12-sm {width: 100%;}
 
+
+/* Make the .main div take up the whole space of parent container */
 .main {
 	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
-	height: calc(100vh - 60px);
+	height: calc(100vh - 60px);  /* The 60px is the height of top bar on UserList desktop view only, NEED TO FIX THIS */
 	overflow: auto;
-
-	/* Old design needs this */
-	/*background-image: linear-gradient(to bottom, #3b65bf, #6c93e6);
-	background-image: linear-gradient(to bottom, #3b65bf, #fff);*/
 }
 
 
@@ -79,8 +81,9 @@
 	border-radius: 5px;
 	z-index: 1;
 	transition: .4s ease-in-out;
-	display: none;  /* Fix the tabbing problem temporarily, without this tabbing can focus on modal fields
-					/* Lost the animation with display: none; */
+	display: none;  /* Fix the tabbing problem temporarily, without this tabbing may focus on modal fields
+					   even when it is not showing up
+					   However, the animation lost with display: none; */
 }
 
 .active > .modal-container {

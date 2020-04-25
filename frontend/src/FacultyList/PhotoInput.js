@@ -1,6 +1,6 @@
 import React from 'react';
 
-class UserListPhotoInput extends React.Component {
+class PhotoInput extends React.Component {
   render() {
     return(
       <div className="UserList-photo-inp">
@@ -21,4 +21,4 @@ class UserListPhotoInput extends React.Component {
   }
 }
 
-export default UserListPhotoInput;
+export default PhotoInput;

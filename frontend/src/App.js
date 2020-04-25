@@ -1,14 +1,16 @@
 import React from 'react';
 
 import './UI/Main.css';
-import './UI/UserList.css';
 import './UI/Nav.css';
-import './UI/Dashboard.css';
+import './UI/ListView.css';
+import './UI/UserList.css';
+import './UI/FacultyList.css';
 import './UI/Login.css';
 
 // import Login from './Login';
 import Nav from './Nav';
 import UserList from './UserList/UserList';
+import FacultyList from './FacultyList/FacultyList';
 
 class App extends React.Component {
   constructor(props) {
@@ -34,13 +36,13 @@ class App extends React.Component {
   }
 
   componentWillUnmount() {
-    // Clear the tokenRefresher interval set on handleSuccessfulLogin
+    // Clear the tokenRefresher interval set before on handleSuccessfulLogin
     clearInterval(this.tokenRefresher);
   }
 
   // Get the new access token using refresh token
   refreshToken() {
-    // If there is a valid refresh token, do the refresh to update access token
+    // If there is a valid refresh token, do the request to update access token
     if (this.state.refreshToken) {
       const requestOptions = {
         method: 'POST',
@@ -63,7 +65,7 @@ class App extends React.Component {
     }
   }
 
-  // Bypass the login with the token we already got (superuser permission)
+  // Bypass the login page with the token we already got (superuser permission)
   __DEBUG() {
     const requestOptions = {
       method: 'POST',
@@ -108,29 +110,11 @@ class App extends React.Component {
   }
 
   render() {
-    // var def = (
-    //   <div>
-    //     {
-    //       this.state.accessToken ? (
-    //       <div>
-    //         <UserList
-    //           accessToken={this.state.accessToken} />
-    //         <Nav
-    //           handleLogout={this.handleLogout} />
-    //       </div>
-    //       ) : (
-    //       <Login
-    //         handleSuccessfulLogin={this.handleSuccessfulLogin} /> 
-    //       )
-    //     }
-    //   </div>
-    // );
-
     return (
       <div>
-        <UserList
+        <FacultyList
           accessToken={this.state.accessToken}
-          host={this.state.host} />
+          host={this.state.host}/>
         <Nav />
       </div>
     );

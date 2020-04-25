@@ -2,7 +2,7 @@ import React from 'react';
 
 import InputFilled from '../InputFilled';
 
-class UserListAdduserPersonalSection extends React.Component {
+class AdduserPersonalSection extends React.Component {
 
   constructor(props) {
     super(props);
@@ -207,4 +207,4 @@ class UserListAdduserPersonalSection extends React.Component {
   }
 }
 
-export default UserListAdduserPersonalSection;
+export default AdduserPersonalSection;

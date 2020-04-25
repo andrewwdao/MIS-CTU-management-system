@@ -1,9 +1,9 @@
 import React from 'react';
 
-import UserListDetailPannel from './UserListDetailPannel';
-import UserListListView from './UserListListView';
+import DetailPannel from './DetailPannel';
+import ListView from './ListView';
 
-class UserListBody extends React.Component {
+class Body extends React.Component {
   constructor(props) {
     super(props);
 
@@ -11,12 +11,12 @@ class UserListBody extends React.Component {
       selectedUser: {}  // Currently selected user to show on the detail pannel
     };
 
-    this.selectUser = this.selectUser.bind(this);
+    this.updateSelectedUser = this.updateSelectedUser.bind(this);
   }
 
-  // Change the info on UserListDetailPannel based on the user got passed to
+  // Change the info on DetailPannel based on the user got passed to
   // REMEMBER TO FIX THIS EVERYTIME THE USER INFO GET UPDATED
-  selectUser(user) {
+  updateSelectedUser(user) {
     this.setState({
       selectedUser: user
     });
@@ -24,19 +24,19 @@ class UserListBody extends React.Component {
 
   render() {
     return(
-      <div className="UserList-body">
-        <UserListDetailPannel
+      <div className="body">
+        <DetailPannel
           selectedUser={this.state.selectedUser} />
-        <UserListListView
+        <ListView
           accessToken={this.props.accessToken}
           host={this.props.host}
-          selectUser={this.selectUser}
+          updateSelectedUser={this.updateSelectedUser}
           inlabFilter={this.props.inlabFilter}
-          idFilter={this.props.idFilter}
+          searchFilter={this.props.searchFilter}
           />
       </div>
     );
   }
 }
 
-export default UserListBody;
+export default Body;

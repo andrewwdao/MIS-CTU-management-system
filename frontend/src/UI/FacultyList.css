@@ -1,0 +1,55 @@
+/*=================================================================
+								TOP BAR
+===================================================================*/
+
+
+
+
+/*=================================================================
+							MAIN CONTENT
+===================================================================*/
+
+
+
+/*========================== DETAIL VIEW ==========================*/
+
+
+
+
+/*=========================== LIST VIEW ===========================*/
+
+
+.FacultyList.list-view-data.id, .FacultyList.list-view-header.id {
+	width: 30%;
+	/*overflow-wrap: break-word;*/
+}
+
+.FacultyList.list-view-data.id {
+	color: #428fcf;
+	cursor: pointer;
+	pointer-events: unset;
+}
+
+.FacultyList.list-view-data.faculty, .FacultyList.list-view-header.faculty {
+	width: 40%;
+}
+
+.FacultyList.list-view-data.major-count, .FacultyList.list-view-header.major-count {
+	width: 30%;
+	text-align: center;
+}
+
+
+
+/* Large devices (tablets, 800px and up) */
+@media only screen and (min-width: 800px) {
+
+
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+
+}

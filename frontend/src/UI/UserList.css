@@ -2,114 +2,6 @@
 								TOP BAR
 ===================================================================*/
 
-.UserList-top {
-	width: 100%;
-	height: 60px;
-	border-bottom: 1.5px solid #dedede;  /* Divide this section with the one below it */
-}
-
-.UserList-top-search-section, .UserList-top-filter-section {
-	display: inline-block;
-	width: 50%;
-	height: 100%;
-	float: left;
-}
-
-.UserList-top-search-section form {
-	width: 100%;
-	height: 100%;
-	padding-left: 2%;
-}
-
-.UserList-top-search-text-input {
-	width: 90%;
-	height: 70%;
-	padding-left: 3%;
-	transition: .4s;
-	border: 1.5px solid #dedede;
-	border-radius: 20px 0 0 20px;
-	border-right: 0;
-	margin-top: 10px;
-	outline: none;
-}
-
-.UserList-top-search-text-input:hover, .UserList-top-search-text-input:focus {
-	border: 1.5px solid #37a2d4;
-}
-
-.UserList-top-search-text-input:focus {
-	padding-left: 5%;
-}
-
-/* Hide default submit button */
-.UserList-top-search-section form input[type="submit"] {
-	display: none;
-}
-
-.UserList-top-search-button {
-	width: 10%;
-	height: 70%;
-	float: right;    /* Line borken without this, don't know why */
-	display: inline-block;   /* To change to width, height and let float attribute works */
-	padding: 1.7%;   /* Make the icon smaller or bigger */
-	fill: #aaa;
-	background-color: #f0f0f0;
-	border: 2px solid #dedede;
-	border-radius: 0 20px 20px 0;
-	transition: .4s;
-	margin-top: 10px;
-	outline: none;  /* MAY GET PROBLEM WITH FOCUS (ACCESSIBILITY) */
-}
-
-.UserList-top-search-button:hover, .UserList-top-search-button:focus {
-	border: 2px solid #37a2d4;
-	fill: #8c8c8c;
-	background-color: #d2d2d2;
-}
-
-.UserList-top-filter-switch {
-	position: relative;   /* for position:absolute; in .UserList-top-filter-switch-slider works correctly */
-	display: inline-block;
-	float: right;
-	width: 110px;
-	height: 65%;
-	background-color: #2196F3;
-	border-radius: 5px;
-	margin: 10px 2% 0 5%;
-	cursor: pointer;
-	color: white;
-	transition: .2s;
-	user-select: none;
-}
-
-.UserList-top-filter-switch.active {
-	background-color: #1ebd49;
-}
-
-.UserList-top-filter-switch-half {
-	display: inline-block;
-	width: 50%;
-	height: 100%;
-	font-weight: bold;
-	padding: 10%;
-	pointer-events: none;  /* Click through the element */
-}
-
-.UserList-top-filter-switch-slider {
-	position: absolute;
-	width: 45%;
-	height: 80%;
-	border-radius: 5px;
-	background-color: #f2f4f7;
-	top: 9.5%;
-	left: 53%;
-	transition: .2s;
-	pointer-events: none;  /* Click through the element */
-}
-
-.UserList-top-filter-switch.active > .UserList-top-filter-switch-slider {
-	left: 3%;
-}
 
 
 
@@ -117,249 +9,61 @@
 							MAIN CONTENT
 ===================================================================*/
 
-.UserList-body {
-	/*position: relative;   To set position for UserList-detail-info */
-	width: 100%;
-	width: calc(100% - 41px);
-	margin: 20px;
-	overflow-x: hidden;
-}
 
 
-/*============================= DETAIL VIEW ===========================*/
-
-.UserList-detail-info-container {
-	position: absolute;
-	top: 60px;
-	bottom: 0;
-	right: 0;
-	width: 37%;
-	background-color: #fafafa;
-	padding: 2%;
-	/*border: 2px solid red;*/
-}
-
-.UserList-detail-info-picture-container {
-	height: 25%;
-	margin: auto;
-	text-align: center;
-	margin-bottom: 20px;
-	/*border: 1px solid red;*/
-}
-
-.UserList-detail-info-picture {
-	height: 100%;
-}
-
-.UserList-detail-info {
-	padding: 2%;
-}
-
-.UserList-detail-info.center {
-	margin-left: 5%;
-	width: 80%;
-	/*border: 1px solid red;*/
-}
-
-.UserList-detail-info-label {
-	display: inline-block;
-	text-align: right;
-	width: 30%;
-	font-weight: bold;
-	font-style: italic;
-	/*border: 1px solid red;*/
-}
-
-.UserList-detail-info-content {
-	display: inline-block;
-	text-align: left;
-	float: right;
-	width: 60%;
-	font-style: italic;
-	/*border: 1px solid red;*/
-}
-
-.UserList-inlab-data-expansion.detail {
-	margin-top: 20px;
-}
-
-.UserList-inlab-data-expansion-row.detail {
-	width: 100%;
-}
+/*========================== DETAIL VIEW ==========================*/
 
 
-/*============================= LIST VIEW ===========================*/
 
-.UserList-inlab-users-list {
-	width: 60%;
-	position: relative;
-	border-collapse: collapse;
-}
 
-.UserList-list-header, .UserList-list-data {
-	text-align: left;
-	display: inline-block;
-	padding: 20px 2% 20px 2%;
-}
+/*=========================== LIST VIEW ===========================*/
 
-.UserList-list-header {
-	top: 0;
-	position: sticky;
-	font-weight: bold;
-	/*border: 1px solid red;*/
-}
 
-.UserList-list-main-row {
-	cursor: pointer;
-	user-select: none;
-	transition: .2s;
-}
-
-.UserList-list-main-row:nth-child(odd) {
-	background-color: #f5f5f5;
-}
-
-.UserList-list-main-row.active {
-	padding: 10px;
-	background-color: #e6eefc;
-}
-
-.UserList-list-main-row:hover:not(:first-child) {
-	background-color: #d7e3f7;
-}
-
-.UserList-list-data {
-	cursor: pointer;
-	font-weight: bold;
-	font-size: 90%;
-	pointer-events: none;  /* Click through the element */
-	/*border: 1px solid blue;*/
-}
-
-.UserList-list-data.id, .UserList-list-header.id {
+.UserList.list-view-data.id, .UserList.list-view-header.id {
 	width: 20%;
 	/*overflow-wrap: break-word;*/
 }
 
-.UserList-list-data.id {
+.UserList.list-view-data.id {
 	color: #8a8a8a;
 	cursor: pointer;
-	pointer-events: unset;
+	pointer-events: auto;
 }
 
-.UserList-list-data.id.active {
+.UserList.list-view-data.id.active {
 	color: #428fcf;
 }
 
-.UserList-list-data.id.expired {
+.UserList.list-view-data.id.expired {
 	color: #ed2d2d;
 }
 
-.UserList-list-data.name, .UserList-list-header.name {
+.UserList.list-view-data.name, .UserList.list-view-header.name {
 	width: 30%;
 }
 
-.UserList-list-data.major, .UserList-list-header.major {
+.UserList.list-view-data.major, .UserList.list-view-header.major {
 	width: 25%;
 }
 
-.UserList-list-data.faculty, .UserList-list-header.faculty {
+.UserList.list-view-data.time-in, .UserList.list-view-header.time-in {
 	width: 25%;
 }
 
-.UserList-inlab-data-expansion {
-	width: 100%;
-	/*display: none;*/
-	overflow:hidden;
-	display: none;
-	cursor: default;
-	/*border: 1px solid red;*/
-}
-
-.UserList-list-main-row.active  > .UserList-inlab-data-expansion, .UserList-inlab-data-expansion.detail {
-	display: block;
-}
-
-.UserList-inlab-data-expansion-header {
-	font-size: 90%;
-	font-weight: bold;
-	font-style: italic;
-	margin-bottom: 5px;
-}
-
-.UserList-inlab-data-expansion-row {
-	width: 80%;
-	margin-top: 10px;
-	transition: .2s;
-	padding: 1px;
-	border-radius: 5px;
-}
-
-.UserList-inlab-data-expansion-row:hover:not(:last-child) {
-	background-color: #d6d6d6;
-}
-
-.UserList-inlab-data-expansion-cell {
-	display: inline-block;
-	font-size: 90%;
-	font-weight: bold;
-	padding: 0px 2% 5px 4%;
-	width: 25%;
-	font-style: italic;
-}
-
-.UserList-inlab-data-expansion-cell.id {
-	color: #395fbd;
-}
-
-.UserList-inlab-data-expansion-cell.action {
+.UserList-check-in:not(.expired) {
 	color: blue;
-}
-
-.UserList-inlab-data-expansion-cell.action:hover, .UserList-inlab-data-expansion-cell.id:hover {
-	color: #1c0b70;
-	cursor: pointer;
-}
-
-.UserList-inlab-data-expansion-txt-inp {
-	margin-left: 4%;
-	width: 70%;
-	border-radius: 5px;
-	border: 1px solid grey;
-	height: 30px;
-	padding-left: 2%;
-	transition: .3s;
-}
-
-.UserList-inlab-data-expansion-txt-inp:focus,
-.UserList-inlab-data-expansion-txt-inp:hover {
-	border: 2px solid lightblue;
-}
-
-.UserList-inlab-data-expansion-txt-inp:focus {
-	padding-left: 3%;
-}
-
-.UserList-inlab-data-expansion-btn {
-	width: 20%;
-	height: 30px;
-	border-radius: 5px;
-	border: 0;
-	background-color: #26bd50;
-	color: white;
-	font-weight: bold;
 	font-style: italic;
-	margin-left: 1px;
-	transition: .2s;
+	pointer-events: auto;  /* Make the element clickable */
 }
 
-.UserList-inlab-data-expansion-btn:hover,
-.UserList-inlab-data-expansion-btn:focus {
-	background-color: #3bd967;
-	color: #4a4949;
-	cursor: pointer;
+.UserList-check-in:hover:not(.expired), .UserList-check-in:focus:not(.expired) {
+	color: #1c0b70;
 }
 
+.UserList-check-in.expired {
+	color: red;
+	font-style: italic;
+}
 
 
 /*=================================================================

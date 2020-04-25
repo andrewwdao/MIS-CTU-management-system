@@ -1,9 +1,9 @@
 import React from 'react';
 
 import InputFilled from '../InputFilled';
-import UserListPhotoInput from './UserListPhotoInput';
+import PhotoInput from './PhotoInput';
 
-class UserListAdduserAccountSection extends React.Component {
+class AdduserAccountSection extends React.Component {
   render() {
     return (
       <div className="col-12-sm col-6-md UserList-adduser-section">
@@ -14,7 +14,7 @@ class UserListAdduserAccountSection extends React.Component {
           {/*=========================================================
                    WARNING : THIS FEATURE IS NOT YET FINISHED
             ==========================================================*/}
-          <UserListPhotoInput
+          <PhotoInput
             handleChange={this.props.handleChange}
             img={this.props.avatar} />
         </div>
@@ -74,4 +74,4 @@ class UserListAdduserAccountSection extends React.Component {
   }
 }
 
-export default UserListAdduserAccountSection;
+export default AdduserAccountSection;
