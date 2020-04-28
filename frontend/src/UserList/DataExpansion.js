@@ -25,7 +25,7 @@ class DataExpansion extends React.Component {
         </div>
         <div className="data-expansion-body">    
           {dataExpansionRows}
-          <div className={'data-expansion-row ' + this.props.detail}>
+          <div className={'data-expansion-row bottom-row ' + this.props.detail}>
             <input className="data-expansion-txt-inp" placeholder="Add by ID" />
             <button className="data-expansion-btn">Check</button>
           </div>

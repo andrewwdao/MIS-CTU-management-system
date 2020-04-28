@@ -240,6 +240,7 @@
 	float: right;
 	width: 60%;
 	font-style: italic;
+	word-wrap: break-word;
 	/*border: 1px solid red;*/
 }
 
@@ -249,6 +250,10 @@
 
 .data-expansion-row.detail {
 	width: 100%;
+}
+
+.data-expansion-row.detail .data-expansion-cell.id {
+	width: 20%;
 }
 
 
@@ -331,7 +336,7 @@
 	border-radius: 5px;
 }
 
-.data-expansion-row:hover:not(:last-child) {
+.data-expansion-row:hover:not(.bottom-row) {
 	background-color: #d6d6d6;
 }
 
@@ -345,11 +350,13 @@
 
 .data-expansion-cell.id {
 	color: #395fbd;
-	padding: 0px 2% 5px 6%;
+	margin-left: 5%;
 }
 
 .data-expansion-cell.action {
 	color: blue;
+	text-align: right;
+	width: 15%;
 }
 
 .data-expansion-cell.action:hover, .data-expansion-cell.id:hover {

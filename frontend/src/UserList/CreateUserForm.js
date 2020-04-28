@@ -1,11 +1,11 @@
 import React from 'react';
 
-import AdduserPersonalSection from './AdduserPersonalSection';
-import AdduserAccountSection from './AdduserAccountSection';
+import CreateUserPersonalSection from './CreateUserPersonalSection';
+import CreateUserAccountSection from './CreateUserAccountSection';
 
 import imgBtn from '../UI/icons/image.png';
 
-class AdduserForm extends React.Component {
+class CreateUserForm extends React.Component {
 
   constructor(props) {
     super(props);
@@ -41,6 +41,7 @@ class AdduserForm extends React.Component {
   }
 
     handleInputChange(e) {
+      // SEARCH FOR "file upload image preview react" or "filereader image react" (StackOverflow)
       if (e.target.type === "file") {
         var file = e.target.files[0];
 
@@ -103,8 +104,8 @@ class AdduserForm extends React.Component {
 
   render() {
     return (
-      <form method="POST" className="UserList-adduser-form" onSubmit={this.handleFormSubmit}>
-        <AdduserAccountSection
+      <form method="POST" className="UserList-create-user-form" onSubmit={this.handleFormSubmit}>
+        <CreateUserAccountSection
           avatar={this.state.avatar}
           username={this.state.username}
           password={this.state.password}
@@ -114,7 +115,7 @@ class AdduserForm extends React.Component {
           expDate={this.state.expDate}
           handleChange={this.handleInputChange} />
 
-        <AdduserPersonalSection
+        <CreateUserPersonalSection
           firstName={this.state.firstName}
           lastName={this.state.lastName}
           dob={this.state.dob}
@@ -132,9 +133,9 @@ class AdduserForm extends React.Component {
 
           handleChange={this.handleInputChange} />
 
-        <div className="UserList-adduser-btn-group">
+        <div className="UserList-create-user-btn-group">
           <input
-            className="btn UserList-adduser-modal-btn"
+            className="btn UserList-create-user-modal-btn"
             type="submit"
             value="Add"
             onClick={this.handleFormSubmit} />
@@ -145,4 +146,4 @@ class AdduserForm extends React.Component {
 
 }
 
-export default AdduserForm;
+export default CreateUserForm;

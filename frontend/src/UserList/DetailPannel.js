@@ -49,7 +49,7 @@ class DetailPannel extends React.Component {
             Major:
           </div>
           <div className="detail-info-content">
-            {this.props.selectedUser.major ? this.props.selectedUser.major : '_____________________'}
+            {this.props.selectedUser.major ? this.props.selectedUser.major : '___________________'}
           </div>
         </div>
         <div className="detail-info center">

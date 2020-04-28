@@ -3,14 +3,14 @@ import React from 'react';
 import InputFilled from '../InputFilled';
 import PhotoInput from './PhotoInput';
 
-class AdduserAccountSection extends React.Component {
+class CreateUserAccountSection extends React.Component {
   render() {
     return (
-      <div className="col-12-sm col-6-md UserList-adduser-section">
-        <div className="UserList-adduser-section-title">
+      <div className="col-12-sm col-6-md UserList-create-user-section">
+        <div className="UserList-create-user-section-title">
           Account information
         </div>
-        <div className="UserList-adduser-inp-container col-12-sm">
+        <div className="UserList-create-user-inp-container col-12-sm">
           {/*=========================================================
                    WARNING : THIS FEATURE IS NOT YET FINISHED
             ==========================================================*/}
@@ -18,7 +18,7 @@ class AdduserAccountSection extends React.Component {
             handleChange={this.props.handleChange}
             img={this.props.avatar} />
         </div>
-        <div className="UserList-adduser-inp-container col-12-sm">
+        <div className="UserList-create-user-inp-container col-12-sm">
           <InputFilled
             type="text"
             name="username"
@@ -26,7 +26,7 @@ class AdduserAccountSection extends React.Component {
             value={this.props.username}
             handleChange={this.props.handleChange} />
         </div>
-        <div className="UserList-adduser-inp-container col-12-sm">
+        <div className="UserList-create-user-inp-container col-12-sm">
           <InputFilled
             type="password"
             name="password"
@@ -34,7 +34,7 @@ class AdduserAccountSection extends React.Component {
             value={this.props.password}
             handleChange={this.props.handleChange} />
         </div>
-        <div className="UserList-adduser-inp-container col-12-sm">
+        <div className="UserList-create-user-inp-container col-12-sm">
           <InputFilled
             type="password"
             name="repassword"
@@ -42,7 +42,7 @@ class AdduserAccountSection extends React.Component {
             value={this.props.repassword}
             handleChange={this.props.handleChange} />
         </div>
-        <div className="UserList-adduser-inp-container col-12-sm">
+        <div className="UserList-create-user-inp-container col-12-sm">
           <InputFilled
             type="text"
             name="email"
@@ -50,7 +50,7 @@ class AdduserAccountSection extends React.Component {
             value={this.props.email}
             handleChange={this.props.handleChange} />
         </div>
-        <div className="UserList-adduser-inp-container col-6-sm col-5-md">
+        <div className="UserList-create-user-inp-container col-6-sm col-5-md">
           <div className="inp-filled-container">
             <label>
               <select value={this.props.role} name="role" onChange={this.props.handleChange} className="inp-filled">
@@ -61,7 +61,7 @@ class AdduserAccountSection extends React.Component {
             </label>
           </div>
         </div>
-        <div className="UserList-adduser-inp-container col-6-sm col-7-md">
+        <div className="UserList-create-user-inp-container col-6-sm col-7-md">
           <InputFilled
             type="date"
             name="expDate"
@@ -74,4 +74,4 @@ class AdduserAccountSection extends React.Component {
   }
 }
 
-export default AdduserAccountSection;
+export default CreateUserAccountSection;

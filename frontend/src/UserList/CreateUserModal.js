@@ -1,18 +1,18 @@
 import React from 'react';
 
-import AdduserForm from './AdduserForm';
+import CreateUserForm from './CreateUserForm';
 
-class AdduserModal extends React.Component {
+class CreateUserModal extends React.Component {
   render() {
     return (
-      <div className={`UserList-adduser-modal ${this.props.modalActive ? 'active' : null}`}>
+      <div className={`UserList-create-user-modal ${this.props.modalActive ? 'active' : ''}`}>
         <div onClick={this.props.toggleModal} className="modal-background">
         </div>
         <div className="modal-container UserList-modal-container">
           <button onClick={this.props.toggleModal} className="modal-close-btn">✖</button>
           <div className="modal-header">Add</div>
-            <div className="modal-body UserList-adduser-modal-body">
-              <AdduserForm
+            <div className="modal-body UserList-create-user-modal-body">
+              <CreateUserForm
                 accessToken={this.props.accessToken} />
             </div>
         </div>
@@ -22,4 +22,4 @@ class AdduserModal extends React.Component {
 }
 
 
-export default AdduserModal;
+export default CreateUserModal;

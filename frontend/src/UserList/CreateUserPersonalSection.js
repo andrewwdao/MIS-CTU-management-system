@@ -2,7 +2,7 @@ import React from 'react';
 
 import InputFilled from '../InputFilled';
 
-class AdduserPersonalSection extends React.Component {
+class CreateUserPersonalSection extends React.Component {
 
   constructor(props) {
     super(props);
@@ -82,7 +82,7 @@ class AdduserPersonalSection extends React.Component {
 
     var studentInfoSection = (
       <div>
-        <div className="UserList-adduser-inp-container col-12-sm">
+        <div className="UserList-create-user-inp-container col-12-sm">
           <InputFilled
             type="text"
             name="studentID"
@@ -90,7 +90,7 @@ class AdduserPersonalSection extends React.Component {
             value={this.props.studentID}
             handleChange={this.props.handleChange} />
         </div>
-        <div className="UserList-adduser-inp-container col-12-sm">
+        <div className="UserList-create-user-inp-container col-12-sm">
           <InputFilled
               type="text"
               name="classID"
@@ -98,7 +98,7 @@ class AdduserPersonalSection extends React.Component {
               value={this.props.classID}
               handleChange={this.props.handleChange} />
         </div>
-        <div className="UserList-adduser-inp-container col-12-sm">
+        <div className="UserList-create-user-inp-container col-12-sm">
           <div className="inp-filled-container">
             <label>
               <select value={this.props.faculty} name="faculty" onChange={this.handleChangeFaculty} className="inp-filled">
@@ -108,7 +108,7 @@ class AdduserPersonalSection extends React.Component {
             </label>
           </div>
         </div>
-        <div className="UserList-adduser-inp-container col-12-sm">
+        <div className="UserList-create-user-inp-container col-12-sm">
           <div className="inp-filled-container">
             <label>
               <select value={this.props.major} name="major" onChange={this.props.handleChange} className="inp-filled">
@@ -123,7 +123,7 @@ class AdduserPersonalSection extends React.Component {
 
     var otherInfoSection = (
       <div className="col-12-sm">
-        <div className="UserList-adduser-inp-container col-12-sm">
+        <div className="UserList-create-user-inp-container col-12-sm">
           <InputFilled
             type="text"
             name="organization"
@@ -131,7 +131,7 @@ class AdduserPersonalSection extends React.Component {
             value={this.props.organization}
             handleChange={this.props.handleChange} />
         </div>
-        <div className="UserList-adduser-inp-container col-12-sm">
+        <div className="UserList-create-user-inp-container col-12-sm">
           <InputFilled
             type="number"
             name="identityCard"
@@ -143,11 +143,11 @@ class AdduserPersonalSection extends React.Component {
     );
 
     return (
-      <div className="col-12-sm col-6-md UserList-adduser-section">
-        <div className="UserList-adduser-section-title">
+      <div className="col-12-sm col-6-md UserList-create-user-section">
+        <div className="UserList-create-user-section-title">
           Personal information
         </div>
-        <div className="UserList-adduser-inp-container col-12-sm">
+        <div className="UserList-create-user-inp-container col-12-sm">
           <InputFilled
             type="text"
             name="firstName"
@@ -155,7 +155,7 @@ class AdduserPersonalSection extends React.Component {
             value={this.props.firstName}
             handleChange={this.props.handleChange} />
         </div>
-        <div className="UserList-adduser-inp-container col-12-sm">
+        <div className="UserList-create-user-inp-container col-12-sm">
           <InputFilled
             type="text"
             name="lastName"
@@ -163,7 +163,7 @@ class AdduserPersonalSection extends React.Component {
             value={this.props.lastName}
             handleChange={this.props.handleChange} />
         </div>
-        <div className="UserList-adduser-inp-container col-8-sm">
+        <div className="UserList-create-user-inp-container col-8-sm">
           <InputFilled
             type="date"
             name="dob"
@@ -171,7 +171,7 @@ class AdduserPersonalSection extends React.Component {
             value={this.props.dob}
             handleChange={this.props.handleChange} />
         </div>
-        <div className="UserList-adduser-inp-container col-4-sm">
+        <div className="UserList-create-user-inp-container col-4-sm">
           <div className="inp-filled-container">
             <label>
               <select value={this.props.gender} name="gender" onChange={this.props.handleChange} className="inp-filled">
@@ -182,7 +182,7 @@ class AdduserPersonalSection extends React.Component {
             </label>
           </div>
         </div>
-        <div className="UserList-adduser-inp-container col-12-sm">
+        <div className="UserList-create-user-inp-container col-12-sm">
           <InputFilled
             type="number"
             name="phone"
@@ -190,7 +190,7 @@ class AdduserPersonalSection extends React.Component {
             value={this.props.phone}
             handleChange={this.props.handleChange} />
         </div>
-        <div className="UserList-adduser-inp-container col-12-sm">
+        <div className="UserList-create-user-inp-container col-12-sm">
           <div className="inp-filled-container">
             <label>
               <select value={this.props.workPlace} name="workPlace" onChange={this.props.handleChange} className="inp-filled">
@@ -207,4 +207,4 @@ class AdduserPersonalSection extends React.Component {
   }
 }
 
-export default AdduserPersonalSection;
+export default CreateUserPersonalSection;

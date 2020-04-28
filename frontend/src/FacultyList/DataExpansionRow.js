@@ -4,17 +4,14 @@ class DataExpansionRow extends React.Component {
 	render() {
     return(
       <div className={'data-expansion-row ' + this.props.detail}>
-        <div className="data-expansion-cell id">
-          WH0001
+        <div className="FacultyList data-expansion-cell id">
+          {this.props.major.id}
         </div>
-        <div className="data-expansion-cell">
-          Hand drill
+        <div className="FacultyList data-expansion-cell">
+          {this.props.major.name}
         </div>
-        <div className="data-expansion-cell">
-          09:42 AM
-        </div>
-        <div className="data-expansion-cell action">
-          Return
+        <div className="FacultyList data-expansion-cell action">
+          Remove
         </div>
       </div>
     );

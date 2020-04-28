@@ -8,17 +8,17 @@ class Body extends React.Component {
     super(props);
 
     this.state = {
-      selectedFaculty: {}  // Currently selected faculty to show on the detail pannel
+      selectedEquipment: {},  // Currently selected equpiment to show on the detail pannel
     };
 
-    this.updateSelectedFaculty = this.updateSelectedFaculty.bind(this);
+    this.updateSelectedEquipment = this.updateSelectedEquipment.bind(this);
   }
 
-  // Change the info on DetailPannel based on the Faculty got passed to
+  // Change the info on DetailPannel based on the Equipment got passed to
   // REMEMBER TO FIX THIS EVERYTIME THE FACULTY INFO GET UPDATED
-  updateSelectedFaculty(Faculty) {
+  updateSelectedEquipment(equipment) {
     this.setState({
-      selectedFaculty: Faculty
+      selectedEquipment: equipment
     });
   }
 
@@ -26,11 +26,13 @@ class Body extends React.Component {
     return(
       <div className="body">
         <DetailPannel
-          selectedFaculty={this.state.selectedFaculty} />
+          inlabFilter={this.props.inlabFilter}
+          selectedEquipment={this.state.selectedEquipment} />
         <ListView
           accessToken={this.props.accessToken}
           host={this.props.host}
-          updateSelectedFaculty={this.updateSelectedFaculty}
+          updateSelectedEquipment={this.updateSelectedEquipment}
+          inlabFilter={this.props.inlabFilter}
           searchFilter={this.props.searchFilter}
           />
       </div>

@@ -79,46 +79,34 @@
 
 /*============ Form ============*/
 
-/* Hide arrow button for number input on Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
- 	margin: 0;
-}
-
-/* Hide arrow button for number input on Firefox */
-input[type=number] {
-	-moz-appearance:textfield;
-}
-
 /* Form in the modal */
-.UserList-adduser-form {
+.UserList-create-user-form {
 	display: flex;
 	flex-wrap: wrap;
 }
 
 /* Common class for the 2 sections in the form */
-.UserList-adduser-section {
+.UserList-create-user-section {
 	display: inline-block;
 	padding: 0px 10% 25px 10%;
 }
 
 /* Style the title for the 2 sections */
-.UserList-adduser-section-title {
+.UserList-create-user-section-title {
 	font-weight: bold;
 	margin-bottom: 10px;
 	margin-left: 5px;
 }
 
 /* Align, positioning the text field containers */
-.UserList-adduser-inp-container {
+.UserList-create-user-inp-container {
 	display: inline-block;
 	margin-bottom: 10px;
 	padding-left: 5px;
 }
 
 /* Hide the default file input for the avatar upload button */
-.UserList-adduser-file-inp-default {
+.UserList-create-user-file-inp-default {
 	width: 0.1px;
 	height: 0.1px;
 	opacity: 0;			/* Hide the element */
@@ -130,19 +118,19 @@ input[type=number] {
 }
 
 /* Container for user's avatar */
-.UserList-adduser-avatar-container {
+.UserList-create-user-avatar-container {
 	margin: auto;
 	text-align: center;
 	border: 2px solid rgb(250, 250, 250);	/* Hide the border when not focused (on the file upload button) or when not hovered */
 }
 
-.UserList-adduser-file-inp-default:focus ~ .UserList-adduser-avatar-container,
-.UserList-adduser-avatar-container:hover {
+.UserList-create-user-file-inp-default:focus ~ .UserList-create-user-avatar-container,
+.UserList-create-user-avatar-container:hover {
 	border: 2px solid lightgrey;	/* Show the border in response to interactions */
 }
 
 /* User avatar block */
-.UserList-adduser-avatar-img {
+.UserList-create-user-avatar-img {
 	border-radius: 20px;
 	width: 250px;
 	height: 250px;
@@ -150,12 +138,12 @@ input[type=number] {
 }
 
 /* Button groups (Reset, Add, Cancel) (NOT YET IMPLEMENTED) */
-.UserList-adduser-btn-group {
+.UserList-create-user-btn-group {
 	margin: auto;  /* Center the button groups */
 }
 
 /* Add user button (submit button) */
-.UserList-adduser-modal-btn {
+.UserList-create-user-modal-btn {
 	width: 100px;
 	height: 50px;
 	background-color: #0d61a3;
@@ -171,11 +159,11 @@ input[type=number] {
 /* Large devices (tablets, 800px and up) */
 @media only screen and (min-width: 800px) {
 
-	.UserList-adduser-section {
+	.UserList-create-user-section {
 		padding: 0 25px 25px 25px;
 	}
 
-	.UserList-adduser-btn-group {
+	.UserList-create-user-btn-group {
 		margin-top: 30px;
 	}
 

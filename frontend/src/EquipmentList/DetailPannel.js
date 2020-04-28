@@ -17,23 +17,32 @@ class DetailPannel extends React.Component {
             ID:
           </div>
           <div className="detail-info-content">
-            {this.props.selectedFaculty.id ? this.props.selectedFaculty.id : '____________'}
+            {this.props.selectedEquipment.id ? this.props.selectedEquipment.id : '____________'}
           </div>
         </div>
         <div className="detail-info center">
           <div className="detail-info-label">
-            Faculty:
+            Name:
           </div>
           <div className="detail-info-content">
-            {this.props.selectedFaculty.name ? this.props.selectedFaculty.name : '________________'}
+            {this.props.selectedEquipment.name ? this.props.selectedEquipment.name : '________________'}
+          </div>
+        </div>
+        <div className="detail-info center">
+          <div className="detail-info-label">
+            Description:
+          </div>
+          <div className="detail-info-content">
+            {this.props.selectedEquipment.name ? this.props.selectedEquipment.description : '________________'}
           </div>
         </div>
 
         {
-          // Only show this when there is selectedFaculty
-          this.props.selectedFaculty.id &&
+          // Only show this when there is selectedEquipment
+          this.props.selectedEquipment.id &&
           <DataExpansion
-            majors={this.props.selectedFaculty.majors}
+            inlabFilter={this.props.inlabFilter}
+            equipmentSelfs={this.props.selectedEquipment.equipmentSelfs}
             detail='detail' />
         }
         

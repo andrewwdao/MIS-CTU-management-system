@@ -7,13 +7,13 @@ class PhotoInput extends React.Component {
         <label>
           <input
             type="file" accept="image/*"
-            className="UserList-adduser-file-inp-default"
+            className="UserList-create-user-file-inp-default"
             onChange={this.props.handleChange} />
-          <div className="UserList-adduser-avatar-container">
+          <div className="UserList-create-user-avatar-container">
             <img
               src={this.props.img}
               alt="Avatar"
-              className="UserList-adduser-avatar-img" />
+              className="UserList-create-user-avatar-img" />
           </div>
         </label>
       </div>

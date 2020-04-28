@@ -79,43 +79,9 @@ class ListView extends React.Component {
       ]
     };
 
-    this.getUsersList = this.getUsersList.bind(this);
     this.updateSelectedUser = this.updateSelectedUser.bind(this);
-    this.checkInUser = this.checkInUser.bind(this);
   }
 
-  componentDidMount() {
-    // this.userListRefresher = setInterval(this.getUsersList, 5000);
-  }
-
-  componentWillUnmount() {
-    // clearInterval(this.userListRefresher);
-  }
-
-  // Make a request to get users list, then update the users list state
-  getUsersList() {
-    const requestOptions = {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': this.props.accessToken
-      },
-    };
-
-    fetch(this.props.host + 'users/', requestOptions).then(
-      res =>{
-        return res.json();
-      }
-    ).then(
-      data => {
-        console.log(data);
-      }
-    );
-  }
-
-  checkInUser(user) {
-
-  }
 
   // Track the selected user ID and update the info on Detail pannel
   updateSelectedUser(user) {
@@ -139,10 +105,9 @@ class ListView extends React.Component {
           const searchFilter = this.props.searchFilter.toLowerCase();
           if (user.id.toLowerCase().search(searchFilter) !== -1 || user.name.toLowerCase().search(searchFilter) !== -1)
 
-            // if the inlabFilter gets true, only return users with their status is 1 (true == 1)
-            // (true == 1 is true but true == -1 or true == 2 is false)
+            // if the inlabFilter gets true, only return users with their status is 1
             // OR if the inlabFilter gets false, return all users
-            if (this.props.inlabFilter == user.status || !this.props.inlabFilter)
+            if (user.status === 1 || !this.props.inlabFilter)
               return (
                 <ListRow
                   key={user.id}

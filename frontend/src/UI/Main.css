@@ -6,6 +6,20 @@
 	margin: 0;
 }
 
+
+/* Hide arrow button for number input on Firefox */
+input[type=number] {
+	-moz-appearance:textfield;
+}
+
+/* Hide arrow button for number input on Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+ 	margin: 0;
+}
+
+
 /* ======================================================
 						SCROLL BAR
 =======================================================*/
