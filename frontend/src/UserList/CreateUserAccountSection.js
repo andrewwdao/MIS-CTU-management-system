@@ -1,6 +1,6 @@
 import React from 'react';
 
-import InputFilled from '../InputFilled';
+import InputFilled from '../Global/InputFilled';
 import PhotoInput from './PhotoInput';
 
 class CreateUserAccountSection extends React.Component {

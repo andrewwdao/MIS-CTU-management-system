@@ -1,6 +1,6 @@
 import React from 'react';
 
-import imgPlaceholder from '../UI/icons/photo.png';
+import imgPlaceholder from '../images/photo.png';
 
 import DataExpansion from './DataExpansion';
 

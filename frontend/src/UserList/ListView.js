@@ -11,77 +11,10 @@ class ListView extends React.Component {
       // when we make any changes, check if the changed user has this ID
       // if yes, we call updateSelectedUser to update info in the Detail pannel
       selectedUserId: '',
-
-      // Users
-      users: [
-        {
-          id: '1234567',
-          name: 'Name Có Dấu',
-          major: 'Major',
-          timeIn: '09:28 AM',
-          status: 1,
-          equipments: [
-            {
-              id: 'WH0001',
-              name: 'Hand drill',
-              time: '09:42 AM',
-            },
-            {
-              id: 'WH0002',
-              name: 'Hand drill 2',
-              time: '09:42 AM',
-            }
-          ]
-        },
-        {
-          id: '4342563',
-          name: 'Just BCD',
-          major: 'Just major',
-          timeIn: '',
-          status: 0,
-          equipments: []
-        },
-        {
-          id: '2345789',
-          name: 'Just DEF Name',
-          major: 'Just major',
-          timeIn: '09:28 AM',
-          status: 1,
-          equipments: [
-            {
-              id: 'WH0001',
-              name: 'Hand drill',
-              time: '09:42 AM',
-            },
-            {
-              id: 'WH0002',
-              name: 'Hand drill 2',
-              time: '09:42 AM',
-            }
-          ]
-        },
-        {
-          id: '4252523',
-          name: 'Haha Name',
-          major: 'Major',
-          timeIn: '',
-          status: 0,
-          equipments: []
-        },
-        {
-          id: '0000000',
-          name: 'Expired Name',
-          major: 'Major',
-          timeIn: '',
-          status: -1,
-          equipments: []
-        }
-      ]
     };
 
     this.updateSelectedUser = this.updateSelectedUser.bind(this);
   }
-
 
   // Track the selected user ID and update the info on Detail pannel
   updateSelectedUser(user) {
@@ -95,7 +28,7 @@ class ListView extends React.Component {
   }
 
   render() {
-    const users = this.state.users.map(
+    const users = this.props.users.map(
       user => {
 
         // Need try block to avoid exception when user try to enter some regex (*, ?)

@@ -18,7 +18,7 @@ class DataExpansionRow extends React.Component {
           {this.props.equipmentSelf.conditionDescription}
         </div>
         <div className="EquipmentList data-expansion-cell action">
-          Remove
+          {this.props.equipmentSelf.usingBy ? 'U: ' + this.props.equipmentSelf.usingBy : 'Remove'}
         </div>
       </div>
     );

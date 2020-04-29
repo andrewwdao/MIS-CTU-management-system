@@ -1,9 +1,9 @@
 import React from 'react';
 
 import PhotoInput from './PhotoInput';
-import InputFilled from '../InputFilled';
+import InputFilled from '../Global/InputFilled';
 
-import imgBtn from '../UI/icons/image.png';
+import imgBtn from '../images/image.png';
 
 class CreateEquipmentForm extends React.Component {
 

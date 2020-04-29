@@ -11,75 +11,6 @@ class ListView extends React.Component {
       // when we make any changes, check if the changed equipment has this ID
       // if yes, we call updateSelectedEquipment to update info in the Detail pannel
       selectedEquipmentId: '',
-      equipments: [
-        {
-          id: '1234567',
-          name: 'This is Equipment',
-          description: "Description goes here, very long long long long long long long long long long long long long",
-          equipmentSelfs: [
-            {
-              id: '1',
-              condition: 2,
-              conditionDescription: 'Good',
-              status: 0
-            },
-            {
-              id: '2',
-              condition: 1,
-              conditionDescription: 'Normal',
-              status: 1
-            },
-            {
-              id: '3',
-              condition: 0,
-              conditionDescription: "Can not be used",
-              status: 0
-            },
-            {
-              id: '4',
-              condition: -1,
-              conditionDescription: "Severe",
-              status: 0
-            }
-          ],
-        },
-        {
-          id: '4342563',
-          name: 'Equipment field',
-          equipmentSelfs: [
-            {
-              id: '1',
-              condition: -1,
-              conditionDescription: 'Severe',
-              status: 0
-            },
-            {
-              id: '2',
-              condition: 0,
-              conditionDescription: "Can not be used, for real, this is not a reason just a test text",
-              status: 0
-            }
-          ],
-        },
-        {
-          id: '2345789',
-          name: 'This is Equipment 2',
-          equipmentSelfs: [
-            {
-              id: '1',
-              condition: 1,
-              conditionDescription: 'Good',
-              status: 1
-            },
-            {
-              id: '2',
-              condition: 0,
-              conditionDescription: "Can not be used",
-              status: 0
-            }
-          ],
-        }
-      ]
     };
   }
 
@@ -95,7 +26,7 @@ class ListView extends React.Component {
   }
 
   render() {
-    const equipments = this.state.equipments.map(
+    const equipments = this.props.equipments.map(
       equipment => {
 
         // Need try block to avoid exception when equipment try to enter some regex (*, ?)

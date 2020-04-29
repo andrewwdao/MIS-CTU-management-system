@@ -1,18 +1,10 @@
 import React from 'react';
 
-import './UI/Main.css';
-import './UI/Nav.css';
-import './UI/ListView.css';
-import './UI/UserList.css';
-import './UI/EquipmentList.css';
-import './UI/FacultyList.css';
-import './UI/Login.css';
+import './css/Main.css';
+import './css/Login.css';
 
-// import Login from './Login';
-import Nav from './Nav';
-import UserList from './UserList/UserList';
-import EquipmentList from './EquipmentList/EquipmentList';
-import FacultyList from './FacultyList/FacultyList';
+import Login from './Global/Login';
+import Data from './Global/Data';
 
 class App extends React.Component {
   constructor(props) {
@@ -114,10 +106,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <EquipmentList
+        <Data
           accessToken={this.state.accessToken}
-          host={this.state.host}/>
-        <Nav />
+          />
       </div>
     );
   }

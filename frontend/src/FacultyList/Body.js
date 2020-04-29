@@ -30,6 +30,7 @@ class Body extends React.Component {
         <ListView
           accessToken={this.props.accessToken}
           host={this.props.host}
+          faculties={this.props.faculties}
           updateSelectedFaculty={this.updateSelectedFaculty}
           searchFilter={this.props.searchFilter}
           />

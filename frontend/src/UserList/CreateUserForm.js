@@ -3,7 +3,7 @@ import React from 'react';
 import CreateUserPersonalSection from './CreateUserPersonalSection';
 import CreateUserAccountSection from './CreateUserAccountSection';
 
-import imgBtn from '../UI/icons/image.png';
+import imgBtn from '../images/image.png';
 
 class CreateUserForm extends React.Component {
 
