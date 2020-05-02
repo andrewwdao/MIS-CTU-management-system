@@ -15,29 +15,28 @@
 
 .top {
 	width: 100%;
-	height: 60px;
+	height: 120px;
 	border-bottom: 1.5px solid #dedede;  /* Divide this section with the one below it */
 }
 
 .top-search-section, .top-options-section {
 	display: inline-block;
-	width: 40%;
-	height: 100%;
+	width: 95%;
+	height: 50%;
 	float: left;
 }
 
-.top-search-section {
-	width: 60%;
-}
 
 .top-search-section form {
-	width: 100%;
+	width: 88%;
+	width: calc(100% - 55px);
 	height: 100%;
 	padding-left: 2%;
+	float: right;
 }
 
 .top-search-text-input {
-	width: 90%;
+	width: calc(100% - 75px); /* 75px is the width of the search button */
 	height: 70%;
 	padding-left: 3%;
 	transition: .4s;
@@ -62,11 +61,11 @@
 }
 
 .top-search-button {
-	width: 10%;
+	width: 75px;
 	height: 70%;
 	float: right;    /* Line borken without this, don't know why */
 	display: inline-block;   /* To change to width, height and let float attribute works */
-	padding: 1.7%;   /* Make the icon smaller or bigger */
+	padding: 10px;   /* Make the icon smaller or bigger */
 	fill: #aaa;
 	background-color: #f0f0f0;
 	border: 2px solid #dedede;
@@ -141,7 +140,7 @@
 	height: 65%;
 	background-color: #2196F3;
 	border-radius: 5px;
-	margin: 10px 0% 0 9%;
+	margin: 10px 0% 0 2.5%;
 	cursor: pointer;
 	color: white;
 	transition: .2s;
@@ -177,6 +176,22 @@
 	left: 53%;
 }
 
+.top-header {
+	display: inline-block;
+	margin-top: 30px;
+	margin-left: 20%;
+	transform: translate(0, -50%);
+	font-weight: bold;
+	font-size: 110%;
+	font-style: italic;
+	color: grey;
+}
+
+.top-header:hover {
+	color: black;
+	cursor: default;
+}
+
 
 
 /*=================================================================
@@ -188,6 +203,9 @@
 	width: 100%;
 	width: calc(100% - 41px);
 	margin: 20px;
+	height: 100%;
+	height: calc(100% - 140px);
+	margin-bottom: 0;
 	overflow-x: hidden;
 }
 
@@ -196,13 +214,26 @@
 
 .detail-info-container {
 	position: absolute;
-	top: 60px;
-	bottom: 0;
-	right: 0;
-	width: 37%;
+	top: -1500px;
+	z-index: 2;
 	background-color: #fafafa;
-	padding: 2%;
-	/*border: 2px solid red;*/
+	border-radius: 10px;
+	display: none;
+}
+
+.show > .detail-info-container {
+	top: 50px;
+	bottom: 20px;
+	width: 90%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	display: unset;
+}
+
+.detail-info-body {
+	height: 88%;
+	padding: 2.5% 2% 1% 2%;
+	overflow: auto;
 }
 
 .detail-info-picture-container {
@@ -257,13 +288,23 @@
 	width: 20%;
 }
 
+.DetailPannel.modal-close-btn {
+	position: fixed;
+	top: -500px;
+	right: 5px;
+	color: lightgrey;
+}
+
+.show > .detail-info-container > .DetailPannel.modal-close-btn {
+	top: 5px;
+}
 
 
 /*=========================== LIST ===========================*/
 
 
 .list-view {
-	width: 60%;
+	width: 100%;
 	position: relative;
 	border-collapse: collapse;
 }
@@ -306,6 +347,7 @@
 	font-size: 90%;
 	pointer-events: none;  /* Click through the element */
 	/*border: 1px solid blue;*/
+	vertical-align: middle;
 }
 
 .data-expansion {
@@ -330,7 +372,7 @@
 }
 
 .data-expansion-row {
-	width: 80%;
+	width: 90%;
 	margin-top: 10px;
 	transition: .2s;
 	padding: 1px;
@@ -347,6 +389,7 @@
 	font-weight: bold;
 	width: 25%;
 	font-style: italic;
+	vertical-align: middle;
 }
 
 .data-expansion-cell.id {
@@ -402,4 +445,64 @@
 	background-color: #30c259;
 	color: #4a4949;
 	cursor: pointer;
+}
+
+
+
+
+/* Large devices (tablets, 800px and up) */
+@media only screen and (min-width: 800px) {
+
+	.top {
+		width: 100%;
+		height: 60px;
+		border-bottom: 1.5px solid #dedede;  /* Divide this section with the one below it */
+	}
+	
+	.top-search-section, .top-options-section {
+		height: 100%;
+		width: 40%;
+	}
+
+
+	.top-search-section {
+		width: 60%;
+	}
+
+	.top-search-section form {
+		width: 100%;
+	}
+
+	.top-filter-switch {
+		margin-left: 9%;
+	}
+
+	.detail-info-container, .show > .detail-info-container {
+		position: absolute;
+		top: 60px;
+		bottom: 0;
+		right: 0;
+		left: unset;
+		width: 37%;
+		background-color: #fafafa;
+		padding: 1%;
+		padding-right: 0;
+		border-radius: 0;
+		margin: 0;
+		z-index: 0;
+		transform: translate(0, 0);
+		display: block;
+		/*border: 2px solid red;*/
+	}
+
+	.list-view {
+		width: 60%;
+	}
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+
 }

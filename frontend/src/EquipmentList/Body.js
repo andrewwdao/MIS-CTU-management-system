@@ -9,9 +9,11 @@ class Body extends React.Component {
 
     this.state = {
       selectedEquipment: {},  // Currently selected equpiment to show on the detail pannel
+      detailPannelModalActive: false,
     };
 
     this.updateSelectedEquipment = this.updateSelectedEquipment.bind(this);
+    this.toggleDetailPannelModal = this.toggleDetailPannelModal.bind(this);
   }
 
   // Change the info on DetailPannel based on the Equipment got passed to
@@ -22,12 +24,21 @@ class Body extends React.Component {
     });
   }
 
+  toggleDetailPannelModal() {
+    this.setState({
+      detailPannelModalActive: !this.state.detailPannelModalActive
+    });
+  }
+
   render() {
     return(
       <div className="body">
         <DetailPannel
           inlabFilter={this.props.inlabFilter}
-          selectedEquipment={this.state.selectedEquipment} />
+          selectedEquipment={this.state.selectedEquipment}
+          modalActive={this.state.detailPannelModalActive}
+          toggleModal={this.toggleDetailPannelModal}
+          />
         <ListView
           accessToken={this.props.accessToken}
           host={this.props.host}
@@ -35,6 +46,7 @@ class Body extends React.Component {
           updateSelectedEquipment={this.updateSelectedEquipment}
           inlabFilter={this.props.inlabFilter}
           searchFilter={this.props.searchFilter}
+          toggleDetailPannelModal={this.toggleDetailPannelModal}
           />
       </div>
     );

@@ -3,17 +3,17 @@ import React from 'react';
 class PhotoInput extends React.Component {
   render() {
     return(
-      <div className="FacultyList-photo-inp">
+      <div className="EquipmentList-photo-inp">
         <label>
           <input
             type="file" accept="image/*"
-            className="FacultyList-create-faculty-file-inp-default"
+            className="EquipmentList-create-equipment-file-inp-default"
             onChange={this.props.handleChange} />
-          <div className="FacultyList-create-faculty-photo-container">
+          <div className="EquipmentList-create-equipment-photo-container">
             <img
               src={this.props.img}
-              alt="Falcuty"
-              className="FacultyList-create-faculty-photo" />
+              alt="Equipment"
+              className="EquipmentList-create-equipment-photo" />
           </div>
         </label>
       </div>

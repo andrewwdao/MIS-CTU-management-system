@@ -8,10 +8,12 @@ class Body extends React.Component {
     super(props);
 
     this.state = {
-      selectedUser: {}  // Currently selected user to show on the detail pannel
+      selectedUser: {},  // Currently selected user to show on the detail pannel
+      detailPannelModalActive: false,
     };
 
     this.updateSelectedUser = this.updateSelectedUser.bind(this);
+    this.toggleDetailPannelModal = this.toggleDetailPannelModal.bind(this);
   }
 
   // Change the info on DetailPannel based on the user got passed to
@@ -22,11 +24,20 @@ class Body extends React.Component {
     });
   }
 
+  toggleDetailPannelModal() {
+    this.setState({
+      detailPannelModalActive: !this.state.detailPannelModalActive
+    });
+  }
+
   render() {
     return(
       <div className="body">
         <DetailPannel
-          selectedUser={this.state.selectedUser} />
+          selectedUser={this.state.selectedUser}
+          modalActive={this.state.detailPannelModalActive}
+          toggleModal={this.toggleDetailPannelModal}
+          />
         <ListView
           accessToken={this.props.accessToken}
           host={this.props.host}
@@ -34,6 +45,7 @@ class Body extends React.Component {
           updateSelectedUser={this.updateSelectedUser}
           inlabFilter={this.props.inlabFilter}
           searchFilter={this.props.searchFilter}
+          toggleDetailPannelModal={this.toggleDetailPannelModal}
           />
       </div>
     );

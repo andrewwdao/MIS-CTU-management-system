@@ -18,11 +18,36 @@ class Data extends React.Component {
           equipments: [
             {
               id: 'WH0001',
-              name: 'Hand drill',
+              name: 'Hand drill drill drill drill drill drill drill drill drill drill drill',
               time: '09:42 AM',
             },
             {
               id: 'WH0002',
+              name: 'Hand drill 2',
+              time: '09:42 AM',
+            },
+            {
+              id: 'WH0003',
+              name: 'Hand drill 2',
+              time: '09:42 AM',
+            },
+            {
+              id: 'WH0004',
+              name: 'Hand drill 2',
+              time: '09:42 AM',
+            },
+            {
+              id: 'WH0006',
+              name: 'Hand drill 2',
+              time: '09:42 AM',
+            },
+            {
+              id: 'WH0007',
+              name: 'Hand drill 2',
+              time: '09:42 AM',
+            },
+            {
+              id: 'WH0008',
               name: 'Hand drill 2',
               time: '09:42 AM',
             }
@@ -65,6 +90,78 @@ class Data extends React.Component {
         },
         {
           id: '0000000',
+          name: 'Expired Name',
+          major: 'Major',
+          timeIn: '',
+          status: -1,
+          equipments: []
+        },
+        {
+          id: '0000002',
+          name: 'Expired Name',
+          major: 'Major',
+          timeIn: '',
+          status: -1,
+          equipments: []
+        },
+        {
+          id: '00032000',
+          name: 'Expired Name',
+          major: 'Major',
+          timeIn: '',
+          status: -1,
+          equipments: []
+        },
+        {
+          id: '004000',
+          name: 'Expired Name',
+          major: 'Major',
+          timeIn: '',
+          status: -1,
+          equipments: []
+        },
+        {
+          id: '0000140',
+          name: 'Expired Name',
+          major: 'Major',
+          timeIn: '',
+          status: -1,
+          equipments: []
+        },
+        {
+          id: '00032000',
+          name: 'Expired Name',
+          major: 'Major',
+          timeIn: '',
+          status: -1,
+          equipments: []
+        },
+        {
+          id: '001230000',
+          name: 'Expired Name',
+          major: 'Major',
+          timeIn: '',
+          status: -1,
+          equipments: []
+        },
+        {
+          id: '000004100',
+          name: 'Expired Name',
+          major: 'Major',
+          timeIn: '',
+          status: -1,
+          equipments: []
+        },
+        {
+          id: '00055000',
+          name: 'Expired Name',
+          major: 'Major',
+          timeIn: '',
+          status: -1,
+          equipments: []
+        },
+        {
+          id: '00033000',
           name: 'Expired Name',
           major: 'Major',
           timeIn: '',

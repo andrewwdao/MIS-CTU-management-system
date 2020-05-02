@@ -42,6 +42,7 @@ class ListView extends React.Component {
                 inlabFilter={this.props.inlabFilter}
                 selectedEquipmentId={this.props.selectedEquipmentId}
                 updateSelectedEquipment={this.props.updateSelectedEquipment}
+                toggleDetailPannelModal={this.props.toggleDetailPannelModal}
                 />
             );
         } catch (e) {

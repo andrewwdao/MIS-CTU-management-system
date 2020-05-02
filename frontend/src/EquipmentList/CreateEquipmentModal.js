@@ -5,7 +5,7 @@ import CreateEquipmentForm from './CreateEquipmentForm';
 class CreateEquipmentModal extends React.Component {
   render() {
     return (
-      <div className={`EquipmentList-create-equipment-modal ${this.props.modalActive ? 'active' : ''}`}>
+      <div className={` ${this.props.modalActive ? 'show' : ''}`}>
         <div onClick={this.props.toggleModal} className="modal-background">
         </div>
         <div className="modal-container EquipmentList-modal-container">

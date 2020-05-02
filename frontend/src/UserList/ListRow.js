@@ -32,6 +32,7 @@ class ListRow extends React.Component {
   // This is a good way to pass parameters from sub component to main component
   updateSelectedUser() {
     this.props.updateSelectedUser(this.props.user);
+    this.props.toggleDetailPannelModal();
   }
 
 	render() {

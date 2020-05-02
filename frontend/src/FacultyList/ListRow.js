@@ -20,6 +20,7 @@ class ListRow extends React.Component {
   // REMEMBER TO FIX THIS EVERYTIME THE faculty INFO GET UPDATED
   updateSelectedFaculty() {
     this.props.updateSelectedFaculty(this.props.faculty);
+    this.props.toggleDetailPannelModal();
   }
 
 	render() {

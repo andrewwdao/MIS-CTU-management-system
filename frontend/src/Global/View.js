@@ -19,19 +19,26 @@ class View extends React.Component {
       selectedView: 'Users',
 
       inlabFilter: true,  // Show inlab only or all flag
-      searchFilter: ''        // Filter by IDs/Names
+      searchFilter: '',        // Filter by IDs/Names
+
+      navActive: false,
     };
 
     this.updateSelectedView = this.updateSelectedView.bind(this);
 
     this.toggleInlabFilter = this.toggleInlabFilter.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
+
+    this.toggleNav = this.toggleNav.bind(this);
   }
 
   updateSelectedView(event) {
     this.setState({
       selectedView: event.currentTarget.querySelector('.Nav-item-label').innerHTML
     });
+
+    // Toggle to hide the navbar in case user on mobile (desktop view has no effect)
+    this.toggleNav()
   }
 
   // Change the state to show inlab only or all
@@ -46,6 +53,13 @@ class View extends React.Component {
     e.preventDefault();
     this.setState({
       searchFilter: e.target.value
+    });
+  }
+
+  // Show/hide navbar on mobile view
+  toggleNav() {
+    this.setState({
+      navActive: !this.state.navActive
     });
   }
 
@@ -89,6 +103,8 @@ class View extends React.Component {
         <Nav
           selectedView={this.state.selectedView}
           updateSelectedView={this.updateSelectedView}
+          toggleNav={this.toggleNav}
+          active={this.state.navActive}
           />
       </div>
     );

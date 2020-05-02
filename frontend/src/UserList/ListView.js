@@ -46,6 +46,7 @@ class ListView extends React.Component {
                   key={user.id}
                   user={user}
                   updateSelectedUser={this.props.updateSelectedUser}
+                  toggleDetailPannelModal={this.props.toggleDetailPannelModal}
                   />
               );
         } catch (e) {

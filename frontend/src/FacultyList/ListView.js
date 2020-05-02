@@ -18,6 +18,7 @@ class ListView extends React.Component {
                 key={faculty.id}
                 faculty={faculty}
                 updateSelectedFaculty={this.props.updateSelectedFaculty}
+                toggleDetailPannelModal={this.props.toggleDetailPannelModal}
                 />
             );
         } catch (e) {

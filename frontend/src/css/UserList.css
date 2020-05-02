@@ -2,6 +2,9 @@
 								TOP BAR
 ===================================================================*/
 
+.UserList.top-header {
+	margin-left: calc(40% - 110px);
+}
 
 
 
@@ -121,6 +124,7 @@
 .UserList-create-user-avatar-container {
 	margin: auto;
 	text-align: center;
+	padding: 10px;
 	border: 2px solid rgb(250, 250, 250);	/* Hide the border when not focused (on the file upload button) or when not hovered */
 }
 
@@ -132,8 +136,6 @@
 /* User avatar block */
 .UserList-create-user-avatar-img {
 	border-radius: 20px;
-	width: 250px;
-	height: 250px;
 	cursor: pointer;
 }
 
@@ -153,6 +155,7 @@
 	margin: auto;
 	margin-top: -20px;
 	text-align: center;
+	display: block;
 }
 
 

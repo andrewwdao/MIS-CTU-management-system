@@ -26,6 +26,7 @@ class ListRow extends React.Component {
   // REMEMBER TO FIX THIS EVERYTIME THE equipment INFO GET UPDATED
   updateSelectedEquipment() {
     this.props.updateSelectedEquipment(this.props.equipment);
+    this.props.toggleDetailPannelModal();
   }
 
 

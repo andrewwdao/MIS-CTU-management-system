@@ -2,6 +2,10 @@
 								TOP BAR
 ===================================================================*/
 
+.EquipmentList.top-header {
+	margin-left: calc(35% - 110px);
+	font-size: 105%;
+}
 
 
 
@@ -49,10 +53,6 @@
 .EquipmentList.data-expansion-txt-inp.id {
 	width: 20%;
 	margin-left: 1%;
-}
-
-.EquipmentList.data-expansion-cell {
-	vertical-align: middle;
 }
 
 .EquipmentList.data-expansion-cell.good {
@@ -138,8 +138,7 @@
 /* equipment photo block */
 .EquipmentList-create-equipment-photo {
 	border-radius: 20px;
-	width: 250px;
-	height: 250px;
+	height: 150px;
 	cursor: pointer;
 }
 

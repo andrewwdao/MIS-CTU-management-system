@@ -8,13 +8,43 @@
 	width: 250px;
 	height: 100%;
 	bottom: 0;
-	left: 0;
+	left: -260px;
 	background-color: #fff; /* #e8eaed */
-	overflow-x: auto;
 	overflow-y: auto;	/* Allow scrolling up/down, left, right if content is overflowed */
 	white-space: nowrap; /* Make the overflow contents going to the right instead of wrapping to new line */
     scrollbar-width: none; /* Hide scrollbar on firefox */
 	border-right: 1.5px solid #dedede;
+	transition: .2s;
+	z-index: 1;
+}
+
+.show .Nav-navbar {
+	left: 0;
+}
+
+.Nav-toggler {
+	position: fixed;
+	top: 7.5px;
+	left: 7.5px;
+	background-color: #f0f0f0;
+	padding: 10px;
+	height: 45px;
+	width: 45px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: .2s;
+}
+
+.show .Nav-navbar .Nav-toggler {
+	left: 255px;
+}
+
+.Nav-toggler:hover {
+	background-color: #dedede;
+}
+
+.Nav.modal-background {
+	z-index: 1;
 }
 
 /* Contain logo and settings icon */
@@ -152,6 +182,7 @@
 
 	.Nav-navbar {
 		width: 220px;
+		left: 0;
 	}
 	
 }
