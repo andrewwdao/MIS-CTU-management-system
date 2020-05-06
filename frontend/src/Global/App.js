@@ -1,19 +1,19 @@
 import React from 'react';
 
-import './css/Main.css';
-import './css/Login.css';
+import '../css/Main.css';
+import '../css/Login.css';
 
-import Login from './Global/Login';
-import Data from './Global/Data';
+import Login from './Login';
+import Data from './Data';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      accessToken: '',
       refreshToken: '',
-      host: 'http://localhost:8000/', // Backend API host
+    //   accessToken: '',
+    //   host: 'http://localhost:8000', // Backend API host
     };
 
     this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
@@ -27,6 +27,8 @@ class App extends React.Component {
   componentDidMount() {
     // FOR DEBUG PURPOSES ONLY
     this.__DEBUG();
+
+    localStorage.setItem("apiHost", 'http://127.0.0.1:8000');
   }
 
   componentWillUnmount() {
@@ -48,12 +50,13 @@ class App extends React.Component {
         })
       };
 
-      fetch(this.state.host + 'auth/token/refresh/', requestOptions).then(
+      fetch(localStorage.getItem("apiHost") + '/auth/token/refresh/', requestOptions).then(
         res => res.json()
       ).then(
         token => {
           // The 'Bearer ' prefix is required
-          this.setState({accessToken: 'Bearer ' + token.access});
+          // this.setState({accessToken: 'Bearer ' + token.access});
+          localStorage.setItem("accessToken", 'Bearer ' + token.access);
         }
       );
     }
@@ -67,22 +70,23 @@ class App extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        refresh: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTU4NzM1NTIyNCwianRpIjoiMjFmZDljOTZkNDlmNDRmYjkwM2U4NGYyYzMyMWQzN2QiLCJ1c2VyX2lkIjoxfQ.2DAvuCZWtRzeUnrvPUCHWIi3bfDe5Qp8CWIyYyoqw1o'
+        refresh: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTU4ODgyMTM5OCwianRpIjoiZmI2ZjRkZTdkMmRlNGMzNmI1MWJjMmUzZmU3MTJjMWYiLCJ1c2VyX2lkIjoxfQ.1fB7om7RAFGzdhHosdCFB54eUDjWTt-oSmDGdbL2JUg'
       })
     };
 
-    fetch(this.state.host + 'auth/token/refresh/', requestOptions).then(
+    fetch(localStorage.getItem("apiHost") + '/auth/token/refresh/', requestOptions).then(
       res => res.json()
     ).then(
       token => {
-        this.setState({accessToken: 'Bearer ' + token.access});
+        // this.setState({accessToken: 'Bearer ' + token.access});
+        localStorage.setItem("accessToken", 'Bearer ' + token.access);
       }
     );
   }
 
   handleSuccessfulLogin(token) {
     this.setState({
-      accessToken: token.access,
+    //   accessToken: token.access,
       refreshToken: token.refresh
     });
 
@@ -95,9 +99,12 @@ class App extends React.Component {
 
   handleLogout() {
     this.setState({
-      accessToken: '',
+    //   accessToken: '',
       refreshToken: ''
-    })
+    });
+
+    // Remove all entries
+    localStorage.setItem("accessToken", '');
 
     // Stop the token refresher on log out
     clearInterval(this.tokenRefresher);
@@ -106,9 +113,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Data
-          accessToken={this.state.accessToken}
-          />
+        <Data />
       </div>
     );
   }

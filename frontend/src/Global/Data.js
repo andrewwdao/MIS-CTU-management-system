@@ -248,47 +248,67 @@ class Data extends React.Component {
         }
       ],
 
-      faculties: [
-        {
-          id: '1234567',
-          name: 'This is Faculty',
-          majors: [
-            {
-              id: '23423',
-              name: 'Major name 1'
-            }
-          ],
-        },
-        {
-          id: '4342563',
-          name: 'Faculty field',
-          majors: [
-            {
-              id: '23423',
-              name: 'Major name 1'
-            },
-            {
-              id: '23424',
-              name: 'Major name 2'
-            }
-          ],
-        },
-        {
-          id: '2345789',
-          name: 'This is Faculty 2',
-          majors: [
-            {
-              id: '23423',
-              name: 'Major name 1'
-            }
-          ],
-        }
-      ],
-
       selectedUser: {},
       selectedEquipment: {},
       selectedFaculty: {}
     };
+
+    this.getFacultyList = this.getFacultyList.bind(this);
+  }
+
+  componentDidMount() {
+    this.getFacultyList();
+  }
+
+  getFacultyList() {
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        'Authorization': localStorage.getItem("accessToken"),
+        'Content-Type': 'application/json',
+      }
+    };
+
+    fetch(localStorage.getItem("apiHost") + /schools/, requestOptions).then(
+      res => {
+        if (res.status === 401) {
+          console.log("No permission.");
+          return '';
+        } else if (res.status !== 200) {
+          console.log(res.status + " Unexpected error.");
+          return '';
+        } else {
+          return res.json();
+        }
+      }
+    ).then(
+      data => {
+
+        for (let i = 0; i < data.length; i++) {
+          fetch(localStorage.getItem("apiHost") + '/schools/' + data[i].id , requestOptions).then(
+            res => {
+              if (res.status === 401) {
+                console.log("No permission.");
+                return '';
+              } else if (res.status !== 200) {
+                console.log(res.status + " Unexpected error.");
+                return '';
+              } else {
+                return res.json();
+              }
+            }
+          ).then(
+            data2 => {
+              data[i] = data2;
+            }
+          );
+        }
+
+        this.setState({
+          faculties: data
+        });
+      }
+    );
   }
 
   render() {

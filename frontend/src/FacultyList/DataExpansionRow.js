@@ -8,7 +8,7 @@ class DataExpansionRow extends React.Component {
           {this.props.major.id}
         </div>
         <div className="FacultyList data-expansion-cell">
-          {this.props.major.name}
+          {this.props.major.major_name}
         </div>
         <div className="FacultyList data-expansion-cell action">
           Remove

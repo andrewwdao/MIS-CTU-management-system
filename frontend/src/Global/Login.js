@@ -19,10 +19,6 @@ class Login extends React.Component {
     });
   }
 
-  handleFailLogin() {
-
-  }
-
   handleSubmit(e) {
     e.preventDefault();
 
@@ -37,7 +33,7 @@ class Login extends React.Component {
       })
     };
 
-    fetch(this.props.host + 'auth/token/', requestOptions).then(
+    fetch(localStorage.getItem("apiHost") + '/auth/token/', requestOptions).then(
       res => {
         if (res.status === 401) {
           alert("Wrong username/password");
@@ -51,8 +47,9 @@ class Login extends React.Component {
       }
     ).then(
       token => {
-        if (token)
+        if (token) {
           this.props.handleSuccessfulLogin(token);
+        }
       }
     );
     

@@ -31,6 +31,7 @@ class ListRow extends React.Component {
         <div className="FacultyList list-view-data count">{this.props.faculty.majors.length}</div>
 
         <DataExpansion
+          facultyServerId={this.props.faculty.serverId}
           majors={this.props.faculty.majors}
           detail='' />
       </div>

@@ -21,7 +21,7 @@
 
 .top-search-section, .top-options-section {
 	display: inline-block;
-	width: 95%;
+	width: 98%;
 	height: 50%;
 	float: left;
 }
@@ -92,11 +92,9 @@
 	color: white;
 	font-weight: bold;
 	font-style: italic;
-	margin-left: 1px;
 	transition: .2s;
-	margin: 0 0 .8% 0;
 	padding: .7%;
-	margin: 10px 2% 0 0;
+	margin: 10px .5% 0 0;
 	float: right;
 }
 
@@ -201,8 +199,8 @@
 .body {
 	/*position: relative;   To set position for detail-info */
 	width: 100%;
-	width: calc(100% - 41px);
-	margin: 20px;
+	width: calc(100% - 21px);
+	margin: 10px;
 	height: 100%;
 	height: calc(100% - 140px);
 	margin-bottom: 0;
@@ -473,8 +471,18 @@
 		width: 100%;
 	}
 
+	.top-create-btn {
+		margin-right: 2%;
+	}
+
 	.top-filter-switch {
 		margin-left: 9%;
+	}
+
+	.body {
+		width: 100%;
+		width: calc(100% - 41px);
+		margin: 20px;
 	}
 
 	.detail-info-container, .show > .detail-info-container {

@@ -20,12 +20,12 @@ class CreateUserPersonalSection extends React.Component {
     const requestOptions = {
       method: 'GET',
       headers: {
-        Authorization: this.props.accessToken,
+        Authorization: localStorage.getItem("accessToken"),
         'Content-Type': 'application/json'
       },
     }
 
-    fetch('http://127.0.0.1:8000/schools/', requestOptions).then(
+    fetch(localStorage.getItem("apiHost") + '/schools/', requestOptions).then(
       res => res.json()
     ).then(
       data => {
@@ -35,7 +35,7 @@ class CreateUserPersonalSection extends React.Component {
         for (let i = 0; i < data.length; i++) {
           facultyList.push(data[i]);
 
-          fetch('http://127.0.0.1:8000/schools/' + data[i].school_id, requestOptions).then(
+          fetch(localStorage.getItem("apiHost") + '/schools/' + data[i].id, requestOptions).then(
             res => res.json()
           ).then(
             data => {

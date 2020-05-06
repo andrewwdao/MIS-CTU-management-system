@@ -5,7 +5,14 @@ import ListRow from './ListRow';
 class ListView extends React.Component {
   render() {
     const faculties = this.props.faculties.map(
-      faculty => {
+      rFaculty => {
+        // convert faculty got from response to faculty in my style
+        const faculty = {
+          serverId: rFaculty.id,
+          id: rFaculty.school_id,
+          name: rFaculty.school_name,
+          majors: rFaculty.majors,
+        }
 
         // Need try block to avoid exception when faculty try to enter some regex (*, ?)
         try {

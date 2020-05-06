@@ -46,7 +46,34 @@ class CreateFacultyForm extends React.Component {
   handleFormSubmit(e) {
     e.preventDefault();
     
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Authorization': localStorage.getItem("accessToken"),
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        school_id: this.state.id,
+        school_name: this.state.name
+      })
+    };
 
+    fetch(localStorage.getItem("apiHost") + /schools/, requestOptions).then(
+      res => {
+        if (res.status === 401) {
+          console.log("No permission.");
+          return '';
+        }
+        else if (res.status !== 201) {
+          console.log(res.status + " Unexpected error.");
+          return '';
+        }
+        else {
+          console.log("Success");
+          return res.json();
+        }
+      }
+    );
   }
 
   render() {

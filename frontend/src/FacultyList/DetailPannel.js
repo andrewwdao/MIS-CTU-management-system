@@ -43,6 +43,7 @@ class DetailPannel extends React.Component {
               // Only show this when there is selectedFaculty
               this.props.selectedFaculty.id &&
               <DataExpansion
+                facultyServerId={this.props.selectedFaculty.serverId}
                 majors={this.props.selectedFaculty.majors}
                 detail='detail' />
             }
