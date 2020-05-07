@@ -74,9 +74,13 @@
 ===================================================================*/
 
 /* Modal container like the name said */
-.UserList-modal-container {
+.show > .UserList-modal-container {
 	width: 90%;
 	max-width: 800px;
+	top: 50px;
+	bottom: 50px;
+	transform: translate(-50%, 0);
+	padding-left: 0;
 }
 
 

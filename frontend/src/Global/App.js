@@ -5,6 +5,7 @@ import '../css/Login.css';
 
 import Login from './Login';
 import Data from './Data';
+import GeneralPurposeModal from './GeneralPurposeModal'
 
 class App extends React.Component {
   constructor(props) {
@@ -70,7 +71,7 @@ class App extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        refresh: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTU4ODgyMTM5OCwianRpIjoiZmI2ZjRkZTdkMmRlNGMzNmI1MWJjMmUzZmU3MTJjMWYiLCJ1c2VyX2lkIjoxfQ.1fB7om7RAFGzdhHosdCFB54eUDjWTt-oSmDGdbL2JUg'
+        refresh: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTU4ODk0MDA5NywianRpIjoiYjI3MWU5Y2Y4ZWNiNGNlZGIxMjI4MTI0YzQ0NDY2ZWEiLCJ1c2VyX2lkIjoxfQ.3vYd4f6_vt-a-GKUOW5BPTNlJE-U2gYskAxD8x_W6ps'
       })
     };
 
@@ -103,7 +104,7 @@ class App extends React.Component {
       refreshToken: ''
     });
 
-    // Remove all entries
+    // Clear the access token
     localStorage.setItem("accessToken", '');
 
     // Stop the token refresher on log out

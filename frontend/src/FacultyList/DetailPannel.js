@@ -5,9 +5,9 @@ import imgPlaceholder from '../images/photo.png';
 import DataExpansion from './DataExpansion';
 
 class DetailPannel extends React.Component {
-  render() {
+  render() {console.log(this.props.selectedFaculty)
     return (
-      <div className={`detail-pannel-modal ${this.props.modalActive ? 'show' : ''}`}>
+      <div className={`${this.props.modalActive ? 'show' : ''}`}>
         <div onClick={this.props.toggleModal} className="modal-background mobile-only">
         </div>
 
@@ -27,7 +27,7 @@ class DetailPannel extends React.Component {
                 ID:
               </div>
               <div className="detail-info-content">
-                {this.props.selectedFaculty.id ? this.props.selectedFaculty.id : '____________'}
+                {this.props.selectedFaculty.school_id ? this.props.selectedFaculty.school_id : '____________'}
               </div>
             </div>
             <div className="detail-info center">
@@ -35,7 +35,7 @@ class DetailPannel extends React.Component {
                 Faculty:
               </div>
               <div className="detail-info-content">
-                {this.props.selectedFaculty.name ? this.props.selectedFaculty.name : '________________'}
+                {this.props.selectedFaculty.school_name ? this.props.selectedFaculty.school_name : '________________'}
               </div>
             </div>
 
@@ -43,9 +43,10 @@ class DetailPannel extends React.Component {
               // Only show this when there is selectedFaculty
               this.props.selectedFaculty.id &&
               <DataExpansion
-                facultyServerId={this.props.selectedFaculty.serverId}
-                majors={this.props.selectedFaculty.majors}
-                detail='detail' />
+                faculty={this.props.selectedFaculty}
+                updateFacultyByArrayIndex={this.props.updateFacultyByArrayIndex}
+                detail='detail'
+                />
             }
           </div>
         </div>

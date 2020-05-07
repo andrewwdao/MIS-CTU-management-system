@@ -37,14 +37,15 @@ class Body extends React.Component {
           selectedFaculty={this.state.selectedFaculty}
           modalActive={this.state.detailPannelModalActive}
           toggleModal={this.toggleDetailPannelModal}
+          updateFacultyByArrayIndex={this.props.updateFacultyByArrayIndex}
           />
         <ListView
-          accessToken={this.props.accessToken}
-          host={this.props.host}
           faculties={this.props.faculties}
           updateSelectedFaculty={this.updateSelectedFaculty}
           searchFilter={this.props.searchFilter}
           toggleDetailPannelModal={this.toggleDetailPannelModal}
+          getFacultyList={this.props.getFacultyList}
+          updateFacultyByArrayIndex={this.props.updateFacultyByArrayIndex}
           />
       </div>
     );

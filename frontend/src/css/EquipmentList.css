@@ -89,7 +89,8 @@
 .EquipmentList-modal-container {
 	width: 90%;
 	max-width: 500px;
-	height: 80%;
+	/*height: 80%;*/
+	padding-left: 0;
 }
 
 
@@ -97,7 +98,6 @@
 
 .EquipmentList-photo-inp {
 	width: 60%;
-	min-width: 400px;
 	margin: auto;
 }
 
@@ -145,6 +145,7 @@
 /* Button groups (Reset, Add, Cancel) (NOT YET IMPLEMENTED) */
 .EquipmentList-create-equipment-btn-group {
 	margin: auto;  /* Center the button groups */
+	margin-bottom: 5%;
 }
 
 /* Add equipment button (submit button) */
