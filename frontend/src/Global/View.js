@@ -67,8 +67,6 @@ class View extends React.Component {
     const views = {
       'Users': (
         <UserList
-          accessToken={this.props.accessToken}
-          host={this.props.host}
           users={this.props.users}
           toggleInlabFilter={this.toggleInlabFilter}
           inlabFilter={this.state.inlabFilter}
@@ -77,17 +75,15 @@ class View extends React.Component {
       ),
       'Faculties': (
         <FacultyList
-          accessToken={this.props.accessToken}
-          host={this.props.host}
           faculties={this.props.faculties}
           searchFilter={this.state.searchFilter}
           handleFilterChange={this.handleFilterChange}
+          updateFacultyByArrayIndex={this.props.updateFacultyByArrayIndex}
+          getFacultyList={this.props.getFacultyList}
           />
       ),
       'Equipments': (
         <EquipmentList
-          accessToken={this.props.accessToken}
-          host={this.props.host}
           equipments={this.props.equipments}
           toggleInlabFilter={this.toggleInlabFilter}
           inlabFilter={this.state.inlabFilter}

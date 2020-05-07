@@ -11,10 +11,12 @@ class CreateFacultyModal extends React.Component {
         <div className="modal-container FacultyList-modal-container">
           <button onClick={this.props.toggleModal} className="modal-close-btn">✖</button>
           <div className="modal-header">Create</div>
-            <div className="modal-body FacultyList-create-faculty-modal-body">
-              <CreateFacultyForm
-                accessToken={this.props.accessToken} />
-            </div>
+          <div className="modal-body FacultyList-create-faculty-modal-body">
+            <CreateFacultyForm
+              toggleModal={this.props.toggleModal}
+              updateFacultyByArrayIndex={this.props.updateFacultyByArrayIndex}
+              />
+          </div>
         </div>
       </div>
     );

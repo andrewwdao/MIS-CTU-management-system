@@ -11,10 +11,10 @@ class CreateEquipmentModal extends React.Component {
         <div className="modal-container EquipmentList-modal-container">
           <button onClick={this.props.toggleModal} className="modal-close-btn">✖</button>
           <div className="modal-header">Create</div>
-            <div className="modal-body EquipmentList-create-equipment-modal-body">
-              <CreateEquipmentForm
-                accessToken={this.props.accessToken} />
-            </div>
+          <div className="modal-body EquipmentList-create-equipment-modal-body">
+            <CreateEquipmentForm
+              accessToken={this.props.accessToken} />
+          </div>
         </div>
       </div>
     );

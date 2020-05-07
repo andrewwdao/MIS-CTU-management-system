@@ -4,37 +4,37 @@ import ListRow from './ListRow';
 
 class ListView extends React.Component {
   render() {
-    const faculties = this.props.faculties.map(
-      rFaculty => {
-        // convert faculty got from response to faculty in my style
-        const faculty = {
-          serverId: rFaculty.id,
-          id: rFaculty.school_id,
-          name: rFaculty.school_name,
-          majors: rFaculty.majors,
+    let faculties = [];
+    // Run this only if there are faculties
+    // Sometime this.props.faculties.map() fail (not a function, don't know why, undefined maybe?)
+    // so this check is needed
+    if (this.props.faculties) {
+      faculties = this.props.faculties.map(
+        faculty => {
+          // Need try block to avoid exception when faculty try to enter some regex (*, ?)
+          try {
+
+            // If the filter string is found
+            const searchFilter = this.props.searchFilter.toLowerCase();
+            if (faculty.school_id.toLowerCase().search(searchFilter) !== -1 || faculty.school_name.toLowerCase().search(searchFilter) !== -1)
+              return (
+                <ListRow
+                  key={faculty.id}
+                  faculty={faculty}
+                  updateSelectedFaculty={this.props.updateSelectedFaculty}
+                  updateFacultyByArrayIndex={this.props.updateFacultyByArrayIndex}
+                  toggleDetailPannelModal={this.props.toggleDetailPannelModal}
+                  />
+              );
+          } catch (e) {
+            console.log(e);
+          }
+
+          return null;
         }
-
-        // Need try block to avoid exception when faculty try to enter some regex (*, ?)
-        try {
-
-          // If the filter string is found
-          const searchFilter = this.props.searchFilter.toLowerCase();
-          if (faculty.id.toLowerCase().search(searchFilter) !== -1 || faculty.name.toLowerCase().search(searchFilter) !== -1)
-            return (
-              <ListRow
-                key={faculty.id}
-                faculty={faculty}
-                updateSelectedFaculty={this.props.updateSelectedFaculty}
-                toggleDetailPannelModal={this.props.toggleDetailPannelModal}
-                />
-            );
-        } catch (e) {
-          console.log(e);
-        }
-
-        return null;
-      }
-    );
+      );
+    }
+    
 
     return(
       <div className="list-view">

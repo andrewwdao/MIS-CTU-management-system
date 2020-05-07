@@ -71,7 +71,7 @@ input::-webkit-inner-spin-button {
 
 .modal-background {
 	position: fixed;
-	z-index: 2;
+	z-index: 3;
 	width: 100%;
 	transition: .4s;
 }
@@ -87,13 +87,15 @@ input::-webkit-inner-spin-button {
 
 .modal-container {
 	position: fixed;
-	top: 1500px;
-	bottom: -1500px;
+	top: 45%;
 	left: 50%;
-	transform: translate(-50%, 0);
+	min-width: 65%;
+	min-width: 65vw;
+	padding: 1% 0 1% 0%;
+	transform: translate(-50%, -50%);
 	background-color: #fafafa;
 	border-radius: 5px;
-	z-index: 2;
+	z-index: 3;
 	transition: .4s ease-in-out;
 	display: none;  /* Fix the tabbing problem temporarily, without this tabbing may focus on modal fields
 					   even when it is not showing up
@@ -101,8 +103,6 @@ input::-webkit-inner-spin-button {
 }
 
 .show > .modal-container {
-	top: 50px;
-	bottom: 50px;
 	display: unset;
 }
 
@@ -113,6 +113,7 @@ input::-webkit-inner-spin-button {
 	right: 15px;
 	width: 30px;
 	height: 30px;
+	top: -1%;
 	border-radius: 5px;
 	font-weight: bold;
 	font-size: 30px;
@@ -124,14 +125,18 @@ input::-webkit-inner-spin-button {
 	font-weight: bold;
 	font-size: calc(100% + 3px);
 	height: 6%;
-	margin: 2% 0 0% 28px;
+	margin: 2% 0 0% 6%;
 }
 
 .modal-body {
 	height: 88%;
 	padding: 2%;
-	padding-left: 0;
+	padding-left: 6%;
 	overflow: auto;
+}
+
+.modal-message {
+	padding: 2%;
 }
 
 
@@ -143,10 +148,13 @@ input::-webkit-inner-spin-button {
 	border: 0;
 	outline: none;
 	border-radius: 5px;
-	padding: 5px;
+	padding: 10px;
 	box-shadow: 1px 1px 5px #878787;
 	transition: .2s;
-	cursor: pointer
+	cursor: pointer;
+	font-weight: bold;
+	color: #636363;
+	background-color: #e6e6e6;
 }
 
 .btn:active {
@@ -156,12 +164,56 @@ input::-webkit-inner-spin-button {
 
 .btn:hover, .btn:focus {
 	box-shadow: 0px 0px 10px #000;
+	color: #474747;
+	background-color: #cfcfcf;
 }
 
 .round-btn {
 	border-radius: 50%;
 	font-weight: bold;
 	box-shadow: 1px 1px 5px #8c8c8c;
+}
+
+.btn.info {
+	background-color: #4277c2;
+	color: white;
+}
+
+.btn.info:hover, .btn.info:focus {
+	background-color: #2256a1;
+	color: #f2f2f2;
+}
+
+.btn.warning {
+	background-color: #e7eb9b;
+	color: #8a880e;
+	border: 1px solid #8a880e;
+}
+
+.btn.warning:hover, .btn.warning:focus {
+	background-color: #cfd470;
+	color: #6e6c05;
+	border: 1px solid #6e6c05;
+}
+
+.btn.caution {
+	background-color: #db0b0b;
+	color: white;
+}
+
+.btn.caution:hover, .btn.caution:focus {
+	background-color: #db0f0f;
+	color: #f2f2f2;
+}
+
+.GeneralPurposeModal.btn {
+	float: right;
+	margin-right: 1%;
+	font-size: 90%;
+}
+
+.GeneralPurposeModal.btn:first-child {
+	margin-right: 3%;
 }
 
 /* ==============================================
@@ -348,6 +400,11 @@ input::-webkit-inner-spin-button {
 		position: fixed;
 		top: -10000px;
 		left: -10000px;
+	}
+
+	.modal-container {
+		min-width: 40%;
+		min-width: 40vw;
 	}
 
 	.col-1-md {width: 8.33%;}
