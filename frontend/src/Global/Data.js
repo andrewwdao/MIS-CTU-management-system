@@ -13,44 +13,29 @@ class Data extends React.Component {
           id: '1234567',
           name: 'Name Có Dấu',
           major: 'Major',
-          timeIn: '09:28 AM',
+          timeIn: '09:28',
           status: 1,
           equipments: [
             {
               id: 'WH0001',
               name: 'Hand drill drill drill drill drill drill drill drill drill drill drill',
-              time: '09:42 AM',
+              time: '09:42',
             },
             {
               id: 'WH0002',
               name: 'Hand drill 2',
-              time: '09:42 AM',
+              time: '09:42',
             },
             {
               id: 'WH0003',
               name: 'Hand drill 2',
-              time: '09:42 AM',
+              time: '09:42',
             },
             {
               id: 'WH0004',
               name: 'Hand drill 2',
-              time: '09:42 AM',
+              time: '09:42',
             },
-            {
-              id: 'WH0006',
-              name: 'Hand drill 2',
-              time: '09:42 AM',
-            },
-            {
-              id: 'WH0007',
-              name: 'Hand drill 2',
-              time: '09:42 AM',
-            },
-            {
-              id: 'WH0008',
-              name: 'Hand drill 2',
-              time: '09:42 AM',
-            }
           ]
         },
         {
@@ -65,18 +50,18 @@ class Data extends React.Component {
           id: '2345789',
           name: 'Just DEF Name',
           major: 'Just major',
-          timeIn: '09:28 AM',
+          timeIn: '09:28',
           status: 1,
           equipments: [
             {
               id: 'WH0001',
               name: 'Hand drill',
-              time: '09:42 AM',
+              time: '09:42',
             },
             {
               id: 'WH0002',
               name: 'Hand drill 2',
-              time: '09:42 AM',
+              time: '09:42',
             }
           ]
         },
@@ -104,70 +89,6 @@ class Data extends React.Component {
           status: -1,
           equipments: []
         },
-        {
-          id: '00032000',
-          name: 'Expired Name',
-          major: 'Major',
-          timeIn: '',
-          status: -1,
-          equipments: []
-        },
-        {
-          id: '004000',
-          name: 'Expired Name',
-          major: 'Major',
-          timeIn: '',
-          status: -1,
-          equipments: []
-        },
-        {
-          id: '0000140',
-          name: 'Expired Name',
-          major: 'Major',
-          timeIn: '',
-          status: -1,
-          equipments: []
-        },
-        {
-          id: '00032000',
-          name: 'Expired Name',
-          major: 'Major',
-          timeIn: '',
-          status: -1,
-          equipments: []
-        },
-        {
-          id: '001230000',
-          name: 'Expired Name',
-          major: 'Major',
-          timeIn: '',
-          status: -1,
-          equipments: []
-        },
-        {
-          id: '000004100',
-          name: 'Expired Name',
-          major: 'Major',
-          timeIn: '',
-          status: -1,
-          equipments: []
-        },
-        {
-          id: '00055000',
-          name: 'Expired Name',
-          major: 'Major',
-          timeIn: '',
-          status: -1,
-          equipments: []
-        },
-        {
-          id: '00033000',
-          name: 'Expired Name',
-          major: 'Major',
-          timeIn: '',
-          status: -1,
-          equipments: []
-        }
       ],
 
       equipments: [
@@ -249,6 +170,40 @@ class Data extends React.Component {
       ],
       faculties: [],
 
+      inOutHistories: [
+        {
+          date: '09/09/2009',
+          time: '09:42',
+          user: {
+            id: '2342342123234',
+            name: 'Another Name',
+          }
+        },
+        {
+          date: '09/09/2009',
+          time: '09:43',
+          user: {
+            id: '234234234',
+            name: 'Another Name 2',
+          }
+        },
+        {
+          date: '09/09/2009',
+          time: '09:44',
+          user: {
+            id: '234234234',
+            name: 'Another Name 3',
+          }
+        },
+      ],
+
+      deviceHistories: [
+        {
+          date: '09/08/2002',
+          time: '08:22',
+        }
+      ],
+
       selectedUser: {},
       selectedEquipment: {},
       selectedFaculty: {}
@@ -282,8 +237,10 @@ class Data extends React.Component {
   }
 
   getFacultyList() {
-    const refreshIcon = document.querySelectorAll(".top-refresh-icon")[0];
-    refreshIcon.classList.toggle('spin');
+    const refreshIcon = document.querySelectorAll(".FacultyList.top-refresh-icon")[0];
+
+    if (refreshIcon)
+      refreshIcon.classList.toggle('spin');
 
     const requestOptions = {
       method: 'GET',
@@ -337,7 +294,8 @@ class Data extends React.Component {
           );
         }
 
-        refreshIcon.classList.toggle('spin');
+        if (refreshIcon)
+          refreshIcon.classList.toggle('spin');
       }
     );
   }
@@ -352,6 +310,10 @@ class Data extends React.Component {
         faculties={this.state.faculties}
         updateFacultyByArrayIndex={this.updateFacultyByArrayIndex}
         getFacultyList={this.getFacultyList}
+
+        inOutHistories={this.state.inOutHistories}
+
+        handleLogout={this.props.handleLogout}
         />
     );
   }

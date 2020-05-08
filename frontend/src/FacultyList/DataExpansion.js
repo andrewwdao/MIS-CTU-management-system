@@ -157,7 +157,6 @@ class DataExpansion extends React.Component {
               removeMajor={this.removeMajor}
               detail={this.props.detail}
               key={major.id}
-              major={major}
               />
           );
         }

@@ -408,7 +408,6 @@
 .data-expansion-cell.action {
 	color: blue;
 	text-align: right;
-	width: 15%;
 }
 
 .data-expansion-cell.action:hover, .data-expansion-cell.id:hover {

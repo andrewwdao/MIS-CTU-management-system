@@ -5,18 +5,22 @@ import '../css/ListView.css';
 import '../css/UserList.css';
 import '../css/EquipmentList.css';
 import '../css/FacultyList.css';
+import '../css/InOutHistory.css';
+import '../css/DeviceHistory.css';
 
 import Nav from './Nav';
 import UserList from '../UserList/UserList';
 import EquipmentList from '../EquipmentList/EquipmentList';
 import FacultyList from '../FacultyList/FacultyList';
+import InOutHistory from '../InOutHistory/InOutHistory';
+import DeviceHistory from '../DeviceHistory/DeviceHistory';
 
 class View extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      selectedView: 'Users',
+      selectedView: 'Devices',
 
       inlabFilter: true,  // Show inlab only or all flag
       searchFilter: '',        // Filter by IDs/Names
@@ -91,6 +95,19 @@ class View extends React.Component {
           handleFilterChange={this.handleFilterChange}
           />
       ),
+      'In-out': (
+        <InOutHistory
+          inOutHistories={this.props.inOutHistories}
+          searchFilter={this.state.searchFilter}
+          handleFilterChange={this.handleFilterChange}
+          />
+      ),
+      'Devices': (
+        <DeviceHistory
+          searchFilter={this.state.searchFilter}
+          handleFilterChange={this.handleFilterChange}
+          />
+      )
     }
 
     return(
@@ -101,6 +118,7 @@ class View extends React.Component {
           updateSelectedView={this.updateSelectedView}
           toggleNav={this.toggleNav}
           active={this.state.navActive}
+          handleLogout={this.props.handleLogout}
           />
       </div>
     );

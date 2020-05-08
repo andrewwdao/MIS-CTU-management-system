@@ -69,15 +69,16 @@ class CreateUserForm extends React.Component {
     const requestOptions = {
       method: 'POST',
       headers: {
-        'Authorization': 'Bearer ' + this.props.accessToken,
+        'Authorization': localStorage.getItem("accessToken"),
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         email: this.state.email,
-        role: this.state.role,
+        role: Number(this.state.role),
         first_name: this.state.firstName,
         last_name: this.state.lastName,
-        birth_date: this.state.dob,
+        // js dob format yyyy-mm-dd -> dd/mm/yy
+        birth_date: this.state.dob.substring(8, 10) + "/" + this.state.dob.substring(5, 7) + "/" + this.state.dob.substring(0, 4),
         phonenumber: this.state.phone,
         gender: this.state.gender,
         avatar: this.state.avatar,
@@ -94,12 +95,15 @@ class CreateUserForm extends React.Component {
       })
     };
 
-    fetch('http://127.0.0.1:8000/users/', requestOptions).then(
-      res => res.json()
-    ).then(
-      data => console.log(data)
-    );
-
+    try {
+      fetch('http://127.0.0.1:8000/users/', requestOptions).then(
+        res => res.json()
+      ).then(
+        data => console.log(data)
+      );
+    } catch(e) {
+      console.log(e);
+    }
   }
 
   render() {

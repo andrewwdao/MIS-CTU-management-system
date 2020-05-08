@@ -11,14 +11,14 @@ class DataExpansionRow extends React.Component {
 
     return(
       <div className={'data-expansion-row ' + this.props.detail}>
-        <div className={`EquipmentList data-expansion-cell id ${statusClass}`} >
-          {this.props.equipmentSelf.id}
+        <div className={`DeviceHistory data-expansion-cell id ${statusClass}`} >
+          ID
         </div>
-        <div className={"EquipmentList data-expansion-cell description " + conditionClass}>
-          {this.props.equipmentSelf.conditionDescription}
+        <div className={"DeviceHistory data-expansion-cell " + conditionClass}>
+          conditionDescription
         </div>
-        <div className="EquipmentList data-expansion-cell action">
-          {this.props.equipmentSelf.usingBy ? 'U: ' + this.props.equipmentSelf.usingBy : 'Remove'}
+        <div className="DeviceHistory data-expansion-cell action">
+          Action
         </div>
       </div>
     );

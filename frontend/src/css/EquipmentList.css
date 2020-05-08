@@ -79,10 +79,27 @@
 	color: blue;
 }
 
+.EquipmentList.data-expansion-cell {
+	/*border: 1px solid red;*/
+	padding: 0 1% 0 1%;
+}
+
+.EquipmentList.data-expansion-cell.id {
+	width: 10%;
+}
+
+.EquipmentList.data-expansion-cell.description {
+	width: 50%;
+}
+
+.EquipmentList.data-expansion-cell.action {
+	width: 35%;
+}
+
 
 
 /*=================================================================
-						ADD FACULTY
+						ADD EQUIPMENT
 ===================================================================*/
 
 /* Modal container like the name said */

@@ -29,7 +29,7 @@ class App extends React.Component {
     // FOR DEBUG PURPOSES ONLY
     this.__DEBUG();
 
-    localStorage.setItem("apiHost", 'http://127.0.0.1:8000');
+    localStorage.setItem("apiHost", 'http://localhost:8000');
   }
 
   componentWillUnmount() {
@@ -71,7 +71,7 @@ class App extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        refresh: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTU4ODk0MDA5NywianRpIjoiYjI3MWU5Y2Y4ZWNiNGNlZGIxMjI4MTI0YzQ0NDY2ZWEiLCJ1c2VyX2lkIjoxfQ.3vYd4f6_vt-a-GKUOW5BPTNlJE-U2gYskAxD8x_W6ps'
+        refresh: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTU4ODk5ODI5MywianRpIjoiNzgyNGRhNGQ2NWZkNDc1NzhkZDdhNGNhMTA1MGVjNmYiLCJ1c2VyX2lkIjoxfQ.bBqHcfTew5v_6Fo4aAVoeNXSEGbVGY_nC4H_LBhFboc'
       })
     };
 
@@ -92,7 +92,7 @@ class App extends React.Component {
     });
 
     // Get the new access token immediately
-    this.refreshToken();
+    // this.refreshToken();
 
     // Refresh the token every 5 mins
     this.tokenRefresher = setInterval(this.refreshToken, 300000);
@@ -114,7 +114,17 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Data />
+        {/*
+          this.state.refreshToken ?
+            <Data
+              handleLogout={this.handleLogout}
+              />
+            :
+            <Login
+              handleSuccessfulLogin={this.handleSuccessfulLogin}
+              />*/
+          <Data />
+        }
       </div>
     );
   }

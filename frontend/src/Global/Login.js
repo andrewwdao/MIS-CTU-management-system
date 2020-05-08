@@ -48,6 +48,7 @@ class Login extends React.Component {
     ).then(
       token => {
         if (token) {
+          localStorage.setItem("accessToken", 'Bearer ' + token.access);
           this.props.handleSuccessfulLogin(token);
         }
       }

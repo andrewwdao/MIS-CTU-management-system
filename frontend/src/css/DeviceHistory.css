@@ -1,0 +1,93 @@
+/*=================================================================
+								TOP BAR
+===================================================================*/
+
+.DeviceHistory.top-header {
+	margin-left: 33%;
+	font-size: 105%;
+}
+
+
+
+/*=================================================================
+							MAIN CONTENT
+===================================================================*/
+
+
+
+/*========================== DETAIL VIEW ==========================*/
+
+
+
+
+/*=========================== LIST VIEW ===========================*/
+
+.DeviceHistory.list-view {
+	width: 100%;
+}
+
+.DeviceHistory.list-view-header, .DeviceHistory.list-view-data {
+	padding: 20px 2% 20px 2%;
+	word-wrap: break-word;
+	border: 1px solid red;
+}
+
+.DeviceHistory.list-view-data.datetime, .DeviceHistory.list-view-header.datetime {
+	width: 25%;
+}
+
+.DeviceHistory.list-view-data.user-id, .DeviceHistory.list-view-header.user-id {
+	width: 21%;
+}
+
+.DeviceHistory.list-view-data.user-name, .DeviceHistory.list-view-header.user-name {
+	width: 27%;
+}
+
+.DeviceHistory.list-view-data.equipment, .DeviceHistory.list-view-header.equipment {
+	width: 27%;
+}
+
+.DeviceHistory.data-expansion-txt-inp {
+	width: 50%;
+	margin-left: 1%;
+}
+
+.DeviceHistory.data-expansion-cell.good {
+	color: green;
+}
+
+.DeviceHistory.data-expansion-cell.normal {
+	color: blue;
+}
+
+.DeviceHistory.data-expansion-cell.severe {
+	color: red;
+}
+
+.DeviceHistory.data-expansion-cell.no {
+	color: #8a8a8a;
+}
+
+.DeviceHistory.data-expansion-cell.id {
+	color: #8a8a8a;
+}
+
+.DeviceHistory.data-expansion-cell.id.active {
+	color: blue;
+}
+
+
+
+/* Large devices (tablets, 800px and up) */
+@media only screen and (min-width: 800px) {
+
+
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+
+}
