@@ -112,10 +112,18 @@ class DataExpansion extends React.Component {
       res => {
         if (res.status === 401) {
           console.log("No permission.");
-          alert("You have no permission to do that");
+          // alert("You have no permission to do that");
+          this.setState({
+            errorModalMessage: "You have no permission to do that.",
+            errorModalActive: true,
+          });
         } else if (res.status !== 204) {
           console.log(res.status + " Unexpected error.");
-          alert("Unexpected error happened");
+          // alert("Unexpected error happened");
+          this.setState({
+            errorModalMessage: "Unexpected error happened.",
+            errorModalActive: true,
+          });
         }
 
         return res.status;

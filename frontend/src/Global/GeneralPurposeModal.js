@@ -4,8 +4,8 @@ class GeneralPurposeModal extends React.Component {
   render() {
     return (
       <div className={this.props.active ? 'show' : ''}>
-        <div onClick={this.props.toggle} className="modal-background"></div>
-        <div className="modal-container">
+        <div onClick={this.props.toggle} className="GeneralPurposeModal modal-background"></div>
+        <div className="GeneralPurposeModal modal-container">
           <button onClick={this.props.toggle} className="modal-close-btn">✖</button>
           <div className="modal-header">{this.props.header}</div>
           <div className="modal-body">

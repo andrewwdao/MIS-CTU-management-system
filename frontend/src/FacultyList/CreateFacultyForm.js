@@ -102,13 +102,12 @@ class CreateFacultyForm extends React.Component {
       }
     ).then(
       faculty => {
-
         if (faculty) {
             // Turn off the create modal
               this.props.toggleModal();
 
-              // Update the list locally
-              this.props.updateFacultyByArrayIndex(-1, faculty);
+              // Update the list locally   (1 is create flag)
+              this.props.updateFacultyByArrayIndex(faculty, 1);
 
               this.setState({
                 id: '',

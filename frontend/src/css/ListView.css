@@ -213,7 +213,7 @@
 .detail-info-container {
 	position: absolute;
 	top: -1500px;
-	z-index: 2;
+	z-index: 3;
 	background-color: #fafafa;
 	border-radius: 10px;
 	display: none;
@@ -295,6 +295,16 @@
 
 .show > .detail-info-container > .DetailPannel.modal-close-btn {
 	top: 5px;
+}
+
+.detail-pannel-btn-group {
+	margin: auto;
+	text-align: center;
+	margin-top: 5%;
+}
+
+.detail-pannel-btn {
+	margin: 1%;
 }
 
 

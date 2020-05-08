@@ -139,6 +139,10 @@ input::-webkit-inner-spin-button {
 	padding: 2%;
 }
 
+.GeneralPurposeModal.modal-container, .GeneralPurposeModal.modal-background {
+	z-index: 4;
+}
+
 
 /* ==============================================
 					Button

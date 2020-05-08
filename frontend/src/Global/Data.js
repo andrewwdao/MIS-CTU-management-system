@@ -263,14 +263,17 @@ class Data extends React.Component {
   }
 
   // Update (add/remove major) or add new faculty locally based on index
-  updateFacultyByArrayIndex(index, updatedFaculty) {
+  updateFacultyByArrayIndex(faculty, flag) {
     let newFacultiesList = this.state.faculties;
 
     // Create new faculty
-    if (index === -1) {
-      newFacultiesList.push(updatedFaculty);
+    if (flag === 1) {
+      faculty.arrayIndex = this.state.faculties.length;
+      newFacultiesList.push(faculty);
+    } else if (flag === -1) {  // Delete
+      newFacultiesList.splice(faculty.arrayIndex, 1);
     } else {  // Update existed faculty with new major
-      newFacultiesList[index] = updatedFaculty;
+      newFacultiesList[faculty.arrayIndex] = faculty;
     }
 
     this.setState({
