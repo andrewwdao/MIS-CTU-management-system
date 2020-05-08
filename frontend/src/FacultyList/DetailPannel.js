@@ -68,6 +68,8 @@ class DetailPannel extends React.Component {
           console.log("OK");
           // Call the update here to update locally AFTER the promise finised
           this.props.updateFacultyByArrayIndex(this.props.selectedFaculty, -1);
+
+          this.props.updateSelectedFaculty({});
         }
       }
     );

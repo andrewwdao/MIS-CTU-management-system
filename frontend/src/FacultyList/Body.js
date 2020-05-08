@@ -38,6 +38,7 @@ class Body extends React.Component {
           modalActive={this.state.detailPannelModalActive}
           toggleModal={this.toggleDetailPannelModal}
           updateFacultyByArrayIndex={this.props.updateFacultyByArrayIndex}
+          updateSelectedFaculty={this.updateSelectedFaculty}
           />
         <ListView
           faculties={this.props.faculties}
