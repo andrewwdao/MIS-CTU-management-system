@@ -247,6 +247,7 @@ class Data extends React.Component {
           ],
         }
       ],
+      faculties: [],
 
       selectedUser: {},
       selectedEquipment: {},
@@ -254,13 +255,33 @@ class Data extends React.Component {
     };
 
     this.getFacultyList = this.getFacultyList.bind(this);
+    this.updateFacultyByArrayIndex = this.updateFacultyByArrayIndex.bind(this);
   }
 
   componentDidMount() {
     this.getFacultyList();
   }
 
+  // Update (add/remove major) or add new faculty locally based on index
+  updateFacultyByArrayIndex(index, updatedFaculty) {
+    let newFacultiesList = this.state.faculties;
+
+    // Create new faculty
+    if (index === -1) {
+      newFacultiesList.push(updatedFaculty);
+    } else {  // Update existed faculty with new major
+      newFacultiesList[index] = updatedFaculty;
+    }
+
+    this.setState({
+      faculties: newFacultiesList,
+    });
+  }
+
   getFacultyList() {
+    const refreshIcon = document.querySelectorAll(".top-refresh-icon")[0];
+    refreshIcon.classList.toggle('spin');
+
     const requestOptions = {
       method: 'GET',
       headers: {
@@ -282,10 +303,10 @@ class Data extends React.Component {
         }
       }
     ).then(
-      data => {
-
-        for (let i = 0; i < data.length; i++) {
-          fetch(localStorage.getItem("apiHost") + '/schools/' + data[i].id , requestOptions).then(
+      // This faculty has no majors list
+      faculty => {
+        for (let i = 0; i < faculty.length; i++) {
+          fetch(localStorage.getItem("apiHost") + '/schools/' + faculty[i].id , requestOptions).then(
             res => {
               if (res.status === 401) {
                 console.log("No permission.");
@@ -298,15 +319,22 @@ class Data extends React.Component {
               }
             }
           ).then(
-            data2 => {
-              data[i] = data2;
+            // Majors list included
+            fullFaculty => {
+              // Add the array index to update the current faculty locally when a new major is added
+              // (update it locally to reduce network traffic)
+              fullFaculty.arrayIndex = i;
+
+              faculty[i] = fullFaculty;  
+
+              this.setState({
+                faculties: faculty
+              });
             }
           );
         }
 
-        this.setState({
-          faculties: data
-        });
+        refreshIcon.classList.toggle('spin');
       }
     );
   }
@@ -315,9 +343,12 @@ class Data extends React.Component {
     return (
       <View
         users={this.state.users}
+
         equipments={this.state.equipments}
+
         faculties={this.state.faculties}
-        accessToken={this.props.accessToken}
+        updateFacultyByArrayIndex={this.updateFacultyByArrayIndex}
+        getFacultyList={this.getFacultyList}
         />
     );
   }

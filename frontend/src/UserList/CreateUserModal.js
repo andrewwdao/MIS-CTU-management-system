@@ -11,10 +11,10 @@ class CreateUserModal extends React.Component {
         <div className="modal-container UserList-modal-container">
           <button onClick={this.props.toggleModal} className="modal-close-btn">✖</button>
           <div className="modal-header">Add</div>
-            <div className="modal-body UserList-create-user-modal-body">
-              <CreateUserForm
-                accessToken={this.props.accessToken} />
-            </div>
+          <div className="modal-body UserList-create-user-modal-body">
+            <CreateUserForm
+              accessToken={this.props.accessToken} />
+          </div>
         </div>
       </div>
     );

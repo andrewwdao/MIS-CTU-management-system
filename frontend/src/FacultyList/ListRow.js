@@ -17,7 +17,6 @@ class ListRow extends React.Component {
 
   // Need this to pass the current faculty to the function in props
   // This is a good way to pass parameters from sub component to main component
-  // REMEMBER TO FIX THIS EVERYTIME THE faculty INFO GET UPDATED
   updateSelectedFaculty() {
     this.props.updateSelectedFaculty(this.props.faculty);
     this.props.toggleDetailPannelModal();
@@ -26,13 +25,13 @@ class ListRow extends React.Component {
 	render() {
 		return (
       <div onClick={this.toggleFacultyDataExpansion} className="list-view-main-row" tabIndex="0">
-        <div className="FacultyList list-view-data id" onClick={this.updateSelectedFaculty}>{this.props.faculty.id}</div>
-        <div className="FacultyList list-view-data faculty">{this.props.faculty.name}</div>
-        <div className="FacultyList list-view-data count">{this.props.faculty.majors.length}</div>
+        <div className="FacultyList list-view-data id" onClick={this.updateSelectedFaculty}>{this.props.faculty.school_id}</div>
+        <div className="FacultyList list-view-data faculty">{this.props.faculty.school_name}</div>
+        <div className="FacultyList list-view-data count">{this.props.faculty.majors && this.props.faculty.majors.length}</div>
 
         <DataExpansion
-          facultyServerId={this.props.faculty.serverId}
-          majors={this.props.faculty.majors}
+          faculty={this.props.faculty}
+          updateFacultyByArrayIndex={this.props.updateFacultyByArrayIndex}
           detail='' />
       </div>
 		);

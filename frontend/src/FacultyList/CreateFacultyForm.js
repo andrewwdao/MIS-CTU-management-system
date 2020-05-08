@@ -2,6 +2,7 @@ import React from 'react';
 
 import PhotoInput from './PhotoInput';
 import InputFilled from '../Global/InputFilled';
+import GeneralPurposeModal from '../Global/GeneralPurposeModal';
 
 import imgBtn from '../images/image.png';
 
@@ -14,10 +15,20 @@ class CreateFacultyForm extends React.Component {
       id: '',
       name: '',
       photo: imgBtn,
+
+      errorModalMessage: '',
+      errorModalActive: false,
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.toggleErrorModal = this.toggleErrorModal.bind(this);
+  }
+
+  toggleErrorModal() {
+    this.setState({
+      errorModalActive: !this.state.errorModalActive
+    });
   }
 
   handleInputChange(e) {
@@ -62,52 +73,97 @@ class CreateFacultyForm extends React.Component {
       res => {
         if (res.status === 401) {
           console.log("No permission.");
+          // alert("You have no permission to do that");
+          this.setState({
+            errorModalMessage: "You have no permission to do that",
+            errorModalActive: true,
+          });
           return '';
-        }
-        else if (res.status !== 201) {
+        } else if (res.status === 400) {
+          console.log(res.status + " Bad request error.");
+          // alert("Bad request. The major id or major name might already existed or a field is empty.");
+          this.setState({
+            errorModalMessage: "Bad request. The major id or major name might already existed or a field is empty.",
+            errorModalActive: true,
+          });
+          return '';
+        } else if (res.status !== 201) {
           console.log(res.status + " Unexpected error.");
+          // alert("Unexpected error happened");
+          this.setState({
+            errorModalMessage: "Unexpected error happened.",
+            errorModalActive: true,
+          });
           return '';
-        }
-        else {
+        } else {
           console.log("Success");
           return res.json();
         }
       }
+    ).then(
+      faculty => {
+
+        if (faculty) {
+            // Turn off the create modal
+              this.props.toggleModal();
+
+              // Update the list locally
+              this.props.updateFacultyByArrayIndex(-1, faculty);
+
+              this.setState({
+                id: '',
+                name: '',
+                photo: imgBtn,
+              });
+          }
+        }
     );
   }
 
   render() {
     return (
-      <form method="POST" className="FacultyList-create-faculty-form" onSubmit={this.handleFormSubmit}>
-        <PhotoInput
-            handleChange={this.handleInputChange}
-            img={this.state.photo} />
+      <div>
 
-        <div className="FacultyList-create-faculty-inp-container col-8-sm">
-          <InputFilled
-            type="text"
-            name="id"
-            label="ID"
-            value={this.state.id}
-            handleChange={this.handleInputChange} />
-        </div>
-        <div className="FacultyList-create-faculty-inp-container col-8-sm">
-          <InputFilled
-            type="text"
-            name="name"
-            label="Faculty name"
-            value={this.state.name}
-            handleChange={this.handleInputChange} />
-        </div>
-        
-        <div className="FacultyList-create-faculty-btn-group">
-          <input
-            className="btn FacultyList-create-faculty-modal-btn"
-            type="submit"
-            value="Add"
-            onClick={this.handleFormSubmit} />
-        </div>
-      </form>
+        <GeneralPurposeModal
+          active={this.state.errorModalActive}
+          toggle={this.toggleErrorModal}
+          header="Error"
+          message={this.state.errorModalMessage}
+          ok="Return"
+          okClick={this.toggleErrorModal}
+          />
+
+        <form method="POST" className="FacultyList-create-faculty-form" onSubmit={this.handleFormSubmit}>
+          <PhotoInput
+              handleChange={this.handleInputChange}
+              img={this.state.photo} />
+
+          <div className="FacultyList-create-faculty-inp-container col-8-sm">
+            <InputFilled
+              type="text"
+              name="id"
+              label="ID"
+              value={this.state.id}
+              handleChange={this.handleInputChange} />
+          </div>
+          <div className="FacultyList-create-faculty-inp-container col-8-sm">
+            <InputFilled
+              type="text"
+              name="name"
+              label="Faculty name"
+              value={this.state.name}
+              handleChange={this.handleInputChange} />
+          </div>
+          
+          <div className="FacultyList-create-faculty-btn-group">
+            <input
+              className="btn FacultyList-create-faculty-modal-btn"
+              type="submit"
+              value="Add"
+              onClick={this.handleFormSubmit} />
+          </div>
+        </form>
+      </div>
     );
   }
 
