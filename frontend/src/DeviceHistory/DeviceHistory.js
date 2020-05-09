@@ -3,7 +3,7 @@ import React from 'react';
 import Top from './Top';
 import Body from './Body';
 
-class DeviceHisotry extends React.Component {
+class DeviceHistory extends React.Component {
   render() {
     return (
       <div className="main">
@@ -14,10 +14,11 @@ class DeviceHisotry extends React.Component {
 
         <Body
           searchFilter={this.props.searchFilter}
+          deviceHistories={this.props.deviceHistories}
           />
       </div>
     );
   }
 }
 
-export default DeviceHisotry;
+export default DeviceHistory;

@@ -199,9 +199,53 @@ class Data extends React.Component {
 
       deviceHistories: [
         {
-          date: '09/08/2002',
-          time: '08:22',
-        }
+          getDate: '09/08/2002',
+          getTime: '08:22',
+          returnDate: '09/08/2003',
+          returnTime: '09:33',
+          userId: '234234234',
+          userName: 'Name name name',
+          userStatus: '1',
+          equipmentId: 'AB03421',
+          equipmentName: 'This is equipment',
+          deviceNumber: '1',
+          getCondition: '2',
+          getDescription: 'Good',
+          returnCondition: '1',
+          returnDescription: 'Normal',
+        },
+        {
+          getDate: '09/08/2002',
+          getTime: '08:23',
+          returnDate: '09/08/2003',
+          returnTime: '09:34',
+          userId: '234eq4234',
+          userName: 'Name2 name name',
+          userStatus: '0',
+          equipmentId: 'AB0342',
+          equipmentName: 'This is equipment',
+          deviceNumber: '1',
+          getCondition: '2',
+          getDescription: 'Good',
+          returnCondition: '-1',
+          returnDescription: "It's broken now",
+        },
+        {
+          getDate: '09/08/2004',
+          getTime: '08:25',
+          returnDate: '09/08/2003',
+          returnTime: '09:34',
+          userId: '23sdfsd34',
+          userName: 'Name name2 name',
+          userStatus: '-1',
+          equipmentId: 'AB0342',
+          equipmentName: 'This is equipment',
+          deviceNumber: '1',
+          getCondition: '0',
+          getDescription: 'Can not be used',
+          returnCondition: '0',
+          returnDescription: 'but someone used it',
+        },
       ],
 
       selectedUser: {},
@@ -312,6 +356,7 @@ class Data extends React.Component {
         getFacultyList={this.getFacultyList}
 
         inOutHistories={this.state.inOutHistories}
+        deviceHistories={this.state.deviceHistories}
 
         handleLogout={this.props.handleLogout}
         />

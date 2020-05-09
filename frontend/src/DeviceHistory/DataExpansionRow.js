@@ -2,23 +2,27 @@ import React from 'react';
 
 class DataExpansionRow extends React.Component {
 	render() {
-    const statusClass = this.props.equipmentSelf.status === 1 ? 'active' : '';
+    let statusClass = '';
+    let conditionClass = '';
 
-    const conditionClass = this.props.equipmentSelf.condition === 2 ? 'good' :
-                            this.props.equipmentSelf.condition === 1 ? 'normal' :
-                              this.props.equipmentSelf.condition === 0 ? 'no' :  // Can't be used
-                                'severe';
+    if (this.props.status)
+      statusClass = this.props.status === '1' ? 'active' :
+                      this.props.status === '0' ? 'inactive' : 
+                        'expired';
+
+    if (this.props.condition)
+      conditionClass = this.props.condition === '2' ? 'good' :
+                        this.props.condition === '1' ? 'normal' :
+                          this.props.condition === '0' ? 'no' :  // Can't be used
+                            'severe';
 
     return(
-      <div className={'data-expansion-row ' + this.props.detail}>
-        <div className={`DeviceHistory data-expansion-cell id ${statusClass}`} >
-          ID
+      <div className='DeviceHistory data-expansion-row'>
+        <div className='DeviceHistory data-expansion-cell label'>
+          {this.props.label}:
         </div>
-        <div className={"DeviceHistory data-expansion-cell " + conditionClass}>
-          conditionDescription
-        </div>
-        <div className="DeviceHistory data-expansion-cell action">
-          Action
+        <div className={"DeviceHistory data-expansion-cell value " + statusClass + conditionClass}>
+          {this.props.value}
         </div>
       </div>
     );

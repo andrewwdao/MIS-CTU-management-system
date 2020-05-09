@@ -106,6 +106,7 @@ class View extends React.Component {
         <DeviceHistory
           searchFilter={this.state.searchFilter}
           handleFilterChange={this.handleFilterChange}
+          deviceHistories={this.props.deviceHistories}
           />
       )
     }

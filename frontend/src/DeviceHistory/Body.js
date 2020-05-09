@@ -8,6 +8,7 @@ class Body extends React.Component {
       <div className="body">
         <ListView
           searchFilter={this.props.searchFilter}
+          deviceHistories={this.props.deviceHistories}
           />
       </div>
     );
