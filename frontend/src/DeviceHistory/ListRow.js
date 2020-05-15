@@ -15,10 +15,14 @@ class ListRow extends React.Component {
                               this.props.entry.returnCondition === '0' ? 'no' :  // Can't be used
                                 'severe';
 
+    const statusClass = this.props.entry.userStatus === '1' ? 'active' :
+                          this.props.entry.userStatus === '0' ? 'inactive' : 
+                            'expired';
+
 		return (
       <div onClick={this.toggleDataExpansion} className="list-view-main-row" tabIndex="0">
-        <div className="DeviceHistory list-view-data datetime">{this.props.entry.getDate + '  ' + this.props.entry.getTime}</div>
-        <div className="DeviceHistory list-view-data user-name">{this.props.entry.userName}</div>
+        <div className="DeviceHistory list-view-data datetime">{this.props.entry.getDate + ' ' + this.props.entry.getTime}</div>
+        <div className={"DeviceHistory list-view-data user-name " + statusClass}>{this.props.entry.userName}</div>
         <div className="DeviceHistory list-view-data equipment">{this.props.entry.equipmentName}</div>
         <div className={"DeviceHistory list-view-data device-number " + conditionClass}>{this.props.entry.deviceNumber}</div>
         <DataExpansion

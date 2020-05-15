@@ -321,6 +321,7 @@
 	text-align: left;
 	display: inline-block;
 	padding: 20px 2% 20px 2%;
+	text-align: center;
 }
 
 .list-view-header {
@@ -492,6 +493,11 @@
 		width: 100%;
 		width: calc(100% - 41px);
 		margin: 20px;
+	}
+
+
+	.list-view-header, .list-view-data {
+		text-align: left;
 	}
 
 	.detail-info-container, .show > .detail-info-container {
