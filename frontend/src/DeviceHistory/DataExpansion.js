@@ -6,7 +6,7 @@ class DataExpansion extends React.Component {
 	render() {
     return(
       <div className="data-expansion">
-        <div className="data-expansion-header">
+        <div className="DeviceHistory data-expansion-header">
           Details
         </div>
         <div className="DeviceHistory data-expansion-body">

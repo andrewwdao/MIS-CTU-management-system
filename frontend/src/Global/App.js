@@ -29,7 +29,7 @@ class App extends React.Component {
     // FOR DEBUG PURPOSES ONLY
     this.__DEBUG();
 
-    localStorage.setItem("apiHost", 'http://localhost:8000');
+    localStorage.setItem("apiHost", 'http://192.168.1.109:8000');
   }
 
   componentWillUnmount() {
@@ -114,7 +114,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {/*
+        {
           this.state.refreshToken ?
             <Data
               handleLogout={this.handleLogout}
@@ -122,8 +122,8 @@ class App extends React.Component {
             :
             <Login
               handleSuccessfulLogin={this.handleSuccessfulLogin}
-              />*/
-          <Data />
+              />
+          // <Data />
         }
       </div>
     );
