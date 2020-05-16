@@ -1,0 +1,92 @@
+/*=================================================================
+								TOP BAR
+===================================================================*/
+
+.InOutHistory.top-header {
+	margin-left: 40%;
+	font-size: 105%;
+}
+
+
+
+/*=================================================================
+							MAIN CONTENT
+===================================================================*/
+
+
+
+/*========================== DETAIL VIEW ==========================*/
+
+
+
+
+/*=========================== LIST VIEW ===========================*/
+
+.InOutHistory.list-view {
+	width: 100%;
+}
+
+.InOutHistory.list-view-header, .InOutHistory.list-view-data {
+	padding: 20px 2% 20px 2%;
+	word-wrap: break-word;
+}
+
+.InOutHistory.list-view-data.date, .InOutHistory.list-view-header.date {
+	width: 26%;
+}
+
+.InOutHistory.list-view-data.user-id, .InOutHistory.list-view-header.user-id {
+	width: 26%;
+}
+
+.InOutHistory.list-view-data.user-name, .InOutHistory.list-view-header.user-name {
+	width: 30%;
+}
+
+.InOutHistory.list-view-data.time, .InOutHistory.list-view-header.time {
+	width: 18%;
+}
+
+.InOutHistory.data-expansion-txt-inp {
+	width: 50%;
+	margin-left: 1%;
+}
+
+.InOutHistory.data-expansion-cell.good {
+	color: green;
+}
+
+.InOutHistory.data-expansion-cell.normal {
+	color: blue;
+}
+
+.InOutHistory.data-expansion-cell.severe {
+	color: red;
+}
+
+.InOutHistory.data-expansion-cell.no {
+	color: #8a8a8a;
+}
+
+.InOutHistory.data-expansion-cell.id {
+	color: #8a8a8a;
+}
+
+.InOutHistory.data-expansion-cell.id.active {
+	color: blue;
+}
+
+
+
+/* Large devices (tablets, 800px and up) */
+@media only screen and (min-width: 800px) {
+
+
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+
+}

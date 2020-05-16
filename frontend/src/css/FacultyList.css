@@ -1,0 +1,158 @@
+/*=================================================================
+								TOP BAR
+===================================================================*/
+
+.FacultyList.top-header {
+	margin-left: 40%;
+}
+
+
+
+/*=================================================================
+							MAIN CONTENT
+===================================================================*/
+
+
+
+/*========================== DETAIL VIEW ==========================*/
+
+
+
+
+/*=========================== LIST VIEW ===========================*/
+
+
+.FacultyList.list-view-data.id, .FacultyList.list-view-header.id {
+	width: 20%;
+	/*overflow-wrap: break-word;*/
+}
+
+.FacultyList.list-view-data.id {
+	color: #428fcf;
+	cursor: pointer;
+	pointer-events: unset;
+}
+
+.FacultyList.list-view-data.faculty, .FacultyList.list-view-header.faculty {
+	width: 40%;
+	padding-left: 10%;
+}
+
+.FacultyList.list-view-data.count, .FacultyList.list-view-header.count {
+	width: 30%;
+	text-align: center;
+}
+
+
+.FacultyList.data-expansion-txt-inp {
+	width: 50%;
+	margin-left: 1%;
+}
+
+.FacultyList.data-expansion-txt-inp.id {
+	width: 20%;
+	margin-left: 1%;
+}
+
+
+
+
+
+/*=================================================================
+						ADD FACULTY
+===================================================================*/
+
+/* Modal container like the name said */
+.FacultyList-modal-container {
+	width: 90%;
+	max-width: 500px;
+	/*height: 80%;*/
+	padding-left: 0;
+}
+
+
+/*============ Form ============*/
+
+.FacultyList-photo-inp {
+	width: 60%;
+	margin: auto;
+}
+
+
+/* Align, positioning the text field containers */
+.FacultyList-create-faculty-inp-container {
+	display: block;
+	margin-bottom: 10px;
+	padding-left: 5px;
+	margin-top: 10px;
+	margin: 10px auto 10px auto;
+}
+
+/* Hide the default file input for the photo upload button */
+.FacultyList-create-faculty-file-inp-default {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;			/* Hide the element */
+	z-index: -1;
+	overflow: hidden;
+	position: absolute;  /* Prevent the element creating a gap between other elements  */
+						 /* This file upload button cannot be hidden by display and visibility attribute */
+						 /* because doing so will make the button stops working */
+}
+
+/* Container for faculty's photo */
+.FacultyList-create-faculty-photo-container {
+	margin: auto;
+	text-align: center;
+	border: 2px solid rgb(250, 250, 250);	/* Hide the border when not focused (on the file upload button) or when not hovered */
+}
+
+.FacultyList-create-faculty-file-inp-default:focus ~ .FacultyList-create-faculty-photo-container,
+.FacultyList-create-faculty-photo-container:hover {
+	border: 2px solid lightgrey;	/* Show the border in response to interactions */
+}
+
+/* faculty photo block */
+.FacultyList-create-faculty-photo {
+	border-radius: 20px;
+	height: 150px;
+	cursor: pointer;
+}
+
+/* Button groups (Reset, Add, Cancel) (NOT YET IMPLEMENTED) */
+.FacultyList-create-faculty-btn-group {
+	margin: auto;  /* Center the button groups */
+	margin-bottom: 5%;
+}
+
+/* Add faculty button (submit button) */
+.FacultyList-create-faculty-modal-btn {
+	width: 100px;
+	height: 50px;
+	background-color: #0d61a3;
+	color: white;
+	font-weight: bold;
+	padding: 10px;
+	margin: auto;
+	margin-top: 5%;
+	text-align: center;
+	display: block;
+}
+
+
+
+
+
+
+/* Large devices (tablets, 800px and up) */
+@media only screen and (min-width: 800px) {
+
+
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+
+}

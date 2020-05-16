@@ -1,0 +1,136 @@
+.DeviceHistory.good {
+	color: green;
+}
+
+.DeviceHistory.normal {
+	color: blue;
+}
+
+.DeviceHistory.severe {
+	color: red;
+}
+
+.DeviceHistory.no {
+	color: #8a8a8a;
+}
+
+.DeviceHistory.inactive {
+	color: #8a8a8a;
+	cursor: pointer;
+	pointer-events: auto;
+}
+
+.DeviceHistory.active {
+	color: #428fcf;
+}
+
+.DeviceHistory.expired {
+	color: #ed2d2d;
+}
+
+/*=================================================================
+								TOP BAR
+===================================================================*/
+
+.DeviceHistory.top-header {
+	margin-left: 35%;
+	font-size: 105%;
+}
+
+
+
+/*=================================================================
+							MAIN CONTENT
+===================================================================*/
+
+
+
+/*========================== DETAIL VIEW ==========================*/
+
+
+
+
+/*=========================== LIST VIEW ===========================*/
+
+.DeviceHistory.list-view {
+	width: 100%;
+}
+
+.DeviceHistory.list-view-header, .DeviceHistory.list-view-data {
+	padding: 20px 2% 20px 2%;
+	word-wrap: break-word;
+	text-align: center;
+	/*border: 1px solid red;*/
+}
+
+.DeviceHistory.list-view-data.datetime, .DeviceHistory.list-view-header.datetime {
+	width: 29%;
+}
+
+.DeviceHistory.list-view-data.datetime {
+	font-style: italic;
+}
+
+.DeviceHistory.list-view-data.user-name, .DeviceHistory.list-view-header.user-name {
+	width: 30%;
+}
+
+.DeviceHistory.list-view-data.equipment, .DeviceHistory.list-view-header.equipment {
+	width: 30%;
+}
+
+.DeviceHistory.list-view-data.device-number, .DeviceHistory.list-view-header.device-number {
+	width: 8%;
+}
+
+.DeviceHistory.data-expansion-txt-inp {
+	width: 50%;
+	margin-left: 1%;
+}
+
+.DeviceHistory.data-expansion-row,
+.DeviceHistory.data-expansion-body {
+	width: 100%;
+	margin: 0;
+}
+
+.DeviceHistory.data-expansion-header {
+	margin-left: 4%;
+}
+
+.DeviceHistory.data-expansion-cell {
+	/*border: 1px solid red;*/
+	padding: 5px 2% 5px 3%;
+	width: 65%;
+}
+
+.DeviceHistory.data-expansion-cell.label {
+	text-align: right;
+	width: 35%;
+}
+
+
+/* Large devices (tablets, 800px and up) */
+@media only screen and (min-width: 800px) {
+
+	.DeviceHistory.list-view-header, .DeviceHistory.list-view-data {
+		text-align: left;
+	}
+
+	.DeviceHistory.data-expansion-cell {
+		padding: 5px 2% 5px 1%;
+		width: 81%;
+	}
+
+	.DeviceHistory.data-expansion-cell.label {
+		text-align: right;
+		width: 19%;
+	}
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+
+}
