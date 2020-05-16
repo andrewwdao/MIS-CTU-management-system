@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from .models import StudentInfo, ExtraInfo, School, Major
+from equipments.serializers import  RentReadSerializer
+from .models import StudentInfo, ExtraInfo, School, Major, TimeLog
 from .utilities import make_random_username
 
 User = get_user_model() 
@@ -159,7 +160,8 @@ class UserListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'email', 'role', 'role_name', 'first_name', 'last_name', 'birth_date']
+        fields = ['id', 'email', 'role', 'role_name', 'first_name', 
+        'last_name', 'birth_date', 'check_in']
 
     def get_role_name(self, obj):
         return obj.get_role_display()
@@ -179,12 +181,26 @@ class UserDetailSerializer(serializers.ModelSerializer):
     role_name = serializers.SerializerMethodField()
     student_info = StudentInfoReadSerializer(read_only=True)
     extra_info = ExtraInfoSerializer(read_only=True)
+    rents = RentReadSerializer(read_only=True, many=True)
 
     class Meta:
         model = User
         fields = ['id', 'email', 'username', 'role', 'role_name', 'first_name', 'last_name',
-        'birth_date', 'phonenumber', 'gender', 'avatar', 'student_info',
-        'extra_info']
+        'birth_date', 'phonenumber', 'gender', 'avatar', 'check_in', 'student_info',
+        'extra_info', 'rents']
 
     def get_role_name(self, obj):
         return obj.get_role_display()
+
+
+class UserCheckInOutSerializer(serializers.Serializer):
+    check_in = serializers.BooleanField(required=True)
+
+    def validate_check_in(self, value):
+        if self.instance.check_in == value:
+            raise serializers.ValidationError('Invalid check in status.')
+        
+        return value
+
+    def update(self, instance, validated_data):
+        pass

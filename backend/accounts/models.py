@@ -26,6 +26,8 @@ class User(AbstractUser):
 	avatar = models.ImageField(upload_to='avatars', blank=True, null=True)
 	rfid = models.CharField('RFID Card number', max_length=10, unique=True, null=True)
 	fingerprint_pattern = models.IntegerField(unique=True, null=True)
+	check_in = models.BooleanField(default=False)
+	expire = models.DateTimeField(blank=True, null=True)
 
 	USERNAME_FIELD = 'email'
 	REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
@@ -69,8 +71,7 @@ class TimeLog(models.Model):
 	date = models.DateField('Log date', auto_now_add=True)
 	check_in = models.TimeField('Check in time', auto_now_add=True)
 	check_out = models.TimeField('Check out time', blank=True, null=True)
-	expire = models.TimeField('Expire time')
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='timelogs')
 
 	class Meta:
 		unique_together = ['date', 'user']

@@ -31,6 +31,7 @@ urlpatterns = [
         "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTg0NTQxNTU4LCJqdGkiOiI0YWMyNjc0ZTMxZjE0MzE5ODVkZDlhOThjMTE3MTRlZCIsInVzZXJfaWQiOjF9.MZx1uUPm2tR23Or1UQLVL5sykzDTcEXCmTfa3rH5nck"
     }
 """
+
 """
 @api {post} /auth/token/refresh/ Tạo access token mới từ refresh token 
 @apiName RefeshToken 
@@ -359,37 +360,52 @@ urlpatterns = [
 @apiSuccess {String} role_name Role name.
 @apiSuccess {String} first_name Firstname.
 @apiSuccess {String} last_name Lastname.
-@apiSuccess {String} birth_date Birthdate. 
+@apiSuccess {String} birth_date Birthdate
+@apiSuccess {String} phonenumber Phonenumber
+@apiSuccess {String} gender Gender
+@apiSuccess {String} avatar Avatar
+@apiSuccess {StudentInfo} student_info Student Info
+@apiSuccess {ExtraInfo} extra_info Extra Info
+@apiSuccess {Rent[]} rents Rents
 @apiSuccessExample {json} Response-Success:
     HTTP/1.1 200 OK 
     {
-        "id": 5,
-        "email": "nhatquang91ct@gmail.com",
-        "username": "kjohnston",
-        "role": 2,
-        "role_name": "Kỹ thuật viên"
+        "id": 1,
+        "email": "admin@gmail.com",
+        "username": "admin",
+        "role": 1,
+        "role_name": "Quản trị viên",
         "first_name": "",
         "last_name": "",
         "birth_date": null,
         "phonenumber": null,
-        "gender": "F",
+        "gender": "M",
         "avatar": null,
-        "student_info": {
-            "student_id": "b1607001",
-            "class_id": "DI16V7F2",
-            "school": {
-                "id": 2,
-                "school_id": "XH",
-                "school_name": "Khoa Khoa học Xã Hội và Nhân Văn"
-            },
-            "major": {
+        "student_info": null,
+        "extra_info": null,
+        "rents": [
+            {
                 "id": 1,
-                "school": 2,
-                "major_id": "XHH",
-                "major_name": "Xã hội học"
+                "device": {
+                    "id": 1,
+                    "equipment": {
+                        "id": 1,
+                        "equipment_id": "xe2",
+                        "equipment_name": "Raspberry Pi",
+                        "amount": 10,
+                        "picture": null
+                    },
+                    "device_number": 1,
+                    "device_status": 1,
+                    "in_used": false
+                },
+                "deliver_time": "2020-05-07T02:22:33Z",
+                "return_time": "2020-05-29T02:22:37Z",
+                "deliver_status": 1,
+                "return_status": 2,
+                "renter": 1
             }
-        },
-        "extra_info": null
+        ]
     }
 """
 

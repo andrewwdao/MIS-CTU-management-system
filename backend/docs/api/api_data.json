@@ -129,6 +129,704 @@
   },
   {
     "type": "post",
+    "url": "/devices/",
+    "title": "Tao trang thiet bi moi",
+    "name": "CreateDevice",
+    "group": "Device",
+    "permission": [
+      {
+        "name": "staff"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Access JSON Web token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "equipment_id",
+            "description": "<p>Mã trang thiet bi.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "equipment_name",
+            "description": "<p>Tên trang thiet bi.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 201 Created\n{\n    \"id\": 7,\n    \"equipment\": 1,\n    \"device_number\": 253,\n    \"device_status\": 1,\n    \"in_used\": false\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./equipments/urls.py",
+    "groupTitle": "Device"
+  },
+  {
+    "type": "get",
+    "url": "/devices/:id/",
+    "title": "Lay chi tiet trang thiet bi",
+    "name": "GetDevice",
+    "group": "Device",
+    "permission": [
+      {
+        "name": "staff"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Access JSON Web token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID chi tiet trang thiet bi</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID Chi tiet</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "device_number",
+            "description": "<p>So chi tiet trang thiet bi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "device_status",
+            "description": "<p>Trang thai</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "in_used",
+            "description": "<p>Tinh trang su dung</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Equipment",
+            "optional": false,
+            "field": "equipment",
+            "description": "<p>Doi tuong trang thiet bi</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"id\": 1,\n    \"equipment\": {\n        \"id\": 1,\n        \"equipment_id\": \"xe2\",\n        \"equipment_name\": \"Raspberry Pi\",\n        \"picture\": null\n    },\n    \"device_status\": \"Good\",\n    \"device_number\": 1,\n    \"in_used\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./equipments/urls.py",
+    "groupTitle": "Device"
+  },
+  {
+    "type": "get",
+    "url": "/equipments/:equipment_id/devices/",
+    "title": "Lay danh sach cac chi tiet trang thiet bi",
+    "name": "ListDevice",
+    "group": "Device",
+    "permission": [
+      {
+        "name": "staff"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Access JSON Web token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "equipment_id",
+            "description": "<p>ID trang thiet bi</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "devices",
+            "description": "<p>Chi tiet trang thiet bi.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "devices.id",
+            "description": "<p>ID Chi tiet</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "devices.device_number",
+            "description": "<p>So chi tiet trang thiet bi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "devices.device_status",
+            "description": "<p>Trang thai</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "devices.in_used",
+            "description": "<p>Tinh trang su dung</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n[\n    {\n        \"id\": 1,\n        \"device_status\": \"Good\",\n        \"device_number\": 1,\n        \"in_used\": true\n    },\n    {\n        \"id\": 3,\n        \"device_status\": \"Good\",\n        \"device_number\": 2,\n        \"in_used\": false\n    },\n    {\n        \"id\": 4,\n        \"device_status\": \"Good\",\n        \"device_number\": 324,\n        \"in_used\": true\n    },\n    {\n        \"id\": 5,\n        \"device_status\": \"Good\",\n        \"device_number\": 223,\n        \"in_used\": false\n    }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./equipments/urls.py",
+    "groupTitle": "Device"
+  },
+  {
+    "type": "patch",
+    "url": "/devices/:id/",
+    "title": "Cap nhat chi tiet trang thiet bi",
+    "name": "UpdateDevice",
+    "group": "Device",
+    "permission": [
+      {
+        "name": "staff"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Access JSON Web token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID chi tiet trang thiet bi</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "device_number",
+            "description": "<p>So chi tiet trang thiet bi</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "device_status",
+            "description": "<p>Trang thai</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"device_number\": 5,\n    \"device_status\": 2\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./equipments/urls.py",
+    "groupTitle": "Device"
+  },
+  {
+    "type": "post",
+    "url": "/equipments/",
+    "title": "Tao trang thiet bi moi",
+    "name": "CreateEquipment",
+    "group": "Equipment",
+    "permission": [
+      {
+        "name": "staff"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Access JSON Web token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "equipment_id",
+            "description": "<p>Mã trang thiet bi.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "equipment_name",
+            "description": "<p>Tên trang thiet bi.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "File",
+            "optional": false,
+            "field": "picture",
+            "description": "<p>Hinh anh trang thiet bi.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID Trang thiet bi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "equipment_id",
+            "description": "<p>Mã trang thiet bi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "equipment_name",
+            "description": "<p>Tên trang thiet bi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "picture",
+            "description": "<p>Hinh anh trang thiet bi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "amount",
+            "description": "<p>So luong thiet bi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "devices",
+            "description": "<p>Cac thiet bi chi tiet</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 201 Created\n{\n    \"id\": 3,\n    \"devices\": [],\n    \"amount\": 0,\n    \"equipment_id\": \"esp\",\n    \"equipment_name\": \"Esp32\",\n    \"picture\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./equipments/urls.py",
+    "groupTitle": "Equipment"
+  },
+  {
+    "type": "get",
+    "url": "/equipments/:id/",
+    "title": "Chi tiet trang thiet bi moi",
+    "name": "GetEquipment",
+    "group": "Equipment",
+    "permission": [
+      {
+        "name": "staff"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Access JSON Web token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID Trang thiet bi</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID Trang thiet bi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "equipment_id",
+            "description": "<p>Mã trang thiet bi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "equipment_name",
+            "description": "<p>Tên trang thiet bi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "picture",
+            "description": "<p>Hinh anh trang thiet bi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "amount",
+            "description": "<p>So luong thiet bi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "devices",
+            "description": "<p>Cac thiet bi chi tiet</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"id\": 1,\n    [\n        {\n            \"id\": 1,\n            \"device_status\": \"Good\",\n            \"device_number\": 1,\n            \"in_used\": true\n        },\n        {\n            \"id\": 3,\n            \"device_status\": \"Good\",\n            \"device_number\": 2,\n            \"in_used\": false\n        },\n        {\n            \"id\": 4,\n            \"device_status\": \"Good\",\n            \"device_number\": 324,\n            \"in_used\": true\n        },\n        {\n            \"id\": 5,\n            \"device_status\": \"Good\",\n            \"device_number\": 223,\n            \"in_used\": false\n        }\n    ]   \n    \"amount\": 4,\n    \"equipment_id\": \"xe2\",\n    \"equipment_name\": \"Raspberry Pi\",\n    \"picture\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./equipments/urls.py",
+    "groupTitle": "Equipment"
+  },
+  {
+    "type": "get",
+    "url": "/equipments/",
+    "title": "Lay danh sach cac trang thiet bi",
+    "name": "ListEquipment",
+    "group": "Equipment",
+    "permission": [
+      {
+        "name": "staff"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Access JSON Web token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "equipments",
+            "description": "<p>Trang thiet bi.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "equipments.id",
+            "description": "<p>ID Trang thiet bi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "equipments.equipment_id",
+            "description": "<p>Mã trang thiet bi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "equipments.equipment_name",
+            "description": "<p>Tên trang thiet bi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "equipments.picture",
+            "description": "<p>Hinh anh trang thiet bi</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n[\n    {\n        \"id\": 1,\n        \"equipment_id\": \"xe2\",\n        \"equipment_name\": \"Raspberry Pi\",\n        \"picture\": null\n    },\n    {\n        \"id\": 2,\n        \"equipment_id\": \"xe24\",\n        \"equipment_name\": \"Orange PI\",\n        \"picture\": null\n    }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./equipments/urls.py",
+    "groupTitle": "Equipment"
+  },
+  {
+    "type": "patch",
+    "url": "/equipments/:id/",
+    "title": "Chi tiet trang thiet bi moi",
+    "name": "UpdateEquipment",
+    "group": "Equipment",
+    "permission": [
+      {
+        "name": "staff"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Access JSON Web token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID Trang thiet bi</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "equipment_id",
+            "description": "<p>Mã trang thiet bi.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "equipment_name",
+            "description": "<p>Tên trang thiet bi.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "File",
+            "optional": true,
+            "field": "picture",
+            "description": "<p>Hinh anh trang thiet bi.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID Trang thiet bi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "equipment_id",
+            "description": "<p>Mã trang thiet bi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "equipment_name",
+            "description": "<p>Tên trang thiet bi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "picture",
+            "description": "<p>Hinh anh trang thiet bi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "amount",
+            "description": "<p>So luong thiet bi</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "devices",
+            "description": "<p>Cac thiet bi chi tiet</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"id\": 3,\n    \"devices\": [],\n    \"amount\": 0,\n    \"equipment_id\": \"esp\",\n    \"equipment_name\": \"Esp32\",\n    \"picture\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./equipments/urls.py",
+    "groupTitle": "Equipment"
+  },
+  {
+    "type": "post",
     "url": "/majors/",
     "title": "Tạo nghành học mới",
     "name": "CreateMajor",
@@ -1460,14 +2158,56 @@
             "type": "String",
             "optional": false,
             "field": "birth_date",
-            "description": "<p>Birthdate.</p>"
+            "description": "<p>Birthdate</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "phonenumber",
+            "description": "<p>Phonenumber</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "gender",
+            "description": "<p>Gender</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "avatar",
+            "description": "<p>Avatar</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "StudentInfo",
+            "optional": false,
+            "field": "student_info",
+            "description": "<p>Student Info</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "ExtraInfo",
+            "optional": false,
+            "field": "extra_info",
+            "description": "<p>Extra Info</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Rent[]",
+            "optional": false,
+            "field": "rents",
+            "description": "<p>Rents</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Response-Success:",
-          "content": "HTTP/1.1 200 OK \n{\n    \"id\": 5,\n    \"email\": \"nhatquang91ct@gmail.com\",\n    \"username\": \"kjohnston\",\n    \"role\": 2,\n    \"role_name\": \"Kỹ thuật viên\"\n    \"first_name\": \"\",\n    \"last_name\": \"\",\n    \"birth_date\": null,\n    \"phonenumber\": null,\n    \"gender\": \"F\",\n    \"avatar\": null,\n    \"student_info\": {\n        \"student_id\": \"b1607001\",\n        \"class_id\": \"DI16V7F2\",\n        \"school\": {\n            \"id\": 2,\n            \"school_id\": \"XH\",\n            \"school_name\": \"Khoa Khoa học Xã Hội và Nhân Văn\"\n        },\n        \"major\": {\n            \"id\": 1,\n            \"school\": 2,\n            \"major_id\": \"XHH\",\n            \"major_name\": \"Xã hội học\"\n        }\n    },\n    \"extra_info\": null\n}",
+          "content": "HTTP/1.1 200 OK \n{\n    \"id\": 1,\n    \"email\": \"admin@gmail.com\",\n    \"username\": \"admin\",\n    \"role\": 1,\n    \"role_name\": \"Quản trị viên\",\n    \"first_name\": \"\",\n    \"last_name\": \"\",\n    \"birth_date\": null,\n    \"phonenumber\": null,\n    \"gender\": \"M\",\n    \"avatar\": null,\n    \"student_info\": null,\n    \"extra_info\": null,\n    \"rents\": [\n        {\n            \"id\": 1,\n            \"device\": {\n                \"id\": 1,\n                \"equipment\": {\n                    \"id\": 1,\n                    \"equipment_id\": \"xe2\",\n                    \"equipment_name\": \"Raspberry Pi\",\n                    \"amount\": 10,\n                    \"picture\": null\n                },\n                \"device_number\": 1,\n                \"device_status\": 1,\n                \"in_used\": false\n            },\n            \"deliver_time\": \"2020-05-07T02:22:33Z\",\n            \"return_time\": \"2020-05-29T02:22:37Z\",\n            \"deliver_status\": 1,\n            \"return_status\": 2,\n            \"renter\": 1\n        }\n    ]\n}",
           "type": "json"
         }
       ]
