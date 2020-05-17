@@ -31,7 +31,7 @@ class ListRow extends React.Component {
 
         <DataExpansion
           faculty={this.props.faculty}
-          updateFacultyByArrayIndex={this.props.updateFacultyByArrayIndex}
+          updateDataLocally={this.props.updateDataLocally}
           detail='' />
       </div>
 		);

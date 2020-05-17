@@ -22,7 +22,7 @@ class ListView extends React.Component {
                   key={faculty.id}
                   faculty={faculty}
                   updateSelectedFaculty={this.props.updateSelectedFaculty}
-                  updateFacultyByArrayIndex={this.props.updateFacultyByArrayIndex}
+                  updateDataLocally={this.props.updateDataLocally}
                   toggleDetailPannelModal={this.props.toggleDetailPannelModal}
                   />
               );

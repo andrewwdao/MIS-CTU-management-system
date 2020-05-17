@@ -13,7 +13,11 @@ class CreateEquipmentModal extends React.Component {
           <div className="modal-header">Create</div>
           <div className="modal-body EquipmentList-create-equipment-modal-body">
             <CreateEquipmentForm
-              accessToken={this.props.accessToken} />
+              accessToken={this.props.accessToken}
+              toggleModal={this.props.toggleModal}
+              equipments={this.props.equipments}
+              updateDataLocally={this.props.updateDataLocally}
+              />
           </div>
         </div>
       </div>

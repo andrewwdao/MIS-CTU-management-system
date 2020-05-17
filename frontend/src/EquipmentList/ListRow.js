@@ -36,19 +36,25 @@ class ListRow extends React.Component {
                 DIRTY, LAZY SOLUTION
     ==========================================*/
     var rows = 0;
-    for (let i = 0; i < this.props.equipment.equipmentSelfs.length; i++)
-      if (this.props.equipment.equipmentSelfs[i].status === 1 || !this.props.inlabFilter)
+    
+    // This if to check if the equipment from getDataList is fully updated
+    // The equipments are updated one by one so if the equipment in dataList hasn't got updated
+    // it doesn't have any devices
+    // (dataList items don't have devices, only dataFulls have)
+    if (this.props.equipment.devices)
+    for (let i = 0; i < this.props.equipment.devices.length; i++)
+      if (this.props.equipment.devices[i].status === 1 || !this.props.inlabFilter)
         rows++;
 
 		return (
       <div onClick={this.toggleEquipmentDataExpansion} className="list-view-main-row" tabIndex="0">
-        <div className="EquipmentList list-view-data id" onClick={this.updateSelectedEquipment}>{this.props.equipment.id}</div>
-        <div className="EquipmentList list-view-data equipment">{this.props.equipment.name}</div>
+        <div className="EquipmentList list-view-data id" onClick={this.updateSelectedEquipment}>{this.props.equipment.equipment_id}</div>
+        <div className="EquipmentList list-view-data equipment">{this.props.equipment.equipment_name}</div>
         <div className="EquipmentList list-view-data count">{rows}</div>
 
         <DataExpansion
           inlabFilter={this.props.inlabFilter}
-          equipmentSelfs={this.props.equipment.equipmentSelfs}
+          equipments={this.props.equipments}
           detail='' />
       </div>
 		);

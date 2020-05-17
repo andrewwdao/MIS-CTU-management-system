@@ -86,7 +86,7 @@ class DataExpansion extends React.Component {
           this.props.faculty.majors.push(major);
 
           // Update locally
-          this.props.updateFacultyByArrayIndex(this.props.faculty.arrayIndex, this.props.faculty);
+          this.props.updateDataLocally(this.props.faculty);
 
           // Clear the id name name field
           this.setState({
@@ -135,7 +135,8 @@ class DataExpansion extends React.Component {
           this.props.faculty.majors.splice(major.arrayIndex, 1);
 
           // Call the update here to update locally AFTER the promise finised
-          this.props.updateFacultyByArrayIndex(this.props.faculty.arrayIndex, this.props.faculty);
+          // 0 is update flag
+          this.props.updateFacultyByArrayIndex(this.props.faculty, 0);
         }
       }
     );

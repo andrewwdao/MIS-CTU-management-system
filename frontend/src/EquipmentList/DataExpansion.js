@@ -21,6 +21,7 @@ class DataExpansion extends React.Component {
               />
           )
         }
+        return null;
       });
     }
 

@@ -28,6 +28,7 @@ class ListView extends React.Component {
 
         } catch(e) {
           console.log(e);
+          return null;
         }
       }
     );

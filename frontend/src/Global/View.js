@@ -82,8 +82,8 @@ class View extends React.Component {
           faculties={this.props.faculties}
           searchFilter={this.state.searchFilter}
           handleFilterChange={this.handleFilterChange}
-          updateFacultyByArrayIndex={this.props.updateFacultyByArrayIndex}
-          getFacultyList={this.props.getFacultyList}
+          updateDataLocally={this.props.updateDataLocally}
+          getDataList={this.props.getDataList}
           />
       ),
       'Equipments': (
@@ -93,6 +93,8 @@ class View extends React.Component {
           inlabFilter={this.state.inlabFilter}
           searchFilter={this.state.searchFilter}
           handleFilterChange={this.handleFilterChange}
+          updateDataLocally={this.props.updateDataLocally}
+          getDataList={this.props.getDataList}
           />
       ),
       'In-out': (

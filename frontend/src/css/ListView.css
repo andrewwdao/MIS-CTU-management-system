@@ -201,9 +201,9 @@
 	width: 100%;
 	width: calc(100% - 21px);
 	margin: 10px;
+	margin-bottom: 0;
 	height: 100%;
 	height: calc(100% - 140px);
-	margin-bottom: 0;
 	overflow-x: hidden;
 }
 

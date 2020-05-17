@@ -33,11 +33,11 @@ class ListView extends React.Component {
         try {
           // If the filter string is found
           const searchFilter = this.props.searchFilter.toLowerCase();
-          if (equipment.id.toLowerCase().search(searchFilter) !== -1 ||
-              equipment.name.toLowerCase().search(searchFilter) !== -1)
+          if (equipment.equipment_id.toLowerCase().search(searchFilter) !== -1 ||
+              equipment.equipment_name.toLowerCase().search(searchFilter) !== -1)
             return (
               <ListRow
-                key={equipment.id}
+                key={equipment.equipment_id}
                 equipment={equipment}
                 inlabFilter={this.props.inlabFilter}
                 selectedEquipmentId={this.props.selectedEquipmentId}
@@ -47,6 +47,7 @@ class ListView extends React.Component {
             );
         } catch (e) {
           console.log(e);
+          return null;
         }
 
         return null;

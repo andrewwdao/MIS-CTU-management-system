@@ -66,8 +66,11 @@ class DetailPannel extends React.Component {
       status => {
         if (status === 204) {
           console.log("OK");
+          
+          this.props.faculties.splice(this.props.selectedFaculty.arrayIndex, 1);
+
           // Call the update here to update locally AFTER the promise finised
-          this.props.updateFacultyByArrayIndex(this.props.selectedFaculty, -1);
+          this.props.updateDataLocally();
 
           this.props.updateSelectedFaculty({});
         }
@@ -138,7 +141,7 @@ class DetailPannel extends React.Component {
                 <div>
                   <DataExpansion
                     faculty={this.props.selectedFaculty}
-                    updateFacultyByArrayIndex={this.props.updateFacultyByArrayIndex}
+                    updateDataLocally={this.props.updateDataLocally}
                     detail='detail'
                     />
 

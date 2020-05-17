@@ -18,9 +18,9 @@ class Body extends React.Component {
 
   // Change the info on DetailPannel based on the Faculty got passed to
   // REMEMBER TO FIX THIS EVERYTIME THE FACULTY INFO GET UPDATED
-  updateSelectedFaculty(Faculty) {
+  updateSelectedFaculty(faculty) {
     this.setState({
-      selectedFaculty: Faculty
+      selectedFaculty: faculty
     });
   }
 
@@ -37,8 +37,9 @@ class Body extends React.Component {
           selectedFaculty={this.state.selectedFaculty}
           modalActive={this.state.detailPannelModalActive}
           toggleModal={this.toggleDetailPannelModal}
-          updateFacultyByArrayIndex={this.props.updateFacultyByArrayIndex}
+          updateDataLocally={this.props.updateDataLocally}
           updateSelectedFaculty={this.updateSelectedFaculty}
+          faculties={this.props.faculties}
           />
         <ListView
           faculties={this.props.faculties}
@@ -46,7 +47,7 @@ class Body extends React.Component {
           searchFilter={this.props.searchFilter}
           toggleDetailPannelModal={this.toggleDetailPannelModal}
           getFacultyList={this.props.getFacultyList}
-          updateFacultyByArrayIndex={this.props.updateFacultyByArrayIndex}
+          updateDataLocally={this.props.updateDataLocally}
           />
       </div>
     );

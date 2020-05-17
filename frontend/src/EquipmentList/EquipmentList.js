@@ -12,6 +12,9 @@ class EquipmentList extends React.Component {
           inlabFilter={this.props.inlabFilter}
           searchFilter={this.props.searchFilter}
           handleFilterChange={this.props.handleFilterChange}
+          getDataList={this.props.getDataList}
+          equipments={this.props.equipments}
+          updateDataLocally={this.props.updateDataLocally}
           />
 
         <Body

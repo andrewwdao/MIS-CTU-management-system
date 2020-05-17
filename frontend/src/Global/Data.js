@@ -91,83 +91,7 @@ class Data extends React.Component {
         },
       ],
 
-      equipments: [
-        {
-          id: '1234567',
-          name: 'This is Equipment',
-          description: "Description goes here, very long long long long long long long long long long long long long",
-          equipmentSelfs: [
-            {
-              id: '1',
-              condition: 2,
-              conditionDescription: 'Good',
-              status: 0,
-              usingBy: ''
-            },
-            {
-              id: '2',
-              condition: 1,
-              conditionDescription: 'Normal',
-              status: 1,
-              usingBy: '1234'
-            },
-            {
-              id: '3',
-              condition: 0,
-              conditionDescription: "Can not be used",
-              status: 0,
-              usingBy: ''
-            },
-            {
-              id: '4',
-              condition: -1,
-              conditionDescription: "Severe",
-              status: 0,
-              usingBy: ''
-            }
-          ],
-        },
-        {
-          id: '4342563',
-          name: 'Equipment field',
-          equipmentSelfs: [
-            {
-              id: '1',
-              condition: -1,
-              conditionDescription: 'Severe',
-              status: 0,
-              usingBy: ''
-            },
-            {
-              id: '2',
-              condition: 0,
-              conditionDescription: "Can not be used, for real, this is not a reason just a test text",
-              status: 0,
-              usingBy: ''
-            }
-          ],
-        },
-        {
-          id: '2345789',
-          name: 'This is Equipment 2',
-          equipmentSelfs: [
-            {
-              id: '1',
-              condition: 1,
-              conditionDescription: 'Good',
-              status: 1,
-              usingBy: '14224'
-            },
-            {
-              id: '2',
-              condition: 0,
-              conditionDescription: "Can not be used",
-              status: 0,
-              usingBy: ''
-            }
-          ],
-        }
-      ],
+      equipments: [],
       faculties: [],
 
       inOutHistories: [
@@ -253,35 +177,19 @@ class Data extends React.Component {
       selectedFaculty: {}
     };
 
-    this.getFacultyList = this.getFacultyList.bind(this);
-    this.updateFacultyByArrayIndex = this.updateFacultyByArrayIndex.bind(this);
+    this.getDataList = this.getDataList.bind(this);
+
+    this.updateDataLocally = this.updateDataLocally.bind(this);
   }
 
   componentDidMount() {
-    this.getFacultyList();
+    // this.getFacultyList();
+    this.getDataList('faculties', 'schools');
+    this.getDataList('equipments', 'equipments');
   }
 
-  // Update (add/remove major) or add new faculty locally based on index
-  updateFacultyByArrayIndex(faculty, flag) {
-    let newFacultiesList = this.state.faculties;
-
-    // Create new faculty
-    if (flag === 1) {
-      faculty.arrayIndex = this.state.faculties.length;
-      newFacultiesList.push(faculty);
-    } else if (flag === -1) {  // Delete
-      newFacultiesList.splice(faculty.arrayIndex, 1);
-    } else {  // Update existed faculty with new major
-      newFacultiesList[faculty.arrayIndex] = faculty;
-    }
-
-    this.setState({
-      faculties: newFacultiesList,
-    });
-  }
-
-  getFacultyList() {
-    const refreshIcon = document.querySelectorAll(".FacultyList.top-refresh-icon")[0];
+  getDataList(localFieldName, apiFieldName) {
+    const refreshIcon = document.querySelectorAll(".top-refresh-icon")[0];
 
     if (refreshIcon)
       refreshIcon.classList.toggle('spin');
@@ -294,7 +202,7 @@ class Data extends React.Component {
       }
     };
 
-    fetch(localStorage.getItem("apiHost") + /schools/, requestOptions).then(
+    fetch(localStorage.getItem("apiHost") + "/" + apiFieldName + "/", requestOptions).then(
       res => {
         if (res.status === 401) {
           console.log("No permission.");
@@ -307,10 +215,10 @@ class Data extends React.Component {
         }
       }
     ).then(
-      // This faculty has no majors list
-      faculty => {
-        for (let i = 0; i < faculty.length; i++) {
-          fetch(localStorage.getItem("apiHost") + '/schools/' + faculty[i].id , requestOptions).then(
+      // The data list contains data with just a few information
+      dataList => {
+        for (let i = 0; i < dataList.length; i++) {
+          fetch(localStorage.getItem("apiHost") + '/'+ apiFieldName +'/' + dataList[i].id , requestOptions).then(
             res => {
               if (res.status === 401) {
                 console.log("No permission.");
@@ -323,16 +231,16 @@ class Data extends React.Component {
               }
             }
           ).then(
-            // Majors list included
-            fullFaculty => {
-              // Add the array index to update the current faculty locally when a new major is added
+            // The data with all the information
+            dataFull => {
+              // Add the array index to update the current equipment locally when a new major is added
               // (update it locally to reduce network traffic)
-              fullFaculty.arrayIndex = i;
+              dataFull.arrayIndex = i;
 
-              faculty[i] = fullFaculty;  
+              dataList[i] = dataFull;  
 
               this.setState({
-                faculties: faculty
+                [localFieldName]: dataList
               });
             }
           );
@@ -344,6 +252,13 @@ class Data extends React.Component {
     );
   }
 
+  updateDataLocally(data) {
+    // Call setState for subcomponents to update
+    this.setState({
+      [data]: this.state[data],
+    });
+  }
+
   render() {
     return (
       <View
@@ -352,13 +267,14 @@ class Data extends React.Component {
         equipments={this.state.equipments}
 
         faculties={this.state.faculties}
-        updateFacultyByArrayIndex={this.updateFacultyByArrayIndex}
-        getFacultyList={this.getFacultyList}
 
         inOutHistories={this.state.inOutHistories}
         deviceHistories={this.state.deviceHistories}
 
         handleLogout={this.props.handleLogout}
+
+        updateDataLocally={this.updateDataLocally}
+        getDataList={this.getDataList}
         />
     );
   }

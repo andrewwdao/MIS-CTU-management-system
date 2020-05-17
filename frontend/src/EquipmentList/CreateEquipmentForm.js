@@ -47,7 +47,69 @@ class CreateEquipmentForm extends React.Component {
   handleFormSubmit(e) {
     e.preventDefault();
     
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Authorization': localStorage.getItem("accessToken"),
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        equipment_id: this.state.id,
+        equipment_name: this.state.name
+      })
+    };
 
+    fetch(localStorage.getItem("apiHost") + /equipments/, requestOptions).then(
+      res => {
+        if (res.status === 401) {
+          console.log("No permission.");
+          // alert("You have no permission to do that");
+          this.setState({
+            errorModalMessage: "You have no permission to do that",
+            errorModalActive: true,
+          });
+          return '';
+        } else if (res.status === 400) {
+          console.log(res.status + " Bad request error.");
+          // alert("Bad request. The major id or major name might already existed or a field is empty.");
+          this.setState({
+            errorModalMessage: "Bad request. The major id or major name might already existed or a field is empty.",
+            errorModalActive: true,
+          });
+          return '';
+        } else if (res.status !== 201) {
+          console.log(res.status + " Unexpected error.");
+          // alert("Unexpected error happened");
+          this.setState({
+            errorModalMessage: "Unexpected error happened.",
+            errorModalActive: true,
+          });
+          return '';
+        } else {
+          console.log("Success");
+          return res.json();
+        }
+      }
+    ).then(
+      equipment => {
+        if (equipment) {
+            // Turn off the create modal
+            this.props.toggleModal();
+
+            // Update the list locally   (1 is create flag)
+            // this.props.updateFacultyByArrayIndex(faculty, 1);
+            this.props.equipments.push(equipment);
+            this.props.updateDataLocally('equipments');
+
+            this.setState({
+              id: '',
+              name: '',
+              description: '',
+              photo: imgBtn,
+            });
+          }
+        }
+    );
   }
 
   render() {
