@@ -25,6 +25,17 @@ class CreateFacultyForm extends React.Component {
     this.toggleErrorModal = this.toggleErrorModal.bind(this);
   }
 
+  // Set the default values for the field when the form gets mounted in DetailPannel
+  // (DetailPannel will pass faculty as a prop for later updating)
+  componentDidMount() {
+    if (this.props.faculty) {
+      this.setState({
+        id: this.props.faculty.school_id,
+        name: this.props.faculty.school_name,
+      });
+    }
+  }
+
   toggleErrorModal() {
     this.setState({
       errorModalActive: !this.state.errorModalActive
@@ -58,7 +69,7 @@ class CreateFacultyForm extends React.Component {
     e.preventDefault();
     
     const requestOptions = {
-      method: 'POST',
+      method: this.props.faculty ? 'PATCH' : 'POST',  // If there is a props named faculty => update, otherwise => create
       headers: {
         'Authorization': localStorage.getItem("accessToken"),
         'Content-Type': 'application/json',
@@ -69,7 +80,8 @@ class CreateFacultyForm extends React.Component {
       })
     };
 
-    fetch(localStorage.getItem("apiHost") + /schools/, requestOptions).then(
+    const requestUrl = localStorage.getItem("apiHost") + '/schools/' + (this.props.faculty ? this.props.faculty.id + '/': ''); // The final '/' is required by django rules (urls end with /)
+    fetch(requestUrl, requestOptions).then(
       res => {
         if (res.status === 401) {
           console.log("No permission.");
@@ -79,15 +91,23 @@ class CreateFacultyForm extends React.Component {
             errorModalActive: true,
           });
           return '';
-        } else if (res.status === 400) {
-          console.log(res.status + " Bad request error.");
-          // alert("Bad request. The major id or major name might already existed or a field is empty.");
+        } else if (res.status === 404) {
+          console.log(res.status + " Not found.");
+          // alert("Bad request. The faculty id or faculty name might already existed or a field is empty.");
           this.setState({
-            errorModalMessage: "Bad request. The major id or major name might already existed or a field is empty.",
+            errorModalMessage: "Not found.",
             errorModalActive: true,
           });
           return '';
-        } else if (res.status !== 201) {
+        } else if (res.status === 400) {
+          console.log(res.status + " Bad request error.");
+          // alert("Bad request. The faculty id or faculty name might already existed or a field is empty.");
+          this.setState({
+            errorModalMessage: "Bad request. The faculty id or faculty name might already existed or a field is empty.",
+            errorModalActive: true,
+          });
+          return '';
+        } else if (res.status !== 201 && res.status != 200) {
           console.log(res.status + " Unexpected error.");
           // alert("Unexpected error happened");
           this.setState({
@@ -107,17 +127,28 @@ class CreateFacultyForm extends React.Component {
             this.props.toggleModal();
 
             // Modify the state directly (NOT RECOMMENDED)
-            faculty.arrayIndex = this.props.faculties.length;
-            this.props.faculties.push(faculty);
+            if (this.props.faculty) {
+              faculty.arrayIndex = this.props.faculty.arrayIndex;
+              this.props.faculties[this.props.faculty.arrayIndex] = faculty;
+            } else {
+              faculty.arrayIndex = this.props.faculties.length;
+              this.props.faculties.push(faculty);
+            }
 
             // Update the list locally by calling the setState in the props function
             this.props.updateDataLocally('faculties');
 
-            this.setState({
-              id: '',
-              name: '',
-              photo: imgBtn,
-            });
+            // Only clear the state if the modal is spawned from Top
+            // The one from Top will stay mounted, as opposed to the on from DetailPannel will get unmounted
+            // so we don't need to update the state of the one from DetailPannel
+            // (will get error for update state of unmounted component)
+            if (!this.props.faculty) {
+              this.setState({
+                id: '',
+                name: '',
+                photo: imgBtn,
+              });
+            }
           }
         }
     );
@@ -162,7 +193,7 @@ class CreateFacultyForm extends React.Component {
             <input
               className="btn FacultyList-create-faculty-modal-btn"
               type="submit"
-              value="Add"
+              value={this.props.faculty ? "Update" : "Add"} // Add or update based on the use case (call from DetailPannel or Top)
               onClick={this.handleFormSubmit} />
           </div>
         </form>

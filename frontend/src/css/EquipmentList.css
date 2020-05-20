@@ -98,6 +98,31 @@
 	text-align: center;
 }
 
+.EquipmentList.data-expansion-btn {
+	background-color: #cccccc;
+	color: #8f8f8f;
+	font-size: 130%;
+	border-radius: 20px;
+	font-weight: bold;
+	float: right;
+	margin: 0;
+	margin-right: 2%;
+	width: 40px;
+	padding: 0;
+	/* width: 30%;
+	margin: auto;
+	display: block; */
+	text-align: center;
+	transition: .3s;
+	box-shadow: 4px 4px 6px rgba(191, 191, 191, 0.3);
+}
+
+.EquipmentList.data-expansion-btn:hover {
+	background-color: #b3b3b3;
+	color: #474747;
+	box-shadow: 4px 4px 6px rgba(180, 180, 180, 0.7);
+}
+
 
 
 /*=================================================================

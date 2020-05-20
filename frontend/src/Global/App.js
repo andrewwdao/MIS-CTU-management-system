@@ -70,7 +70,7 @@ class App extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        refresh: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTU4OTc4NDk0NSwianRpIjoiODU5MzI2ODYwZDRkNGY0OTkwOTYyMmY4NThkOWZhZGEiLCJ1c2VyX2lkIjoxfQ.c3X4nT4zhe7nNAqVLIcfTropB-3hGK8vXBo0-dzPRcU'
+        refresh: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTU4OTk2MTI1OCwianRpIjoiMjM2OWEzM2UxNjVjNDU5NGI3ZDAwMDQzN2FhNDRjZTUiLCJ1c2VyX2lkIjoxfQ.3nvsjqbFw0JDFLEQftSEnRYlRBZWgNZzqv_08AF7XQ4'
       })
     };
 
@@ -79,6 +79,7 @@ class App extends React.Component {
     ).then(
       token => {
         // this.setState({accessToken: 'Bearer ' + token.access});
+        console.log("OK");
         localStorage.setItem("accessToken", 'Bearer ' + token.access);
       }
     );

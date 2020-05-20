@@ -10,12 +10,13 @@ class CreateFacultyModal extends React.Component {
         </div>
         <div className="modal-container FacultyList-modal-container">
           <button onClick={this.props.toggleModal} className="modal-close-btn">✖</button>
-          <div className="modal-header">Create</div>
+          <div className="modal-header">{this.props.faculty ? this.props.faculty.school_name : 'Create'}</div>
           <div className="modal-body FacultyList-create-faculty-modal-body">
             <CreateFacultyForm
               toggleModal={this.props.toggleModal}
               updateDataLocally={this.props.updateDataLocally}
               faculties={this.props.faculties}
+              faculty={this.props.faculty}
               />
           </div>
         </div>

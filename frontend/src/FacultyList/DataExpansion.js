@@ -59,6 +59,14 @@ class DataExpansion extends React.Component {
             errorModalActive: true,
           });
           return '';
+        } else if (res.status === 404) {
+          console.log(res.status + " Not found.");
+          // alert("Bad request. The major id or major name might already existed or a field is empty.");
+          this.setState({
+            errorModalMessage: "Not found.",
+            errorModalActive: true,
+          });
+          return '';
         } else if (res.status === 400) {
           console.log(res.status + " Bad request error.");
           // alert("Bad request. The major id or major name might already existed or a field is empty.");
@@ -135,8 +143,7 @@ class DataExpansion extends React.Component {
           this.props.faculty.majors.splice(major.arrayIndex, 1);
 
           // Call the update here to update locally AFTER the promise finised
-          // 0 is update flag
-          this.props.updateFacultyByArrayIndex(this.props.faculty, 0);
+          this.props.updateDataLocally('faculties');
         }
       }
     );

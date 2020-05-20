@@ -39,6 +39,7 @@ class ListView extends React.Component {
               <ListRow
                 key={equipment.equipment_id}
                 equipment={equipment}
+                equipments={this.props.equipments}
                 inlabFilter={this.props.inlabFilter}
                 selectedEquipmentId={this.props.selectedEquipmentId}
                 updateSelectedEquipment={this.props.updateSelectedEquipment}

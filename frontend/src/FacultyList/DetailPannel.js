@@ -4,6 +4,7 @@ import imgPlaceholder from '../images/photo.png';
 
 import DataExpansion from './DataExpansion';
 import GeneralPurposeModal from '../Global/GeneralPurposeModal';
+import CreateFacultyModal from './CreateFacultyModal';
 
 class DetailPannel extends React.Component {
   constructor(props) {
@@ -14,11 +15,14 @@ class DetailPannel extends React.Component {
 
       errorModalMessage: '',
       errorModalActive: false,
+
+      createFacultyModalActive: false,
     };
 
     this.toggleDeleteConfirmationModal = this.toggleDeleteConfirmationModal.bind(this);
     this.toggleErrorModal = this.toggleErrorModal.bind(this);
     this.removeFaculty = this.removeFaculty.bind(this);
+    this.toggleCreateFacultyModal = this.toggleCreateFacultyModal.bind(this);
   }
 
   toggleErrorModal() {
@@ -30,6 +34,12 @@ class DetailPannel extends React.Component {
   toggleDeleteConfirmationModal() {
     this.setState({
       removeConfirmationModalActive: !this.state.removeConfirmationModalActive
+    });
+  }
+
+  toggleCreateFacultyModal() {
+    this.setState({
+      createFacultyModalActive: !this.state.createFacultyModalActive
     });
   }
 
@@ -51,6 +61,14 @@ class DetailPannel extends React.Component {
             errorModalMessage: "You have no permission to do that.",
             errorModalActive: true,
           });
+        } else if (res.status === 404) {
+          console.log(res.status + " Not found.");
+          // alert("Bad request. The major id or major name might already existed or a field is empty.");
+          this.setState({
+            errorModalMessage: "Not found.",
+            errorModalActive: true,
+          });
+          return '';
         } else if (res.status !== 204) {
           console.log(res.status + " Unexpected error.");
           // alert("Unexpected error happened");
@@ -83,6 +101,20 @@ class DetailPannel extends React.Component {
   render() {
     return (
       <div>
+        
+        { // Need this in order the make the CreateFacultyForm gets mounted 
+          // => set value for the fields in componentDidMount
+          // Trade off: no modal background animation
+          this.state.createFacultyModalActive &&
+          <CreateFacultyModal
+            modalActive={this.state.createFacultyModalActive}
+            toggleModal={this.toggleCreateFacultyModal}
+            faculties={this.props.faculties}
+            faculty={this.props.selectedFaculty}
+            updateDataLocally={this.props.updateDataLocally}
+            />
+        }
+
         <GeneralPurposeModal
           active={this.state.removeConfirmationModalActive}
           toggle={this.toggleDeleteConfirmationModal}
@@ -146,7 +178,7 @@ class DetailPannel extends React.Component {
                     />
 
                   <div className="detail-pannel-btn-group">
-                    <button className="btn info detail-pannel-btn">EDIT</button>
+                    <button onClick={this.toggleCreateFacultyModal} className="btn info detail-pannel-btn">EDIT</button>
                     <button onClick={this.toggleDeleteConfirmationModal} className="btn caution detail-pannel-btn">
                       DELETE
                     </button>

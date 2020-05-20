@@ -54,7 +54,7 @@ class ListRow extends React.Component {
 
         <DataExpansion
           inlabFilter={this.props.inlabFilter}
-          equipments={this.props.equipments}
+          equipment={this.props.equipment}
           detail='' />
       </div>
 		);
