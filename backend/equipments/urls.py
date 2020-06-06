@@ -71,7 +71,7 @@ urlpatterns = [] + router.urls
 """
 
 """
-@api {get} /equipments/:id/ Chi tiet trang thiet bi moi
+@api {get} /equipments/:id/ Chi tiet trang thiet bi
 @apiName GetEquipment 
 @apiGroup Equipment
 @apiPermission staff
@@ -124,7 +124,7 @@ urlpatterns = [] + router.urls
 """
 
 """
-@api {patch} /equipments/:id/ Chi tiet trang thiet bi moi
+@api {patch} /equipments/:id/ Cap nhat chi tiet trang thiet bi moi
 @apiName UpdateEquipment 
 @apiGroup Equipment
 @apiPermission staff
@@ -206,8 +206,8 @@ urlpatterns = [] + router.urls
 @apiPermission staff
 @apiHeader {String} Authorization Access JSON Web token.
 
-@apiParam {Number} equipment_id Mã trang thiet bi.
-@apiParam {String} equipment_name Tên trang thiet bi.
+@apiParam {Number} equipment Mã loại trang thiết bị
+@apiParam {NUmber} device_number Số trang thiết bị
 
 @apiSuccessExample {json} Success-Response:
     HTTP/1.1 201 Created

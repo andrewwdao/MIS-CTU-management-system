@@ -158,15 +158,15 @@ define({ "api": [
             "group": "Parameter",
             "type": "Number",
             "optional": false,
-            "field": "equipment_id",
-            "description": "<p>Mã trang thiet bi.</p>"
+            "field": "equipment",
+            "description": "<p>Mã loại trang thiết bị</p>"
           },
           {
             "group": "Parameter",
-            "type": "String",
+            "type": "NUmber",
             "optional": false,
-            "field": "equipment_name",
-            "description": "<p>Tên trang thiet bi.</p>"
+            "field": "device_number",
+            "description": "<p>Số trang thiết bị</p>"
           }
         ]
       }
@@ -539,7 +539,7 @@ define({ "api": [
   {
     "type": "get",
     "url": "/equipments/:id/",
-    "title": "Chi tiet trang thiet bi moi",
+    "title": "Chi tiet trang thiet bi",
     "name": "GetEquipment",
     "group": "Equipment",
     "permission": [
@@ -711,7 +711,7 @@ define({ "api": [
   {
     "type": "patch",
     "url": "/equipments/:id/",
-    "title": "Chi tiet trang thiet bi moi",
+    "title": "Cap nhat chi tiet trang thiet bi moi",
     "name": "UpdateEquipment",
     "group": "Equipment",
     "permission": [
