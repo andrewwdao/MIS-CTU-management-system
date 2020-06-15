@@ -81,7 +81,7 @@ class CreateUserForm extends React.Component {
         birth_date: this.state.dob.substring(8, 10) + "/" + this.state.dob.substring(5, 7) + "/" + this.state.dob.substring(0, 4),
         phonenumber: this.state.phone,
         gender: this.state.gender,
-        avatar: this.state.avatar,
+        // avatar: this.state.avatar,
         student_info: {
           student_id: this.state.studentID,
           class_id: this.state.classID,
@@ -89,7 +89,7 @@ class CreateUserForm extends React.Component {
           school: this.state.faculty
         },
         extra_info: {
-          identity_card: this.state.identityCard,
+          identity_id: this.state.identityCard,
           workplace: this.state.organization
         }
       })

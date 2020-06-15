@@ -143,11 +143,15 @@ class CreateFacultyForm extends React.Component {
             // so we don't need to update the state of the one from DetailPannel
             // (will get error for update state of unmounted component)
             if (!this.props.faculty) {
+              // Clear the form and update the list
               this.setState({
                 id: '',
                 name: '',
                 photo: imgBtn,
               });
+            } else {
+              // Update the list
+              this.setState({});
             }
           }
         }

@@ -44,15 +44,8 @@
 	text-align: center;
 }
 
-
-.EquipmentList.data-expansion-txt-inp {
-	width: 50%;
-	margin-left: 1%;
-}
-
-.EquipmentList.data-expansion-txt-inp.id {
-	width: 20%;
-	margin-left: 1%;
+.EquipmentList.data-expansion-row {
+	margin-top: 20px;
 }
 
 .EquipmentList.data-expansion-cell.good {
@@ -98,29 +91,61 @@
 	text-align: center;
 }
 
-.EquipmentList.data-expansion-btn {
-	background-color: #cccccc;
-	color: #8f8f8f;
-	font-size: 130%;
-	border-radius: 20px;
-	font-weight: bold;
+.EquipmentList.create-equipment-self {
 	float: right;
-	margin: 0;
-	margin-right: 2%;
-	width: 40px;
+	margin: 0 2% 30px 0;
 	padding: 0;
 	/* width: 30%;
 	margin: auto;
 	display: block; */
+	width: 110px;
+	/* border: 1px solid red; */
+	position: relative;
+}
+
+.EquipmentList.data-expansion-btn {
+	background-color: #cccccc;
+	color: #8f8f8f;
+	font-size: 130%;
+	border-radius: 0 20px 20px 0;
+	font-weight: bold;
 	text-align: center;
 	transition: .3s;
 	box-shadow: 4px 4px 6px rgba(191, 191, 191, 0.3);
+	width: 35%;
+	height: 30px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
 }
 
 .EquipmentList.data-expansion-btn:hover {
 	background-color: #b3b3b3;
 	color: #474747;
 	box-shadow: 4px 4px 6px rgba(180, 180, 180, 0.7);
+}
+
+.EquipmentList.data-expansion-inp {
+	width: 65%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	height: 30px;
+	border-radius: 20px 0 0 20px;
+	border: 1px solid lightgrey;
+	transition: .4s;
+	font-style: italic;
+	padding-left: 8px;
+	font-size: 90%;
+	outline: 0;
+}
+
+.EquipmentList.data-expansion-inp:hover,
+.EquipmentList.data-expansion-inp:focus {
+	border: 1px solid black;
+	padding-left: 12px;
 }
 
 

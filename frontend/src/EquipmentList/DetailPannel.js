@@ -39,7 +39,10 @@ class DetailPannel extends React.Component {
       headers: {
         'Authorization': localStorage.getItem("accessToken"),
         'Content-Type': 'application/json',
-      }
+      },
+      body: JSON.stringify({
+        equipment_id: this.props.selectedEquipment.id
+      })
     };
 
     fetch(localStorage.getItem("apiHost") + '/equipments/' + this.props.selectedEquipment.id, requestOptions).then(
@@ -78,7 +81,7 @@ class DetailPannel extends React.Component {
           this.props.equipments.splice(this.props.selectedEquipment.arrayIndex, 1);
 
           // Call the update here to update locally AFTER the promise finised
-          this.props.updateDataLocally();
+          // this.props.updateDataLocally();
 
           this.props.updateSelectedEquipment({});
         }

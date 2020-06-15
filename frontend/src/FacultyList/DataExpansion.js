@@ -90,11 +90,13 @@ class DataExpansion extends React.Component {
       }
     ).then(
       major => {
+        // major will be '' if failed (returned '')
         if (major) {
           this.props.faculty.majors.push(major);
-
+          console.log("ABC");
           // Update locally
-          this.props.updateDataLocally(this.props.faculty);
+          // (setState later may update the list somehow so currently this is not needed)
+          // this.props.updateDataLocally(this.props.faculty);
 
           // Clear the id name name field
           this.setState({
@@ -143,7 +145,8 @@ class DataExpansion extends React.Component {
           this.props.faculty.majors.splice(major.arrayIndex, 1);
 
           // Call the update here to update locally AFTER the promise finised
-          this.props.updateDataLocally('faculties');
+          // this.props.updateDataLocally('faculties');
+          this.setState({});  // hacky way to update the list without updateDataLocally
         }
       }
     );

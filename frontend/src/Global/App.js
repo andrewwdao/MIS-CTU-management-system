@@ -25,10 +25,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // FOR DEBUG PURPOSES ONLY
-    this.__DEBUG();
-
     localStorage.setItem("apiHost", 'http://localhost:8000');
+
+    // FOR DEBUGING ONLY
+    this.__DEBUG();
   }
 
   componentWillUnmount() {
@@ -70,7 +70,7 @@ class App extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        refresh: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTU4OTk2MTI1OCwianRpIjoiMjM2OWEzM2UxNjVjNDU5NGI3ZDAwMDQzN2FhNDRjZTUiLCJ1c2VyX2lkIjoxfQ.3nvsjqbFw0JDFLEQftSEnRYlRBZWgNZzqv_08AF7XQ4'
+        refresh: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTU5MjMxMTkyMCwianRpIjoiYTRhYmQyZGRiZWM4NGUwMTk0ZDJkNmZmMWQ5ZTc2ZTYiLCJ1c2VyX2lkIjoxfQ.k5AuwxHAv2BfVy6WQS7IrMpzQXUb8hCCWbeISAdwuVs'
       })
     };
 
@@ -79,7 +79,7 @@ class App extends React.Component {
     ).then(
       token => {
         // this.setState({accessToken: 'Bearer ' + token.access});
-        console.log("OK");
+
         localStorage.setItem("accessToken", 'Bearer ' + token.access);
       }
     );
@@ -93,6 +93,7 @@ class App extends React.Component {
 
     // Get the new access token immediately
     // this.refreshToken();
+    console.log(this.state.refreshToken);
 
     // Refresh the token every 5 mins
     this.tokenRefresher = setInterval(this.refreshToken, 300000);
@@ -114,17 +115,16 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {/*
-          this.state.refreshToken ?
-            <Data
-              handleLogout={this.handleLogout}
-              />
-            :
-            <Login
-              handleSuccessfulLogin={this.handleSuccessfulLogin}
-              />
-          // <Data />
-          */
+        {
+          // this.state.refreshToken ?
+          //   <Data
+          //     handleLogout={this.handleLogout}
+          //     />
+          //   :
+          //   <Login
+          //     handleSuccessfulLogin={this.handleSuccessfulLogin}
+          //     />
+          
          <Data />
         }
       </div>
