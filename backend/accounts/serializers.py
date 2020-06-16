@@ -46,7 +46,7 @@ class StudentInfoSerializer(serializers.ModelSerializer):
 class ExtraInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = ExtraInfo
-        fiedls = ['identity_card', 'workplace']
+        fields = ['identity_card', 'workplace']
 
 
 class ResetPasswordSerializer(serializers.Serializer):
