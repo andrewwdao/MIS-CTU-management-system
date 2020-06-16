@@ -70,7 +70,7 @@ class App extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        refresh: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTU5MjMxMTkyMCwianRpIjoiYTRhYmQyZGRiZWM4NGUwMTk0ZDJkNmZmMWQ5ZTc2ZTYiLCJ1c2VyX2lkIjoxfQ.k5AuwxHAv2BfVy6WQS7IrMpzQXUb8hCCWbeISAdwuVs'
+        refresh: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTU5MjM5ODY1NiwianRpIjoiMDhmZTU5Y2E0YzNkNDI3ZWI3OTk3YmIwODE2NjIxNmUiLCJ1c2VyX2lkIjoxfQ.WbvZjn0XDFumDP7xXHUk5HuORmPh83DZkkna-qj8WQM'
       })
     };
 

@@ -57,7 +57,7 @@ class CreateUserPersonalSection extends React.Component {
   }
 
   handleChangeFaculty(e) {
-    this.props.handleChange(e);
+    // this.props.handleChange(e);
 
     this.setState({
       currentMajorList: this.state.majorLists[e.target.value]
@@ -70,11 +70,12 @@ class CreateUserPersonalSection extends React.Component {
       faculty => <option key={faculty.school_id} value={faculty.school_id}>{faculty.school_name}</option>
     )
 
-    let currentMajorList;
+    let currentMajorList = [];
     try {
       currentMajorList = this.state.currentMajorList.map(
-        major => <option key={major.major_id} value={major.major_id}>{major.major_name}</option>
-      )
+        major => <option key={major.id} value={major.id}>{major.major_name}</option>
+      );
+      currentMajorList.unshift(<option key="0" value="">-- Select a major --</option>);
     }
     catch(e) {
       currentMajorList = [];
@@ -88,7 +89,8 @@ class CreateUserPersonalSection extends React.Component {
             name="studentID"
             label="Student ID"
             value={this.props.studentID}
-            handleChange={this.props.handleChange} />
+            handleChange={this.props.handleChange}
+            />
         </div>
         <div className="UserList-create-user-inp-container col-12-sm">
           <InputFilled
@@ -96,12 +98,13 @@ class CreateUserPersonalSection extends React.Component {
               name="classID"
               label="Class ID"
               value={this.props.classID}
-              handleChange={this.props.handleChange} />
+              handleChange={this.props.handleChange}
+              />
         </div>
         <div className="UserList-create-user-inp-container col-12-sm">
           <div className="inp-filled-container">
             <label>
-              <select value={this.props.faculty} name="faculty" onChange={this.handleChangeFaculty} className="inp-filled">
+              <select name="faculty" onChange={this.handleChangeFaculty} className="inp-filled">
                 {facultyList}
               </select>
               <span className="inp-filled-label inp-has-content">Faculty</span>
@@ -123,21 +126,27 @@ class CreateUserPersonalSection extends React.Component {
 
     var otherInfoSection = (
       <div className="col-12-sm">
-        <div className="UserList-create-user-inp-container col-12-sm">
-          <InputFilled
-            type="text"
-            name="organization"
-            label="Organization"
-            value={this.props.organization}
-            handleChange={this.props.handleChange} />
-        </div>
+        {
+          this.props.workPlace !== 'ctu' &&
+          <div className="UserList-create-user-inp-container col-12-sm">
+            <InputFilled
+              type="text"
+              name="organization"
+              label="Organization"
+              value={this.props.organization}
+              handleChange={this.props.handleChange}
+              />
+          </div>
+        }
+        
         <div className="UserList-create-user-inp-container col-12-sm">
           <InputFilled
             type="number"
             name="identityCard"
             label="Identity Card number"
             value={this.props.identityCard}
-            handleChange={this.props.handleChange} />
+            handleChange={this.props.handleChange}
+            />
         </div>
       </div>
     );
@@ -153,7 +162,8 @@ class CreateUserPersonalSection extends React.Component {
             name="firstName"
             label="First name"
             value={this.props.firstName}
-            handleChange={this.props.handleChange} />
+            handleChange={this.props.handleChange}
+            />
         </div>
         <div className="UserList-create-user-inp-container col-12-sm">
           <InputFilled
@@ -161,7 +171,8 @@ class CreateUserPersonalSection extends React.Component {
             name="lastName"
             label="Last name"
             value={this.props.lastName}
-            handleChange={this.props.handleChange} />
+            handleChange={this.props.handleChange}
+            />
         </div>
         <div className="UserList-create-user-inp-container col-8-sm">
           <InputFilled
@@ -169,7 +180,8 @@ class CreateUserPersonalSection extends React.Component {
             name="dob"
             label="Date of birth"
             value={this.props.dob}
-            handleChange={this.props.handleChange} />
+            handleChange={this.props.handleChange}
+            />
         </div>
         <div className="UserList-create-user-inp-container col-4-sm">
           <div className="inp-filled-container">
@@ -184,11 +196,13 @@ class CreateUserPersonalSection extends React.Component {
         </div>
         <div className="UserList-create-user-inp-container col-12-sm">
           <InputFilled
-            type="number"
+            type="text"
+            maxLength="12"
             name="phone"
             label="Phone number"
             value={this.props.phone}
-            handleChange={this.props.handleChange} />
+            handleChange={this.props.handleChange}
+            />
         </div>
         <div className="UserList-create-user-inp-container col-12-sm">
           <div className="inp-filled-container">
@@ -201,7 +215,8 @@ class CreateUserPersonalSection extends React.Component {
             </label>
           </div>
         </div>
-        {this.props.workPlace === "ctu" ? studentInfoSection : otherInfoSection }
+        { this.props.workPlace === "ctu" && studentInfoSection }
+        { otherInfoSection }
       </div>
     );
   }

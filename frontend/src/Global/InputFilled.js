@@ -8,6 +8,7 @@ class InputFilled extends React.Component {
           <input
             className="inp-filled"
             type={this.props.type}
+            maxLength={this.props.maxLength ? this.props.maxLength : 200}
             name={this.props.name}
             onChange={this.props.handleChange}
             value={this.props.value} />

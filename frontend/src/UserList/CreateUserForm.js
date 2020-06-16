@@ -29,11 +29,14 @@ class CreateUserForm extends React.Component {
 
       studentID: '',
       classID: '',
-      faculty: '',
+      // faculty: '',
       major: '',
 
       organization: '',
       identityCard: '',
+
+      errorModalMessage: '',
+      errorModalActive: false,
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -74,36 +77,31 @@ class CreateUserForm extends React.Component {
       },
       body: JSON.stringify({
         email: this.state.email,
-        role: Number(this.state.role),
+        role: this.state.role, //Number(this.state.role),
         first_name: this.state.firstName,
         last_name: this.state.lastName,
-        // js dob format yyyy-mm-dd -> dd/mm/yy
-        birth_date: this.state.dob.substring(8, 10) + "/" + this.state.dob.substring(5, 7) + "/" + this.state.dob.substring(0, 4),
-        phonenumber: this.state.phone,
+        birth_date: this.state.dob,
+        phonenumber: this.state.phone[0] === '+' ? this.state.phone : "+84" + this.state.phone.slice(1), // 0xxxxxxxxx -> +84xxxxxxxxx
         gender: this.state.gender,
-        // avatar: this.state.avatar,
+        avatar: null, //this.state.avatar,
         student_info: {
           student_id: this.state.studentID,
           class_id: this.state.classID,
           major: this.state.major,
-          school: this.state.faculty
+          // school: this.state.faculty
         },
         extra_info: {
-          identity_id: this.state.identityCard,
-          workplace: this.state.organization
+          identity_card: this.state.identityCard,
+          workplace: this.state.workPlace !== 'ctu' ? this.props.organization : 'Can Tho University', // Set default workplace for CTU
         }
       })
     };
 
-    try {
-      fetch('http://127.0.0.1:8000/users/', requestOptions).then(
-        res => res.json()
-      ).then(
-        data => console.log(data)
-      );
-    } catch(e) {
-      console.log(e);
-    }
+    fetch(localStorage.getItem("apiHost") + '/users/', requestOptions).then(
+      res => res.json()
+    ).then(
+      data => console.log(data)
+    );
   }
 
   render() {
@@ -128,7 +126,7 @@ class CreateUserForm extends React.Component {
           workPlace={this.state.workPlace}
           studentID={this.state.studentID}
           classID={this.state.classID}
-          faculty={this.state.faculty}
+          // faculty={this.state.faculty}
           major={this.state.major}
           organization={this.state.organization}
           identityCard={this.state.identityCard}
