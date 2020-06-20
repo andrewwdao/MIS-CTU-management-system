@@ -13,7 +13,12 @@ class CreateUserModal extends React.Component {
           <div className="modal-header">Add</div>
           <div className="modal-body UserList-create-user-modal-body">
             <CreateUserForm
-              accessToken={this.props.accessToken} />
+              toggleModal={this.props.toggleModal}
+              users={this.props.users}
+              user={this.props.user}
+              updateDataLocally={this.props.updateDataLocally}
+              updateSelectedUser={this.props.updateSelectedUser}
+              />
           </div>
         </div>
       </div>

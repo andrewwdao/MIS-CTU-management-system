@@ -11,9 +11,9 @@ class EquipmentList extends React.Component {
           toggleInlabFilter={this.props.toggleInlabFilter}
           inlabFilter={this.props.inlabFilter}
           searchFilter={this.props.searchFilter}
+          equipments={this.props.equipments}
           handleFilterChange={this.props.handleFilterChange}
           getDataList={this.props.getDataList}
-          equipments={this.props.equipments}
           updateDataLocally={this.props.updateDataLocally}
           />
 
@@ -21,6 +21,7 @@ class EquipmentList extends React.Component {
           equipments={this.props.equipments}
           inlabFilter={this.props.inlabFilter}
           searchFilter={this.props.searchFilter}
+          updateDataLocally={this.props.updateDataLocally}
           />
       </div>
     );

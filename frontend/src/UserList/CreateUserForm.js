@@ -2,6 +2,7 @@ import React from 'react';
 
 import CreateUserPersonalSection from './CreateUserPersonalSection';
 import CreateUserAccountSection from './CreateUserAccountSection';
+import GeneralPurposeModal from '../Global/GeneralPurposeModal';
 
 import imgBtn from '../images/image.png';
 
@@ -41,29 +42,43 @@ class CreateUserForm extends React.Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.toggleErrorModal = this.toggleErrorModal.bind(this);
   }
 
-    handleInputChange(e) {
-      // SEARCH FOR "file upload image preview react" or "filereader image react" (StackOverflow)
-      if (e.target.type === "file") {
-        var file = e.target.files[0];
+  componentDidMount() {
+    const user = this.props.user;
+    if (user) {
+      this.setState({});
+    }
+  }
 
-        if (file && file.type.match('image.*')) {
-          var reader = new FileReader();
-          reader.readAsDataURL(file);
+  handleInputChange(e) {
+    // SEARCH FOR "file upload image preview react" or "filereader image react" (StackOverflow)
+    if (e.target.type === "file") {
+      var file = e.target.files[0];
 
-          reader.onloadend = function(e) {
-            this.setState({
-              avatar: [reader.result]
-            });
+      if (file && file.type.match('image.*')) {
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
 
-          }.bind(this);
-        }
-      } else {
-        this.setState({
-          [e.target.name]: e.target.value
-        });
+        reader.onloadend = function(e) {
+          this.setState({
+            avatar: [reader.result]
+          });
+
+        }.bind(this);
       }
+    } else {
+      this.setState({
+        [e.target.name]: e.target.value
+      });
+    }
+  }
+
+  toggleErrorModal() {
+    this.setState({
+      errorModalActive: !this.state.errorModalActive
+    });
   }
 
   handleFormSubmit(e) {
@@ -100,49 +115,57 @@ class CreateUserForm extends React.Component {
     fetch(localStorage.getItem("apiHost") + '/users/', requestOptions).then(
       res => res.json()
     ).then(
-      data => console.log(data)
+      data => {
+        for (let key in data) {
+          for (let subKey in data[key]) {
+            console.log((subKey !== "0" ? subKey : key) + " " + data[key][subKey]);
+          }
+        }
+      }
     );
   }
 
   render() {
     return (
-      <form method="POST" className="UserList-create-user-form" onSubmit={this.handleFormSubmit}>
-        <CreateUserAccountSection
-          avatar={this.state.avatar}
-          username={this.state.username}
-          password={this.state.password}
-          repassword={this.state.repassword}
-          email={this.state.email}
-          role={this.state.role}
-          expDate={this.state.expDate}
-          handleChange={this.handleInputChange} />
+      <div>
+        <form className="UserList-create-user-form" onSubmit={this.handleFormSubmit}>
+          <CreateUserAccountSection
+            avatar={this.state.avatar}
+            username={this.state.username}
+            password={this.state.password}
+            repassword={this.state.repassword}
+            email={this.state.email}
+            role={this.state.role}
+            expDate={this.state.expDate}
+            handleChange={this.handleInputChange} />
 
-        <CreateUserPersonalSection
-          firstName={this.state.firstName}
-          lastName={this.state.lastName}
-          dob={this.state.dob}
-          gender={this.state.gender}
-          phone={this.state.phone}
-          workPlace={this.state.workPlace}
-          studentID={this.state.studentID}
-          classID={this.state.classID}
-          // faculty={this.state.faculty}
-          major={this.state.major}
-          organization={this.state.organization}
-          identityCard={this.state.identityCard}
+          <CreateUserPersonalSection
+            firstName={this.state.firstName}
+            lastName={this.state.lastName}
+            dob={this.state.dob}
+            gender={this.state.gender}
+            phone={this.state.phone}
+            workPlace={this.state.workPlace}
+            studentID={this.state.studentID}
+            classID={this.state.classID}
+            // faculty={this.state.faculty}
+            major={this.state.major}
+            organization={this.state.organization}
+            identityCard={this.state.identityCard}
 
-          accessToken={this.props.accessToken}
+            accessToken={this.props.accessToken}
 
-          handleChange={this.handleInputChange} />
+            handleChange={this.handleInputChange} />
 
-        <div className="UserList-create-user-btn-group">
-          <input
-            className="btn UserList-create-user-modal-btn"
-            type="submit"
-            value="Add"
-            onClick={this.handleFormSubmit} />
-        </div>
-      </form>
+          <div className="UserList-create-user-btn-group">
+            <input
+              className="btn UserList-create-user-modal-btn"
+              type="submit"
+              value="Add"
+              onClick={this.handleFormSubmit} />
+          </div>
+        </form>
+      </div>
     );
   }
 

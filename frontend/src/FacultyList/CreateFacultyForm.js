@@ -136,7 +136,7 @@ class CreateFacultyForm extends React.Component {
             }
 
             // Update the list locally by calling the setState in the props function
-            this.props.updateDataLocally('faculties');
+            this.props.updateDataLocally();
 
             // Only clear the state if the modal is spawned from Top
             // The one from Top will stay mounted, as opposed to the on from DetailPannel will get unmounted
@@ -149,9 +149,6 @@ class CreateFacultyForm extends React.Component {
                 name: '',
                 photo: imgBtn,
               });
-            } else {
-              // Update the list
-              this.setState({});
             }
           }
         }
@@ -171,7 +168,7 @@ class CreateFacultyForm extends React.Component {
           okClick={this.toggleErrorModal}
           />
 
-        <form method="POST" className="FacultyList-create-faculty-form" onSubmit={this.handleFormSubmit}>
+        <form className="FacultyList-create-faculty-form" onSubmit={this.handleFormSubmit}>
           <PhotoInput
               handleChange={this.handleInputChange}
               img={this.state.photo} />

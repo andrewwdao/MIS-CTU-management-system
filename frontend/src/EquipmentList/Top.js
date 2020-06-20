@@ -31,7 +31,6 @@ class Top extends React.Component {
         <CreateEquipmentModal
           modalActive={this.state.createEquipmentModalActive}
           toggleModal={this.toggleCreateEquipmentModal}
-          accessToken={this.props.accessToken}
           equipments={this.props.equipments}
           updateDataLocally={this.props.updateDataLocally}
           />

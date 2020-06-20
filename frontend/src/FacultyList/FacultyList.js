@@ -10,9 +10,9 @@ class FacultyList extends React.Component {
         <Top
           searchFilter={this.props.searchFilter}
           handleFilterChange={this.props.handleFilterChange}
+          faculties={this.props.faculties}
           getDataList={this.props.getDataList}
           updateDataLocally={this.props.updateDataLocally}
-          faculties={this.props.faculties}
           />
 
         <Body

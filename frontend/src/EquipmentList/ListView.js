@@ -12,6 +12,8 @@ class ListView extends React.Component {
       // if yes, we call updateSelectedEquipment to update info in the Detail pannel
       selectedEquipmentId: '',
     };
+
+    this.updateSelectedEquipment = this.updateSelectedEquipment.bind(this);
   }
 
   // Track the selected equipment ID and update the info on Detail pannel
@@ -42,7 +44,7 @@ class ListView extends React.Component {
                 equipments={this.props.equipments}
                 inlabFilter={this.props.inlabFilter}
                 selectedEquipmentId={this.props.selectedEquipmentId}
-                updateSelectedEquipment={this.props.updateSelectedEquipment}
+                updateSelectedEquipment={this.updateSelectedEquipment}
                 toggleDetailPannelModal={this.props.toggleDetailPannelModal}
                 />
             );
