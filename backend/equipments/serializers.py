@@ -84,7 +84,8 @@ class RentDetailSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = RentDetail
-		fields = ['id', 'device', 'deliver_status', 'return_status']
+		fields = ['id', 'device', 'description', 
+		'deliver_status', 'return_status']
 
 
 class RentDetailReturnSerializer(serializers.ModelSerializer):
@@ -92,7 +93,7 @@ class RentDetailReturnSerializer(serializers.ModelSerializer):
 	
 	class Meta:
 		model = RentDetail
-		fields = ['id', 'return_status']
+		fields = ['id', 'description', 'return_status']
 
 
 class RentReadSerializer(serializers.ModelSerializer):

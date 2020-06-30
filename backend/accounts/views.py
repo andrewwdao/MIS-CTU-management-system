@@ -1,4 +1,5 @@
 from rest_framework import status
+from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -79,3 +80,11 @@ UpdateModelMixin, GenericViewSet):
     # @action(detail=True, methods=['post'])
     # def check(self, request, pk=None):
     #     pass
+
+
+class CurrentUserRoleAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request):
+        data = {'role': request.user.get_role_display()}
+        return Response(data=data, status=status.HTTP_200_OK)

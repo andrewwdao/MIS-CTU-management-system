@@ -200,6 +200,21 @@ urlpatterns = [] + router.urls
 """
 
 """
+@api {delete} /equipments/:id/ Xoa trang thiet bi
+@apiName DeleteEquipment 
+@apiGroup Equipment
+@apiPermission staff
+@apiHeader {String} Authorization Access JSON Web token.
+
+@apiParam {String} id ID Trang thiet bi
+
+@apiSuccess {Number} id ID Trang thiet bi
+
+@apiSuccessExample {json} Success-Response:
+    HTTP/1.1 204 No Content
+"""
+
+"""
 @api {post} /devices/ Tao trang thiet bi moi
 @apiName CreateDevice 
 @apiGroup Device
@@ -267,4 +282,17 @@ urlpatterns = [] + router.urls
         "device_number": 5,
         "device_status": 2
     }
+"""
+
+"""
+@api {delete} /devices/:id/ Xoa chi tiet trang thiet bi
+@apiName DeleteDevice
+@apiGroup Device
+@apiPermission staff
+@apiHeader {String} Authorization Access JSON Web token.
+
+@apiParam {Number} id ID chi tiet trang thiet bi
+
+@apiSuccessExample {json} Success-Response:
+    HTTP/1.1 204 No Content
 """

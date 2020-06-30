@@ -1,7 +1,7 @@
 from django.urls import path 
 from rest_framework.routers import SimpleRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from .views import SchoolViewSet, MajorViewSet, UserViewSet
+from .views import SchoolViewSet, MajorViewSet, UserViewSet, CurrentUserRoleAPIView
 
 router = SimpleRouter()
 router.register('schools', SchoolViewSet, basename='school')
@@ -10,7 +10,8 @@ router.register('users', UserViewSet, basename='user')
 
 urlpatterns = [
     path('auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh')
+    path('auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('current_user/role/', CurrentUserRoleAPIView.as_view(), name='current_user_role')
 ] + router.urls
 
 """
@@ -40,13 +41,27 @@ urlpatterns = [
 @apiParam {String} refresh JSON Web Refresh token
 
 @apiSuccess {String} access JSON Web Access token.
-@apiSuccessExample {json} Sucess-Response:
+@apiSuccessExample {json} Success-Response:
     HTTP/1.1 200 OK
     {
         "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTg0NjkyNTAxLCJqdGkiOiI5MzgyZThkZTNkZjg0MTk4ODU3ZjFiODVkNzBmNGZlMiIsInVzZXJfaWQiOjF9.Ll8th-HNYswVisYiJOSK8pkKTBqVXkykvMG4LiMOp9w"
     }
  
 """
+
+"""
+@api {get} /current_user/role/ Lấy tên phân quyền của người dùng hiện thời
+@apiName GetRole
+@apiGroup Authentication
+
+@apiSuccess {String} role Current user role.
+@apiSuccessExample {json} Success-Response:
+    HTTP/1.1 200 OK
+    {
+        "role": "Quản trị viên"
+    }
+"""
+
 """
 @api {get} /schools/ Lấy danh sách các khoa viện
 @apiName ListSchools 
@@ -97,13 +112,13 @@ urlpatterns = [
     } 
 """
 """
-@api {get} /schools/:school_id/ Lấy thông tin chi tiết của khoa viện 
+@api {get} /schools/:id/ Lấy thông tin chi tiết của khoa viện 
 @apiName GetSchool
 @apiGroup School
 @apiPermission admin 
 @apiHeader {String} Authorization Access JSON Web token
 
-@apiParam {String} school_id Mã khoa viện.
+@apiParam {String} id Mã khoa viện.
 @apiSuccess {String} id ID Khoa viện
 @apiSuccess {String} school_id Mã khoa viện.
 @apiSuccess {String} school_name Tên khoa viện
@@ -134,13 +149,13 @@ urlpatterns = [
     }
 """
 """
-@api {patch} /schools/:school_id/ Cập nhật thông tin khoa viện
+@api {patch} /schools/:id/ Cập nhật thông tin khoa viện
 @apiName UpdateSchool
 @apiGroup School
 @apiPermission admin
 @apiHeader {String} Authorization Access JSON Web token
 
-@apiParam {String} school_id Mã khoa viện.
+@apiParam {String} id Mã khoa viện.
 @apiParam {String} [school_id] Mã khoa viện cập nhật 
 @apiParam {String} [school_name] Tên khoa viện cập nhật 
 
@@ -162,7 +177,7 @@ urlpatterns = [
  
 """
 """
-@api {delete} /schools/:school_id/ Xóa khoa viện
+@api {delete} /schools/:id/ Xóa khoa viện
 @apiName DeleteSchool
 @apiGroup School
 @apiPermission admin

@@ -11,8 +11,7 @@ DeviceListSerializer, DeviceCreateSerializer, DeviceUpdateSerializer, RentCreate
 from accounts.permissions import IsStaff
 
 
-class EquipmentViewSet(ListModelMixin, CreateModelMixin, 
-RetrieveModelMixin, UpdateModelMixin, GenericViewSet):
+class EquipmentViewSet(ModelViewSet):
 	queryset = Equipment.objects.all()
 	# permission_classes = [IsAuthenticated, IsStaff]
 	
@@ -30,7 +29,7 @@ RetrieveModelMixin, UpdateModelMixin, GenericViewSet):
 
 
 class DeviceViewSet(CreateModelMixin, RetrieveModelMixin, 
-UpdateModelMixin, GenericViewSet):
+UpdateModelMixin, DestroyModelMixin, GenericViewSet):
 	queryset = Device.objects.all()
 	# permission_classes = [IsAuthenticated, IsStaff]
 

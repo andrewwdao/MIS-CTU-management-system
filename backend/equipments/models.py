@@ -21,6 +21,7 @@ class Device(models.Model):
     )
     device_number = models.PositiveSmallIntegerField()
     device_status = models.PositiveSmallIntegerField(choices=STATUS_CHOICES ,default=1)
+    condition = models.CharField(max_length=1024, blank=True)
     in_used = models.BooleanField(default=False)
     equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE, related_name="devices")
 
@@ -44,5 +45,6 @@ class RentDetail(models.Model):
     )
     rent = models.ForeignKey(Rent, related_name='details', on_delete=models.CASCADE)
     device = models.ForeignKey(Device, related_name='devices', on_delete=models.CASCADE)
+    description = models.CharField(max_length=1024, blank=True)
     deliver_status= models.PositiveSmallIntegerField(choices=STATUS_CHOICES)
     return_status = models.PositiveSmallIntegerField(choices=STATUS_CHOICES, null=True)
