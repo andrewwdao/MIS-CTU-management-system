@@ -17,6 +17,7 @@ class CreateFacultyModal extends React.Component {
               faculties={this.props.faculties}
               faculty={this.props.faculty}
               updateDataLocally={this.props.updateDataLocally}
+              updateSelectedFaculty={this.props.updateSelectedFaculty}
               />
           </div>
         </div>

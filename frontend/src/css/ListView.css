@@ -223,7 +223,7 @@
 	top: 50px;
 	bottom: 20px;
 	width: 90%;
-	left: 5%;
+	/* left: 5%; */
 	/*transform: translate(-50%, 0);*/
 	display: unset;
 }
@@ -266,7 +266,7 @@
 }
 
 .detail-info-content {
-	display: inline-block;
+	/* display: inline-block; */
 	text-align: left;
 	float: right;
 	width: 60%;

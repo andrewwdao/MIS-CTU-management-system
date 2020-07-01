@@ -138,6 +138,11 @@ class CreateFacultyForm extends React.Component {
             // Update the list locally by calling the setState in the props function
             this.props.updateDataLocally();
 
+            // Update detail pannel in case of editing equipment from detail pannel
+            if (this.props.updateSelectedFaculty) {
+              this.props.updateSelectedFaculty(faculty);
+            }
+
             // Only clear the state if the modal is spawned from Top
             // The one from Top will stay mounted, as opposed to the on from DetailPannel will get unmounted
             // so we don't need to update the state of the one from DetailPannel

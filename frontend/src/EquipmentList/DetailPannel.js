@@ -16,13 +16,13 @@ class DetailPannel extends React.Component {
       errorModalMessage: '',
       errorModalActive: false,
 
-      createEquipmentModalActive: false,
+      editEquipmentModalActive: false,
     };
 
     this.toggleDeleteConfirmationModal = this.toggleDeleteConfirmationModal.bind(this);
     this.toggleErrorModal = this.toggleErrorModal.bind(this);
     this.removeEquipment = this.removeEquipment.bind(this);
-    this.toggleCreateEquipmentModal = this.toggleCreateEquipmentModal.bind(this);
+    this.toggleEditEquipmentModal = this.toggleEditEquipmentModal.bind(this);
   }
 
   toggleErrorModal() {
@@ -37,9 +37,9 @@ class DetailPannel extends React.Component {
     });
   }
 
-  toggleCreateEquipmentModal() {
+  toggleEditEquipmentModal() {
     this.setState({
-      createEquipmentModalActive: !this.state.createEquipmentModalActive
+      editEquipmentModalActive: !this.state.editEquipmentModalActive
     });
   }
 
@@ -105,10 +105,10 @@ class DetailPannel extends React.Component {
     return (
       <div>
         {
-          this.state.createEquipmentModalActive &&
+          this.state.editEquipmentModalActive &&
           <CreateEquipmentModal
-            modalActive={this.state.createEquipmentModalActive}
-            toggleModal={this.toggleCreateEquipmentModal}
+            modalActive={this.state.editEquipmentModalActive}
+            toggleModal={this.toggleEditEquipmentModal}
             equipments={this.props.equipments}
             equipment={this.props.selectedEquipment}
             updateDataLocally={this.props.updateDataLocally}
@@ -188,7 +188,7 @@ class DetailPannel extends React.Component {
                     />
 
                   <div className="detail-pannel-btn-group">
-                    <button className="btn info detail-pannel-btn" onClick={this.toggleCreateEquipmentModal }>EDIT</button>
+                    <button className="btn info detail-pannel-btn" onClick={this.toggleEditEquipmentModal }>EDIT</button>
                     <button onClick={this.toggleDeleteConfirmationModal} className="btn caution detail-pannel-btn">
                       DELETE
                     </button>

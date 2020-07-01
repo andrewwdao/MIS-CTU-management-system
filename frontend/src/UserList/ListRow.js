@@ -49,7 +49,7 @@ class ListRow extends React.Component {
           {
             this.props.user.student_info ?
               this.props.user.student_info.student_id :
-              this.props.user.extra_info.identity_card
+                (this.props.user.extra_info && this.props.user.extra_info.identity_card) // If the first statment of && is false (null; user detail info is not yet fetched), the later one won't be executed
           }
         </div>
         <div className="UserList list-view-data name">{this.props.user.last_name + ' ' + this.props.user.first_name}</div>
