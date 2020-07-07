@@ -37,10 +37,10 @@ class Body extends React.Component {
           selectedUser={this.state.selectedUser}
           modalActive={this.state.detailPannelModalActive}
           toggleModal={this.toggleDetailPannelModal}
+          users={this.props.users}
+          updateDataLocally={this.props.updateDataLocally}
           />
         <ListView
-          accessToken={this.props.accessToken}
-          host={this.props.host}
           users={this.props.users}
           updateSelectedUser={this.updateSelectedUser}
           inlabFilter={this.props.inlabFilter}

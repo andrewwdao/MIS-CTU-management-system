@@ -45,9 +45,21 @@ class ListRow extends React.Component {
                             ''
 		return (
       <div onClick={this.toggleUserDataExpansion} className="list-view-main-row" tabIndex="0">
-        <div className={'UserList list-view-data id' + statusClass} onClick={this.updateSelectedUser}>{this.props.user.id}</div>
-        <div className="UserList list-view-data name">{this.props.user.name}</div>
-        <div className="UserList list-view-data major">{this.props.user.major}</div>
+        <div className={'UserList list-view-data id' + statusClass} onClick={this.updateSelectedUser}>
+          {
+            this.props.user.student_info ?
+              this.props.user.student_info.student_id :
+                (this.props.user.extra_info && this.props.user.extra_info.identity_card) // If the first statment of && is false (null; user detail info is not yet fetched), the later one won't be executed
+          }
+        </div>
+        <div className="UserList list-view-data name">{this.props.user.last_name + ' ' + this.props.user.first_name}</div>
+        <div className="UserList list-view-data major">
+          {
+            this.props.user.student_info ?
+              this.props.user.student_info.major :
+              (this.props.user.extra_info ? this.props.user.extra_info.workplace : 'ADMIN')
+          }
+        </div>
         <div className="UserList list-view-data time-in">
           {
             this.props.user.timeIn ?  // User in lab?

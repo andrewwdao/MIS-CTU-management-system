@@ -10,13 +10,14 @@ class CreateEquipmentModal extends React.Component {
         </div>
         <div className="modal-container EquipmentList-modal-container">
           <button onClick={this.props.toggleModal} className="modal-close-btn">✖</button>
-          <div className="modal-header">Create</div>
+          <div className="modal-header">{this.props.equipment ? this.props.equipment.equipment_name : 'Create'}</div>
           <div className="modal-body EquipmentList-create-equipment-modal-body">
             <CreateEquipmentForm
-              accessToken={this.props.accessToken}
               toggleModal={this.props.toggleModal}
               equipments={this.props.equipments}
+              equipment={this.props.equipment}
               updateDataLocally={this.props.updateDataLocally}
+              updateSelectedEquipment={this.props.updateSelectedEquipment}
               />
           </div>
         </div>

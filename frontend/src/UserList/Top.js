@@ -10,7 +10,12 @@ class Top extends React.Component {
       createUserModalActive: false,  // Whether or not the create user modal should show
     }
 
+    this.getDataList = this.getDataList.bind(this);
     this.toggleCreateUserModal = this.toggleCreateUserModal.bind(this);
+  }
+
+  getDataList() {
+    this.props.getDataList('equipments', 'equipments');
   }
 
   // Show/hide the create user modal
@@ -26,7 +31,9 @@ class Top extends React.Component {
         <CreateUserModal
           modalActive={this.state.createUserModalActive}
           toggleModal={this.toggleCreateUserModal}
-          accessToken={this.props.accessToken} />
+          users={this.props.users}
+          updateDataLocally={this.props.updateDataLocally}
+          />
 
         <div className="top">
           <div className="top-search-section">

@@ -6,6 +6,7 @@ import DataExpansion from './DataExpansion';
 
 class DetailPannel extends React.Component {
   render() {
+    console.log(this.props.selectedUser);
     return (
       <div className={`${this.props.modalActive ? 'show' : ''}`}>
         <div onClick={this.props.toggleModal} className="modal-background mobile-only">
@@ -27,7 +28,13 @@ class DetailPannel extends React.Component {
                 ID:
               </div>
               <div className="detail-info-content">
-                {this.props.selectedUser.id ? this.props.selectedUser.id : '____________'}
+              {
+                this.props.selectedUser.student_info ?
+                  this.props.selectedUser.student_info.student_id :
+                    (this.props.selectedUser.extra_info ?
+                      this.props.selectedUser.extra_info.identity_card :
+                      '_________')
+              }
               </div>
             </div>
             <div className="detail-info center">
@@ -35,7 +42,10 @@ class DetailPannel extends React.Component {
                 Name:
               </div>
               <div className="detail-info-content">
-                {this.props.selectedUser.name ? this.props.selectedUser.name : '___________________'}
+                {this.props.selectedUser.first_name ?
+                  this.props.selectedUser.last_name + ' ' + this.props.selectedUser.first_name :
+                  '___________________'
+                }
               </div>
             </div>
             <div className="detail-info center">
@@ -56,18 +66,25 @@ class DetailPannel extends React.Component {
             </div>
             <div className="detail-info center">
               <div className="detail-info-label">
-                Major:
+                Work place:
               </div>
               <div className="detail-info-content">
-                {this.props.selectedUser.major ? this.props.selectedUser.major : '___________________'}
+              {
+                this.props.selectedUser.extra_info ?
+                  this.props.selectedUser.extra_info.workplace :
+                  '_____________'
+              }
               </div>
             </div>
             <div className="detail-info center">
               <div className="detail-info-label">
-                Faculty:
+                Major:
               </div>
               <div className="detail-info-content">
-                {this.props.selectedUser.faculty ? this.props.selectedUser.faculty : '________________'}
+                {this.props.selectedUser.student_info ?
+                  this.props.selectedUser.student_info.major : 
+                  '___________________'
+                }
               </div>
             </div>
 

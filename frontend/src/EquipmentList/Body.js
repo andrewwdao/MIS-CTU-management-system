@@ -40,6 +40,7 @@ class Body extends React.Component {
           toggleModal={this.toggleDetailPannelModal}
           equipments={this.props.equipments}
           updateDataLocally={this.props.updateDataLocally}
+          updateSelectedEquipment={this.updateSelectedEquipment}
           />
         <ListView
           equipments={this.props.equipments}

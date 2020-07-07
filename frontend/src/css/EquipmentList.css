@@ -73,7 +73,7 @@
 }
 
 .EquipmentList.data-expansion-cell {
-	/*border: 1px solid red;*/
+	/* border: 1px solid red; */
 	padding: 0 1% 0 1%;
 }
 
@@ -82,12 +82,12 @@
 }
 
 .EquipmentList.data-expansion-cell.description {
-	width: 50%;
+	width: 45%;
 	text-align: center;
 }
 
 .EquipmentList.data-expansion-cell.action {
-	width: 35%;
+	width: 30%;
 	text-align: center;
 }
 

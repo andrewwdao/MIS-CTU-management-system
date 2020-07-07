@@ -4,6 +4,7 @@ import imgPlaceholder from '../images/photo.png';
 
 import DataExpansion from './DataExpansion';
 import GeneralPurposeModal from '../Global/GeneralPurposeModal';
+import CreateEquipmentModal from './CreateEquipmentModal';
 
 class DetailPannel extends React.Component {
   constructor(props) {
@@ -14,11 +15,14 @@ class DetailPannel extends React.Component {
 
       errorModalMessage: '',
       errorModalActive: false,
+
+      editEquipmentModalActive: false,
     };
 
     this.toggleDeleteConfirmationModal = this.toggleDeleteConfirmationModal.bind(this);
     this.toggleErrorModal = this.toggleErrorModal.bind(this);
     this.removeEquipment = this.removeEquipment.bind(this);
+    this.toggleEditEquipmentModal = this.toggleEditEquipmentModal.bind(this);
   }
 
   toggleErrorModal() {
@@ -30,6 +34,12 @@ class DetailPannel extends React.Component {
   toggleDeleteConfirmationModal() {
     this.setState({
       removeConfirmationModalActive: !this.state.removeConfirmationModalActive
+    });
+  }
+
+  toggleEditEquipmentModal() {
+    this.setState({
+      editEquipmentModalActive: !this.state.editEquipmentModalActive
     });
   }
 
@@ -94,6 +104,18 @@ class DetailPannel extends React.Component {
   render() {
     return (
       <div>
+        {
+          this.state.editEquipmentModalActive &&
+          <CreateEquipmentModal
+            modalActive={this.state.editEquipmentModalActive}
+            toggleModal={this.toggleEditEquipmentModal}
+            equipments={this.props.equipments}
+            equipment={this.props.selectedEquipment}
+            updateDataLocally={this.props.updateDataLocally}
+            updateSelectedEquipment={this.props.updateSelectedEquipment}
+            />
+        }
+
         <GeneralPurposeModal
           active={this.state.removeConfirmationModalActive}
           toggle={this.toggleDeleteConfirmationModal}
@@ -166,7 +188,7 @@ class DetailPannel extends React.Component {
                     />
 
                   <div className="detail-pannel-btn-group">
-                    <button className="btn info detail-pannel-btn">EDIT</button>
+                    <button className="btn info detail-pannel-btn" onClick={this.toggleEditEquipmentModal }>EDIT</button>
                     <button onClick={this.toggleDeleteConfirmationModal} className="btn caution detail-pannel-btn">
                       DELETE
                     </button>

@@ -14,9 +14,10 @@ class CreateFacultyModal extends React.Component {
           <div className="modal-body FacultyList-create-faculty-modal-body">
             <CreateFacultyForm
               toggleModal={this.props.toggleModal}
-              updateDataLocally={this.props.updateDataLocally}
               faculties={this.props.faculties}
               faculty={this.props.faculty}
+              updateDataLocally={this.props.updateDataLocally}
+              updateSelectedFaculty={this.props.updateSelectedFaculty}
               />
           </div>
         </div>
