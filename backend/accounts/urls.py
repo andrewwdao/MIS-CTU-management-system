@@ -425,75 +425,6 @@ urlpatterns = [
 """
 
 """
-@api {get} /majors/ Lay danh sach cac nghanh hoc
-@apiName GetMajorList
-@apiGroup Majors
-@apiPermission admin technician 
-
-@apiHeader {String} Authorization Access JSON Web token.
-
-@apiSuccess {Number} id ID nghanh hoc
-@apiSuccess {Number} school ID khoa vien
-@apiSuccess {String} major_id Ma nghanh hoc
-@apiSuccess {String} major_name Ten nghanh hoc
-@apiSuccessExample {json} Success-Response:
-    HTTP/1.1 200 OK
-    [
-        {
-            "id": 1,
-            "school": 2,
-            "major_id": "XHH",
-            "major_name": "Xã hội học"
-        },
-        {
-            "id": 2,
-            "school": 3,
-            "major_id": "KTPM",
-            "major_name": "Ky thuat phan mem"
-        },
-        {
-            "id": 3,
-            "school": 3,
-            "major_id": "IT",
-            "major_name": "Cong nghe thong tin"
-        }
-    ]
-"""
-
-"""
-@api {post} /majors/ Tao nghanh hoc moi
-@apiName CreateAMajor
-@apiGroup Majors   
-@apiPermission admin technician 
-
-@apiHeader {String} Authorization Access JSON Web token.
-
-@apiParam {Number} school ID Khoa vien
-@apiParam {String} major_id Ma nghanh hoc
-@apiParam {String} major_name Ten nghanh hoc
-
-@apiParamExample {json} Request-Example:
-    {
-        "school": 3,
-        "major_id": "HTTT",
-        "major_name": "He thong thong tin"
-    }
-
-@apiSuccess {Number} id ID nghanh hoc
-@apiSuccess {Number} school ID khoa vien
-@apiSuccess {String} major_id Ma nghanh hoc
-@apiSuccess {String} major_name Ten nghanh hoc
-@apiSuccessExample {json} Success-Response:
-    HTTP/1.1 201 Created
-    {
-        "id": 4,
-        "school": 3,
-        "major_id": "HTTT",
-        "major_name": "He thong thong tin"
-    }
-"""
-
-"""
 @api {get} /majors/:id/ Lay thong tin mot nghanh hoc
 @apiName GetAMajor
 @apiGroup Major
@@ -521,7 +452,7 @@ urlpatterns = [
 """
 @api {patch} /majors/:id/ Cap nhat nghanh hoc
 @apiName UpdateAMajor
-@apiGroup Majors
+@apiGroup Major
 @apiPermission admin technician 
 
 @apiHeader {String} Authorization Access JSON Web token.
@@ -552,7 +483,7 @@ urlpatterns = [
 """
 @api {delete} /majors/:id/ Xoa nghanh hoc
 @apiName DeleteAMajor
-@apiGroup Majors
+@apiGroup Major
 @apiPermission admin technician 
 
 @apiHeader {String} Authorization Access JSON Web token.

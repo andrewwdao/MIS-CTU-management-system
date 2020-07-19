@@ -25,6 +25,7 @@ class EquipmentListSerializer(serializers.ModelSerializer):
 class DeviceReadSerializer(serializers.ModelSerializer):
 	equipment = EquipmentListSerializer(read_only=True)
 	device_status = serializers.SerializerMethodField()
+	used_by = serializers.SerializerMethodField()
 
 	class Meta:
 		model = Device
@@ -32,6 +33,10 @@ class DeviceReadSerializer(serializers.ModelSerializer):
 
 	def get_device_status(self, obj):
 		return obj.get_device_status_display()
+
+	def get_used_by(self, obj):
+		user = obj.get_user()
+		return user.username if user is not None else None
 
 
 class DeviceUpdateSerializer(serializers.ModelSerializer):
