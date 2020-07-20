@@ -102,9 +102,8 @@ class Data extends React.Component {
   }
 
   componentDidMount() {
-    // this.getFacultyList();
     this.getDataList('faculties', 'schools');
-    this.getDataList('equipments', 'equipments');
+    // this.getDataList('equipments', 'equipments');
     this.getDataList('users', 'users');
   }
 
@@ -153,6 +152,8 @@ class Data extends React.Component {
           ).then(
             // The data with all the information
             dataFull => {
+              if (dataFull === '') return;
+
               // Add the array index to update the current equipment locally when a new major is added
               // (update it locally to reduce network traffic)
               dataFull.arrayIndex = i;

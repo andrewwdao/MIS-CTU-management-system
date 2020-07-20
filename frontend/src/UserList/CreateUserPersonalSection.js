@@ -143,7 +143,7 @@ class CreateUserPersonalSection extends React.Component {
           <InputFilled
             type="number"
             name="identityCard"
-            label="Identity Card number"
+            label="Identity ID"
             value={this.props.identityCard}
             handleChange={this.props.handleChange}
             />

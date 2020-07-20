@@ -48,7 +48,29 @@ class CreateUserForm extends React.Component {
   componentDidMount() {
     const user = this.props.user;
     if (user) {
-      this.setState({});
+      this.setState({
+        username: user.username,
+        password: '',
+        repassword: '',
+        email: user.email,
+        expDate: '',
+
+        avatar: imgBtn,
+        firstName: user.first_name,
+        lastName: user.last_name,
+        dob: user.birth_date,
+        gender: user.gender,
+        phone: user.phonenumber,
+
+        workPlace: user.student_info ? 'ctu' : '',
+
+        studentID: user.student_info ? user.student_info.student_id : '',
+        classID: '',
+        major: user.student_info ? user.student_info.major : '',
+
+        organization: user.extra_info ? user.extra_info.workplace : '',
+        identityCard: user.extra_info ? user.extra_info.identity_id : '',
+      });
     }
   }
 
