@@ -1,31 +1,33 @@
 define({ "api": [
   {
+    "type": "get",
+    "url": "/current_user/role/",
+    "title": "Lấy tên phân quyền của người dùng hiện thời",
+    "name": "GetRole",
+    "group": "Authentication",
     "success": {
       "fields": {
         "Success 200": [
           {
             "group": "Success 200",
-            "optional": false,
-            "field": "varname1",
-            "description": "<p>No type.</p>"
-          },
-          {
-            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "varname2",
-            "description": "<p>With type.</p>"
+            "field": "role",
+            "description": "<p>Current user role.</p>"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"role\": \"Quản trị viên\"\n}",
+          "type": "json"
+        }
+      ]
     },
-    "type": "",
-    "url": "",
     "version": "0.0.0",
-    "filename": "./docs/api/main.js",
-    "group": "/home/lucas/Documents/Projects/MIS-CTU-management-system/backend/docs/api/main.js",
-    "groupTitle": "/home/lucas/Documents/Projects/MIS-CTU-management-system/backend/docs/api/main.js",
-    "name": ""
+    "filename": "backend/accounts/urls.py",
+    "groupTitle": "Authentication"
   },
   {
     "type": "post",
@@ -81,7 +83,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./accounts/urls.py",
+    "filename": "backend/accounts/urls.py",
     "groupTitle": "Authentication"
   },
   {
@@ -117,14 +119,14 @@ define({ "api": [
       },
       "examples": [
         {
-          "title": "Sucess-Response:",
+          "title": "Success-Response:",
           "content": "HTTP/1.1 200 OK\n{\n    \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTg0NjkyNTAxLCJqdGkiOiI5MzgyZThkZTNkZjg0MTk4ODU3ZjFiODVkNzBmNGZlMiIsInVzZXJfaWQiOjF9.Ll8th-HNYswVisYiJOSK8pkKTBqVXkykvMG4LiMOp9w\"\n}",
           "type": "json"
         }
       ]
     },
     "version": "0.0.0",
-    "filename": "./accounts/urls.py",
+    "filename": "backend/accounts/urls.py",
     "groupTitle": "Authentication"
   },
   {
@@ -181,7 +183,57 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./equipments/urls.py",
+    "filename": "backend/equipments/urls.py",
+    "groupTitle": "Device"
+  },
+  {
+    "type": "delete",
+    "url": "/devices/:id/",
+    "title": "Xoa chi tiet trang thiet bi",
+    "name": "DeleteDevice",
+    "group": "Device",
+    "permission": [
+      {
+        "name": "staff"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Access JSON Web token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID chi tiet trang thiet bi</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 204 No Content",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "backend/equipments/urls.py",
     "groupTitle": "Device"
   },
   {
@@ -270,7 +322,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./equipments/urls.py",
+    "filename": "backend/equipments/urls.py",
     "groupTitle": "Device"
   },
   {
@@ -359,7 +411,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./equipments/urls.py",
+    "filename": "backend/equipments/urls.py",
     "groupTitle": "Device"
   },
   {
@@ -423,7 +475,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./equipments/urls.py",
+    "filename": "backend/equipments/urls.py",
     "groupTitle": "Device"
   },
   {
@@ -533,7 +585,68 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./equipments/urls.py",
+    "filename": "backend/equipments/urls.py",
+    "groupTitle": "Equipment"
+  },
+  {
+    "type": "delete",
+    "url": "/equipments/:id/",
+    "title": "Xoa trang thiet bi",
+    "name": "DeleteEquipment",
+    "group": "Equipment",
+    "permission": [
+      {
+        "name": "staff"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Access JSON Web token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID Trang thiet bi</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID Trang thiet bi</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 204 No Content",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "backend/equipments/urls.py",
     "groupTitle": "Equipment"
   },
   {
@@ -629,7 +742,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./equipments/urls.py",
+    "filename": "backend/equipments/urls.py",
     "groupTitle": "Equipment"
   },
   {
@@ -705,7 +818,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./equipments/urls.py",
+    "filename": "backend/equipments/urls.py",
     "groupTitle": "Equipment"
   },
   {
@@ -822,7 +935,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./equipments/urls.py",
+    "filename": "backend/equipments/urls.py",
     "groupTitle": "Equipment"
   },
   {
@@ -893,7 +1006,57 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./accounts/urls.py",
+    "filename": "backend/accounts/urls.py",
+    "groupTitle": "Major"
+  },
+  {
+    "type": "delete",
+    "url": "/majors/:id/",
+    "title": "Xoa nghanh hoc",
+    "name": "DeleteAMajor",
+    "group": "Major",
+    "permission": [
+      {
+        "name": "admin technician"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Access JSON Web token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID nghanh hoc</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response",
+          "content": "HTTP/1.1 204 No Content",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "backend/accounts/urls.py",
     "groupTitle": "Major"
   },
   {
@@ -975,7 +1138,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./accounts/urls.py",
+    "filename": "backend/accounts/urls.py",
     "groupTitle": "Major"
   },
   {
@@ -1012,237 +1175,15 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./accounts/urls.py",
+    "filename": "backend/accounts/urls.py",
     "groupTitle": "Major"
-  },
-  {
-    "type": "post",
-    "url": "/majors/",
-    "title": "Tao nghanh hoc moi",
-    "name": "CreateAMajor",
-    "group": "Majors",
-    "permission": [
-      {
-        "name": "admin technician"
-      }
-    ],
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "Authorization",
-            "description": "<p>Access JSON Web token.</p>"
-          }
-        ]
-      }
-    },
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "school",
-            "description": "<p>ID Khoa vien</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "major_id",
-            "description": "<p>Ma nghanh hoc</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "major_name",
-            "description": "<p>Ten nghanh hoc</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Request-Example:",
-          "content": "{\n    \"school\": 3,\n    \"major_id\": \"HTTT\",\n    \"major_name\": \"He thong thong tin\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "id",
-            "description": "<p>ID nghanh hoc</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "school",
-            "description": "<p>ID khoa vien</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "major_id",
-            "description": "<p>Ma nghanh hoc</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "major_name",
-            "description": "<p>Ten nghanh hoc</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 201 Created\n{\n    \"id\": 4,\n    \"school\": 3,\n    \"major_id\": \"HTTT\",\n    \"major_name\": \"He thong thong tin\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "./accounts/urls.py",
-    "groupTitle": "Majors"
-  },
-  {
-    "type": "delete",
-    "url": "/majors/:id/",
-    "title": "Xoa nghanh hoc",
-    "name": "DeleteAMajor",
-    "group": "Majors",
-    "permission": [
-      {
-        "name": "admin technician"
-      }
-    ],
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "Authorization",
-            "description": "<p>Access JSON Web token.</p>"
-          }
-        ]
-      }
-    },
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "id",
-            "description": "<p>ID nghanh hoc</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response",
-          "content": "HTTP/1.1 204 No Content",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "./accounts/urls.py",
-    "groupTitle": "Majors"
-  },
-  {
-    "type": "get",
-    "url": "/majors/",
-    "title": "Lay danh sach cac nghanh hoc",
-    "name": "GetMajorList",
-    "group": "Majors",
-    "permission": [
-      {
-        "name": "admin technician"
-      }
-    ],
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "Authorization",
-            "description": "<p>Access JSON Web token.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "id",
-            "description": "<p>ID nghanh hoc</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "school",
-            "description": "<p>ID khoa vien</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "major_id",
-            "description": "<p>Ma nghanh hoc</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "major_name",
-            "description": "<p>Ten nghanh hoc</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n[\n    {\n        \"id\": 1,\n        \"school\": 2,\n        \"major_id\": \"XHH\",\n        \"major_name\": \"Xã hội học\"\n    },\n    {\n        \"id\": 2,\n        \"school\": 3,\n        \"major_id\": \"KTPM\",\n        \"major_name\": \"Ky thuat phan mem\"\n    },\n    {\n        \"id\": 3,\n        \"school\": 3,\n        \"major_id\": \"IT\",\n        \"major_name\": \"Cong nghe thong tin\"\n    }\n]",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "./accounts/urls.py",
-    "groupTitle": "Majors"
   },
   {
     "type": "patch",
     "url": "/majors/:id/",
     "title": "Cap nhat nghanh hoc",
     "name": "UpdateAMajor",
-    "group": "Majors",
+    "group": "Major",
     "permission": [
       {
         "name": "admin technician"
@@ -1344,8 +1285,8 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./accounts/urls.py",
-    "groupTitle": "Majors"
+    "filename": "backend/accounts/urls.py",
+    "groupTitle": "Major"
   },
   {
     "type": "post",
@@ -1433,12 +1374,12 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./accounts/urls.py",
+    "filename": "backend/accounts/urls.py",
     "groupTitle": "School"
   },
   {
     "type": "delete",
-    "url": "/schools/:school_id/",
+    "url": "/schools/:id/",
     "title": "Xóa khoa viện",
     "name": "DeleteSchool",
     "group": "School",
@@ -1470,12 +1411,12 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./accounts/urls.py",
+    "filename": "backend/accounts/urls.py",
     "groupTitle": "School"
   },
   {
     "type": "get",
-    "url": "/schools/:school_id/",
+    "url": "/schools/:id/",
     "title": "Lấy thông tin chi tiết của khoa viện",
     "name": "GetSchool",
     "group": "School",
@@ -1504,7 +1445,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "school_id",
+            "field": "id",
             "description": "<p>Mã khoa viện.</p>"
           }
         ]
@@ -1573,7 +1514,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./accounts/urls.py",
+    "filename": "backend/accounts/urls.py",
     "groupTitle": "School"
   },
   {
@@ -1642,12 +1583,12 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./accounts/urls.py",
+    "filename": "backend/accounts/urls.py",
     "groupTitle": "School"
   },
   {
     "type": "patch",
-    "url": "/schools/:school_id/",
+    "url": "/schools/:id/",
     "title": "Cập nhật thông tin khoa viện",
     "name": "UpdateSchool",
     "group": "School",
@@ -1676,8 +1617,15 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "school_id",
+            "field": "id",
             "description": "<p>Mã khoa viện.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "school_id",
+            "description": "<p>Mã khoa viện cập nhật</p>"
           },
           {
             "group": "Parameter",
@@ -1752,7 +1700,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./accounts/urls.py",
+    "filename": "backend/accounts/urls.py",
     "groupTitle": "School"
   },
   {
@@ -1907,7 +1855,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./accounts/urls.py",
+    "filename": "backend/accounts/urls.py",
     "groupTitle": "User"
   },
   {
@@ -2061,7 +2009,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./accounts/urls.py",
+    "filename": "backend/accounts/urls.py",
     "groupTitle": "User"
   },
   {
@@ -2213,7 +2161,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./accounts/urls.py",
+    "filename": "backend/accounts/urls.py",
     "groupTitle": "User"
   },
   {
@@ -2308,7 +2256,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "./accounts/urls.py",
+    "filename": "backend/accounts/urls.py",
     "groupTitle": "User"
   }
 ] });
