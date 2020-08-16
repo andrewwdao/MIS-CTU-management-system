@@ -112,6 +112,7 @@ class DetailPannel extends React.Component {
             faculties={this.props.faculties}
             faculty={this.props.selectedFaculty}
             updateDataLocally={this.props.updateDataLocally}
+            updateSelectedFaculty={this.props.updateSelectedFaculty}
             />
         }
 

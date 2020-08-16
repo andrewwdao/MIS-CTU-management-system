@@ -30,17 +30,21 @@ class ListView extends React.Component {
   render() {
     const users = this.props.users.map(
       user => {
-
         // Need try block to avoid exception when user try to enter some regex (*, ?)
         try {
 
           // If the filter string is found
           const searchFilter = this.props.searchFilter.toLowerCase();
-          if (user.id.toLowerCase().search(searchFilter) !== -1 || user.name.toLowerCase().search(searchFilter) !== -1)
+          // If the first && is false (null) the statement after && won't be executed -> no error
+          // (without this check, there will be error if detail user info not yet fetched)
+          if ((user.student_info && user.student_info.student_id.toLowerCase().search(searchFilter) !== -1) ||
+              (user.extra_info && user.extra_info.identity_card.toLowerCase().search(searchFilter) !== -1) ||  
+              (user.first_name.toLowerCase() + ' ' + user.last_name.toLowerCase()).search(searchFilter) !== -1)
 
             // if the inlabFilter gets true, only return users with their status is 1
             // OR if the inlabFilter gets false, return all users
-            if (user.status === 1 || !this.props.inlabFilter)
+            // exlude admin (role 1)
+            if ((user.status === 1 || !this.props.inlabFilter) && user.role !== 1)
               return (
                 <ListRow
                   key={user.id}

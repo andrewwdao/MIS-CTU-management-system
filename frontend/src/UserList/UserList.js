@@ -11,15 +11,17 @@ class UserList extends React.Component {
           toggleInlabFilter={this.props.toggleInlabFilter}
           inlabFilter={this.props.inlabFilter}
           searchFilter={this.props.searchFilter}
+          users={this.props.equipments}
           handleFilterChange={this.props.handleFilterChange}
+          getDataList={this.props.getDataList}
+          updateDataLocally={this.props.updateDataLocally}
           />
 
         <Body
-          accessToken={this.props.accessToken}
-          host={this.props.host}
           users={this.props.users}
           inlabFilter={this.props.inlabFilter}
           searchFilter={this.props.searchFilter}
+          updateDataLocally={this.props.updateDataLocally}
           />
       </div>
     );

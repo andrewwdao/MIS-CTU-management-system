@@ -8,88 +8,7 @@ class Data extends React.Component {
 
     this.state = {
       // Users
-      users: [
-        {
-          id: '1234567',
-          name: 'Name Có Dấu',
-          major: 'Major',
-          timeIn: '09:28',
-          status: 1,
-          equipments: [
-            {
-              id: 'WH0001',
-              name: 'Hand drill drill drill drill drill drill drill drill drill drill drill',
-              time: '09:42',
-            },
-            {
-              id: 'WH0002',
-              name: 'Hand drill 2',
-              time: '09:42',
-            },
-            {
-              id: 'WH0003',
-              name: 'Hand drill 2',
-              time: '09:42',
-            },
-            {
-              id: 'WH0004',
-              name: 'Hand drill 2',
-              time: '09:42',
-            },
-          ]
-        },
-        {
-          id: '4342563',
-          name: 'Just BCD',
-          major: 'Just major',
-          timeIn: '',
-          status: 0,
-          equipments: []
-        },
-        {
-          id: '2345789',
-          name: 'Just DEF Name',
-          major: 'Just major',
-          timeIn: '09:28',
-          status: 1,
-          equipments: [
-            {
-              id: 'WH0001',
-              name: 'Hand drill',
-              time: '09:42',
-            },
-            {
-              id: 'WH0002',
-              name: 'Hand drill 2',
-              time: '09:42',
-            }
-          ]
-        },
-        {
-          id: '4252523',
-          name: 'Haha Name',
-          major: 'Major',
-          timeIn: '',
-          status: 0,
-          equipments: []
-        },
-        {
-          id: '0000000',
-          name: 'Expired Name',
-          major: 'Major',
-          timeIn: '',
-          status: -1,
-          equipments: []
-        },
-        {
-          id: '0000002',
-          name: 'Expired Name',
-          major: 'Major',
-          timeIn: '',
-          status: -1,
-          equipments: []
-        },
-      ],
+      users: [],
 
       equipments: [],
       faculties: [],
@@ -183,9 +102,9 @@ class Data extends React.Component {
   }
 
   componentDidMount() {
-    // this.getFacultyList();
     this.getDataList('faculties', 'schools');
-    this.getDataList('equipments', 'equipments');
+    // this.getDataList('equipments', 'equipments');
+    this.getDataList('users', 'users');
   }
 
   getDataList(localFieldName, apiFieldName) {
@@ -233,6 +152,8 @@ class Data extends React.Component {
           ).then(
             // The data with all the information
             dataFull => {
+              if (dataFull === '') return;
+
               // Add the array index to update the current equipment locally when a new major is added
               // (update it locally to reduce network traffic)
               dataFull.arrayIndex = i;
@@ -254,9 +175,7 @@ class Data extends React.Component {
 
   updateDataLocally(data) {
     // Call setState for subcomponents to update
-    this.setState({
-      [data]: this.state[data],
-    });
+    this.setState({});
   }
 
   render() {

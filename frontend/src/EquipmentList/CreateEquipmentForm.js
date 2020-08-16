@@ -26,6 +26,15 @@ class CreateEquipmentForm extends React.Component {
     this.toggleErrorModal = this.toggleErrorModal.bind(this);
   }
 
+  componentDidMount() {
+    if (this.props.equipment) {
+      this.setState({
+        id: this.props.equipment.equipment_id,
+        name: this.props.equipment.equipment_name,
+      });
+    }
+  }
+
   toggleErrorModal() {
     this.setState({
       errorModalActive: !this.state.errorModalActive
@@ -59,7 +68,7 @@ class CreateEquipmentForm extends React.Component {
     e.preventDefault();
     
     const requestOptions = {
-      method: 'POST',
+      method: this.props.equipment ? 'PATCH' : 'POST',
       headers: {
         'Authorization': localStorage.getItem("accessToken"),
         'Content-Type': 'application/json',
@@ -70,7 +79,8 @@ class CreateEquipmentForm extends React.Component {
       })
     };
 
-    fetch(localStorage.getItem("apiHost") + /equipments/, requestOptions).then(
+    const requestUrl = localStorage.getItem("apiHost") + /equipments/ + (this.props.equipment ? this.props.equipment.id + '/': ''); // The final '/' is required by django rules (urls end with /)
+    fetch(requestUrl, requestOptions).then(
       res => {
         if (res.status === 401) {
           console.log("No permission.");
@@ -96,7 +106,7 @@ class CreateEquipmentForm extends React.Component {
             errorModalActive: true,
           });
           return '';
-        } else if (res.status !== 201) {
+        } else if (Math.floor(res.status/100) !== 2) {
           console.log(res.status + " Unexpected error.");
           // alert("Unexpected error happened");
           this.setState({
@@ -115,17 +125,35 @@ class CreateEquipmentForm extends React.Component {
             // Turn off the create modal
             this.props.toggleModal();
 
-            // Update the list locally   (1 is create flag)
-            // this.props.updateFacultyByArrayIndex(faculty, 1);
-            this.props.equipments.push(equipment);
-            this.props.updateDataLocally('equipments');
+            // Modify the state directly (NOT RECOMMENDED)
+            if (this.props.equipment) {
+              equipment.arrayIndex = this.props.equipment.arrayIndex;
+              this.props.equipments[this.props.equipment.arrayIndex] = equipment;
+            } else {
+              equipment.arrayIndex = this.props.equipments.length;
+              this.props.equipments.push(equipment);
+            }
 
-            this.setState({
-              id: '',
-              name: '',
-              description: '',
-              photo: imgBtn,
-            });
+            // Update the list locally by calling the setState in the props function
+            this.props.updateDataLocally();
+
+            // Update detail pannel in case of editing equipment from detail pannel
+            if (this.props.updateSelectedEquipment) {
+              this.props.updateSelectedEquipment(equipment);
+            }
+
+            // Only clear the state if the modal is spawned from Top
+            // The one from Top will stay mounted, as opposed to the on from DetailPannel will get unmounted
+            // so we don't need to update the state of the one from DetailPannel
+            // (will get error for update state of unmounted component)
+            if (!this.props.equipment) {
+              this.setState({
+                id: '',
+                name: '',
+                description: '',
+                photo: imgBtn,
+              });
+            }
           }
         }
     );
@@ -144,7 +172,7 @@ class CreateEquipmentForm extends React.Component {
           okClick={this.toggleErrorModal}
           />
 
-        <form method="POST" className="EquipmentList-create-equipment-form" onSubmit={this.handleFormSubmit}>
+        <form className="EquipmentList-create-equipment-form" onSubmit={this.handleFormSubmit}>
           <PhotoInput
               handleChange={this.handleInputChange}
               img={this.state.photo} />
@@ -178,7 +206,7 @@ class CreateEquipmentForm extends React.Component {
             <input
               className="btn EquipmentList-create-equipment-modal-btn"
               type="submit"
-              value="Add"
+              value={this.props.equipment ? "Update" : "Add"}
               onClick={this.handleFormSubmit} />
           </div>
         </form>
