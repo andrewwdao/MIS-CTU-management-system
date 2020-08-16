@@ -457,7 +457,7 @@ urlpatterns = [] + router.urls
 """
 
 """
-@api {get} /rents/:id/ Tra thue muon
+@api {post} /rents/:id/back/ Tra thue muon
 @apiName ReturnRent
 @apiGroup Rent
 @apiPermission staff
@@ -482,38 +482,6 @@ urlpatterns = [] + router.urls
 @apiSuccessExample {json} Success-Response:
     HTTP/1.1 200 OK
     {
-        "id": 6,
-        "renter": {
-            "id": 2,
-            "email": "lucas@gmail.com",
-            "username": "lucas",
-            "first_name": "Lucas",
-            "last_name": "Nguyen"
-        },
-        "is_returned": false,
-        "equipments": [
-            {
-                "device__equipment": 2,
-                "device__equipment__equipment_name": "raspberry pi",
-                "total": 1
-            }
-        ],
-        "details": [
-            {
-                "id": 9,
-                "device": {
-                    "id": 3,
-                    "device_status": "Good",
-                    "device_number": 1,
-                    "condition": "Burned pin",
-                    "in_used": true
-                },
-                "description": "",
-                "deliver_status": 1,
-                "return_status": null
-            }
-        ],
-        "deliver_time": "2020-08-16T05:39:54.775319Z",
-        "return_time": null
+        "detail":"Return succeed."
     }
 """

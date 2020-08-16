@@ -26,7 +26,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/accounts/urls.py",
+    "filename": "./accounts/urls.py",
     "groupTitle": "Authentication"
   },
   {
@@ -83,7 +83,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/accounts/urls.py",
+    "filename": "./accounts/urls.py",
     "groupTitle": "Authentication"
   },
   {
@@ -126,7 +126,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/accounts/urls.py",
+    "filename": "./accounts/urls.py",
     "groupTitle": "Authentication"
   },
   {
@@ -183,7 +183,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/equipments/urls.py",
+    "filename": "./equipments/urls.py",
     "groupTitle": "Device"
   },
   {
@@ -233,7 +233,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/equipments/urls.py",
+    "filename": "./equipments/urls.py",
     "groupTitle": "Device"
   },
   {
@@ -322,7 +322,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/equipments/urls.py",
+    "filename": "./equipments/urls.py",
     "groupTitle": "Device"
   },
   {
@@ -411,7 +411,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/equipments/urls.py",
+    "filename": "./equipments/urls.py",
     "groupTitle": "Device"
   },
   {
@@ -475,7 +475,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/equipments/urls.py",
+    "filename": "./equipments/urls.py",
     "groupTitle": "Device"
   },
   {
@@ -585,7 +585,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/equipments/urls.py",
+    "filename": "./equipments/urls.py",
     "groupTitle": "Equipment"
   },
   {
@@ -646,7 +646,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/equipments/urls.py",
+    "filename": "./equipments/urls.py",
     "groupTitle": "Equipment"
   },
   {
@@ -742,7 +742,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/equipments/urls.py",
+    "filename": "./equipments/urls.py",
     "groupTitle": "Equipment"
   },
   {
@@ -818,7 +818,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/equipments/urls.py",
+    "filename": "./equipments/urls.py",
     "groupTitle": "Equipment"
   },
   {
@@ -935,7 +935,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/equipments/urls.py",
+    "filename": "./equipments/urls.py",
     "groupTitle": "Equipment"
   },
   {
@@ -1006,7 +1006,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/accounts/urls.py",
+    "filename": "./accounts/urls.py",
     "groupTitle": "Major"
   },
   {
@@ -1056,7 +1056,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/accounts/urls.py",
+    "filename": "./accounts/urls.py",
     "groupTitle": "Major"
   },
   {
@@ -1138,7 +1138,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/accounts/urls.py",
+    "filename": "./accounts/urls.py",
     "groupTitle": "Major"
   },
   {
@@ -1175,7 +1175,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/accounts/urls.py",
+    "filename": "./accounts/urls.py",
     "groupTitle": "Major"
   },
   {
@@ -1285,8 +1285,252 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/accounts/urls.py",
+    "filename": "./accounts/urls.py",
     "groupTitle": "Major"
+  },
+  {
+    "type": "post",
+    "url": "/rents/",
+    "title": "Tao thue muon moi",
+    "name": "CreateRent",
+    "group": "Rent",
+    "permission": [
+      {
+        "name": "staff"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Access JSON Web token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "renter",
+            "description": "<p>User ID of renter</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number[]",
+            "optional": false,
+            "field": "devices",
+            "description": "<p>Device IDs list</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"renter\": 2,\n    \"devices\": [3]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 201 Created\n{\n    \"id\": 6,\n    \"renter\": {\n        \"id\": 2,\n        \"email\": \"lucas@gmail.com\",\n        \"username\": \"lucas\",\n        \"first_name\": \"Lucas\",\n        \"last_name\": \"Nguyen\"\n    },\n    \"is_returned\": false,\n    \"equipments\": [\n        {\n            \"device__equipment\": 2,\n            \"device__equipment__equipment_name\": \"raspberry pi\",\n            \"total\": 1\n        }\n    ],\n    \"details\": [\n        {\n            \"id\": 9,\n            \"device\": {\n                \"id\": 3,\n                \"device_status\": \"Good\",\n                \"device_number\": 1,\n                \"condition\": \"Burned pin\",\n                \"in_used\": true\n            },\n            \"description\": \"\",\n            \"deliver_status\": 1,\n            \"return_status\": null\n        }\n    ],\n    \"deliver_time\": \"2020-08-16T05:39:54.775319Z\",\n    \"return_time\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./equipments/urls.py",
+    "groupTitle": "Rent"
+  },
+  {
+    "type": "get",
+    "url": "/rents/:id/",
+    "title": "Chi tiet thue muon",
+    "name": "GetDetailRent",
+    "group": "Rent",
+    "permission": [
+      {
+        "name": "staff"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Access JSON Web token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID Ban cho thue muon</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"id\": 6,\n    \"renter\": {\n        \"id\": 2,\n        \"email\": \"lucas@gmail.com\",\n        \"username\": \"lucas\",\n        \"first_name\": \"Lucas\",\n        \"last_name\": \"Nguyen\"\n    },\n    \"is_returned\": false,\n    \"equipments\": [\n        {\n            \"device__equipment\": 2,\n            \"device__equipment__equipment_name\": \"raspberry pi\",\n            \"total\": 1\n        }\n    ],\n    \"details\": [\n        {\n            \"id\": 9,\n            \"device\": {\n                \"id\": 3,\n                \"device_status\": \"Good\",\n                \"device_number\": 1,\n                \"condition\": \"Burned pin\",\n                \"in_used\": true\n            },\n            \"description\": \"\",\n            \"deliver_status\": 1,\n            \"return_status\": null\n        }\n    ],\n    \"deliver_time\": \"2020-08-16T05:39:54.775319Z\",\n    \"return_time\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./equipments/urls.py",
+    "groupTitle": "Rent"
+  },
+  {
+    "type": "get",
+    "url": "/rents/",
+    "title": "Danh sach thue muon",
+    "name": "ListRent",
+    "group": "Rent",
+    "permission": [
+      {
+        "name": "staff"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Access JSON Web token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"count\": 3,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 3,\n            \"renter\": {\n                \"id\": 2,\n                \"email\": \"lucas@gmail.com\",\n                \"username\": \"lucas\",\n                \"first_name\": \"Lucas\",\n                \"last_name\": \"Nguyen\"\n            },\n            \"is_returned\": true,\n            \"deliver_time\": \"2020-08-16T03:42:14.614067Z\",\n            \"return_time\": \"2020-08-16T04:32:48.365447Z\"\n        },\n        {\n            \"id\": 4,\n            \"renter\": {\n                \"id\": 2,\n                \"email\": \"lucas@gmail.com\",\n                \"username\": \"lucas\",\n                \"first_name\": \"Lucas\",\n                \"last_name\": \"Nguyen\"\n            },\n            \"is_returned\": true,\n            \"deliver_time\": \"2020-08-16T03:42:35.474486Z\",\n            \"return_time\": \"2020-08-16T04:36:41.616421Z\"\n        },\n        {\n            \"id\": 5,\n            \"renter\": {\n                \"id\": 2,\n                \"email\": \"lucas@gmail.com\",\n                \"username\": \"lucas\",\n                \"first_name\": \"Lucas\",\n                \"last_name\": \"Nguyen\"\n            },\n            \"is_returned\": true,\n            \"deliver_time\": \"2020-08-16T04:55:12.039492Z\",\n            \"return_time\": \"2020-08-16T04:57:58.755477Z\"\n        }\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./equipments/urls.py",
+    "groupTitle": "Rent"
+  },
+  {
+    "type": "post",
+    "url": "/rents/:id/back/",
+    "title": "Tra thue muon",
+    "name": "ReturnRent",
+    "group": "Rent",
+    "permission": [
+      {
+        "name": "staff"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Access JSON Web token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID Ban cho thue muon</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "return_time",
+            "defaultValue": "now",
+            "description": "<p>Thoi gian tra</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Detail[]",
+            "optional": false,
+            "field": "details",
+            "description": "<p>Chi tiet tra</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "details[id]",
+            "description": "<p>ID chi tiet muon thuoc don muon</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "details[description]",
+            "description": "<p>Mieu ta tinh trang thiet bi khi tra</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "details[return_status]",
+            "description": "<p>Tinh trang thiet bi khi tra</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"details\":[\n        {\n            \"id\": 8,\n            \"description\": \"Burned pin\",\n            \"return_status\": 2\n        }\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"detail\":\"Return succeed.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./equipments/urls.py",
+    "groupTitle": "Rent"
   },
   {
     "type": "post",
@@ -1374,7 +1618,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/accounts/urls.py",
+    "filename": "./accounts/urls.py",
     "groupTitle": "School"
   },
   {
@@ -1411,7 +1655,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/accounts/urls.py",
+    "filename": "./accounts/urls.py",
     "groupTitle": "School"
   },
   {
@@ -1514,7 +1758,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/accounts/urls.py",
+    "filename": "./accounts/urls.py",
     "groupTitle": "School"
   },
   {
@@ -1583,7 +1827,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/accounts/urls.py",
+    "filename": "./accounts/urls.py",
     "groupTitle": "School"
   },
   {
@@ -1700,7 +1944,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/accounts/urls.py",
+    "filename": "./accounts/urls.py",
     "groupTitle": "School"
   },
   {
@@ -1855,7 +2099,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/accounts/urls.py",
+    "filename": "./accounts/urls.py",
     "groupTitle": "User"
   },
   {
@@ -2009,7 +2253,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/accounts/urls.py",
+    "filename": "./accounts/urls.py",
     "groupTitle": "User"
   },
   {
@@ -2161,7 +2405,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/accounts/urls.py",
+    "filename": "./accounts/urls.py",
     "groupTitle": "User"
   },
   {
@@ -2256,7 +2500,7 @@ define({ "api": [
       ]
     },
     "version": "0.0.0",
-    "filename": "backend/accounts/urls.py",
+    "filename": "./accounts/urls.py",
     "groupTitle": "User"
   }
 ] });
