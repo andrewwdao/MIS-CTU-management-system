@@ -296,3 +296,224 @@ urlpatterns = [] + router.urls
 @apiSuccessExample {json} Success-Response:
     HTTP/1.1 204 No Content
 """
+
+"""
+@api {get} /rents/ Danh sach thue muon 
+@apiName ListRent
+@apiGroup Rent
+@apiPermission staff
+@apiHeader {String} Authorization Access JSON Web token.
+
+@apiSuccessExample {json} Success-Response:
+    HTTP/1.1 200 OK
+    {
+        "count": 3,
+        "next": null,
+        "previous": null,
+        "results": [
+            {
+                "id": 3,
+                "renter": {
+                    "id": 2,
+                    "email": "lucas@gmail.com",
+                    "username": "lucas",
+                    "first_name": "Lucas",
+                    "last_name": "Nguyen"
+                },
+                "is_returned": true,
+                "deliver_time": "2020-08-16T03:42:14.614067Z",
+                "return_time": "2020-08-16T04:32:48.365447Z"
+            },
+            {
+                "id": 4,
+                "renter": {
+                    "id": 2,
+                    "email": "lucas@gmail.com",
+                    "username": "lucas",
+                    "first_name": "Lucas",
+                    "last_name": "Nguyen"
+                },
+                "is_returned": true,
+                "deliver_time": "2020-08-16T03:42:35.474486Z",
+                "return_time": "2020-08-16T04:36:41.616421Z"
+            },
+            {
+                "id": 5,
+                "renter": {
+                    "id": 2,
+                    "email": "lucas@gmail.com",
+                    "username": "lucas",
+                    "first_name": "Lucas",
+                    "last_name": "Nguyen"
+                },
+                "is_returned": true,
+                "deliver_time": "2020-08-16T04:55:12.039492Z",
+                "return_time": "2020-08-16T04:57:58.755477Z"
+            }
+        ]
+    }
+"""
+
+"""
+@api {post} /rents/ Tao thue muon moi
+@apiName CreateRent
+@apiGroup Rent
+@apiPermission staff
+@apiHeader {String} Authorization Access JSON Web token.
+
+@apiParam {Number} renter User ID of renter
+@apiParam {Number[]} devices Device IDs list
+@apiParamExample {json} Request-Example:
+    {
+        "renter": 2,
+        "devices": [3]
+    }
+
+
+@apiSuccessExample {json} Success-Response:
+    HTTP/1.1 201 Created
+    {
+        "id": 6,
+        "renter": {
+            "id": 2,
+            "email": "lucas@gmail.com",
+            "username": "lucas",
+            "first_name": "Lucas",
+            "last_name": "Nguyen"
+        },
+        "is_returned": false,
+        "equipments": [
+            {
+                "device__equipment": 2,
+                "device__equipment__equipment_name": "raspberry pi",
+                "total": 1
+            }
+        ],
+        "details": [
+            {
+                "id": 9,
+                "device": {
+                    "id": 3,
+                    "device_status": "Good",
+                    "device_number": 1,
+                    "condition": "Burned pin",
+                    "in_used": true
+                },
+                "description": "",
+                "deliver_status": 1,
+                "return_status": null
+            }
+        ],
+        "deliver_time": "2020-08-16T05:39:54.775319Z",
+        "return_time": null
+    }
+"""
+
+"""
+@api {get} /rents/:id/ Chi tiet thue muon
+@apiName GetDetailRent
+@apiGroup Rent
+@apiPermission staff
+@apiHeader {String} Authorization Access JSON Web token.
+
+@apiParam {Number} id ID Ban cho thue muon
+@apiSuccessExample {json} Success-Response:
+    HTTP/1.1 200 OK
+    {
+        "id": 6,
+        "renter": {
+            "id": 2,
+            "email": "lucas@gmail.com",
+            "username": "lucas",
+            "first_name": "Lucas",
+            "last_name": "Nguyen"
+        },
+        "is_returned": false,
+        "equipments": [
+            {
+                "device__equipment": 2,
+                "device__equipment__equipment_name": "raspberry pi",
+                "total": 1
+            }
+        ],
+        "details": [
+            {
+                "id": 9,
+                "device": {
+                    "id": 3,
+                    "device_status": "Good",
+                    "device_number": 1,
+                    "condition": "Burned pin",
+                    "in_used": true
+                },
+                "description": "",
+                "deliver_status": 1,
+                "return_status": null
+            }
+        ],
+        "deliver_time": "2020-08-16T05:39:54.775319Z",
+        "return_time": null
+    }
+"""
+
+"""
+@api {get} /rents/:id/ Tra thue muon
+@apiName ReturnRent
+@apiGroup Rent
+@apiPermission staff
+@apiHeader {String} Authorization Access JSON Web token.
+
+@apiParam {Number} id ID Ban cho thue muon
+@apiParam {String} [return_time=now] Thoi gian tra
+@apiParam {Detail[]} details Chi tiet tra
+@apiParam {Number} details[id] ID chi tiet muon thuoc don muon
+@apiParam {String} details[description] Mieu ta tinh trang thiet bi khi tra
+@apiParam {Number} details[return_status] Tinh trang thiet bi khi tra
+@apiParamExample {json} Request-Example:
+{
+    "details":[
+        {
+            "id": 8,
+            "description": "Burned pin",
+            "return_status": 2
+        }
+    ]
+}
+@apiSuccessExample {json} Success-Response:
+    HTTP/1.1 200 OK
+    {
+        "id": 6,
+        "renter": {
+            "id": 2,
+            "email": "lucas@gmail.com",
+            "username": "lucas",
+            "first_name": "Lucas",
+            "last_name": "Nguyen"
+        },
+        "is_returned": false,
+        "equipments": [
+            {
+                "device__equipment": 2,
+                "device__equipment__equipment_name": "raspberry pi",
+                "total": 1
+            }
+        ],
+        "details": [
+            {
+                "id": 9,
+                "device": {
+                    "id": 3,
+                    "device_status": "Good",
+                    "device_number": 1,
+                    "condition": "Burned pin",
+                    "in_used": true
+                },
+                "description": "",
+                "deliver_status": 1,
+                "return_status": null
+            }
+        ],
+        "deliver_time": "2020-08-16T05:39:54.775319Z",
+        "return_time": null
+    }
+"""

@@ -15,6 +15,7 @@ djangorestframework-simplejwt = "*"
 faker = "*"
 pillow = "*"
 django-cors-headers = "*"
+pylint = "*"
 
 [requires]
 python_version = "3.8"

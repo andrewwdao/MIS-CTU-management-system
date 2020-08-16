@@ -87,3 +87,7 @@ backend/media/
 backend/db.sqlite3
 backend/*/migrations/ 
 backend/*/__pycache__/
+backend/Pipfile.lock
+
+# Vscode config
+.vscode/

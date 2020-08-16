@@ -5,9 +5,11 @@ UpdateModelMixin, RetrieveModelMixin, DestroyModelMixin)
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from .paginations import RentResultPagination
 from .models import Equipment, Device, Rent
 from .serializers import (EquipmentListSerializer, EquipmentDetailSerializer, DeviceReadSerializer, 
-DeviceListSerializer, DeviceCreateSerializer, DeviceUpdateSerializer, RentCreateSerializer, RentReadSerializer, RentReturnSerializer)
+							DeviceListSerializer, DeviceCreateSerializer, DeviceUpdateSerializer, RentListSerializer,
+							RentCreateSerializer, RentReadSerializer, RentReturnSerializer)
 from accounts.permissions import IsStaff
 
 
@@ -42,15 +44,18 @@ UpdateModelMixin, DestroyModelMixin, GenericViewSet):
 			return DeviceReadSerializer
 
 
-class RentViewSet(ListModelMixin, RetrieveModelMixin, 
-DestroyModelMixin, GenericViewSet):
+class RentViewSet(ListModelMixin, RetrieveModelMixin, GenericViewSet):
 	queryset = Rent.objects.all()
+	pagination_class = RentResultPagination
+	# filter_backends = [filters.OrderingFilter, RentFilter]
+	# ordering_fields = ['deliver_time', 'return_time']
 	# permission_classes = [IsAuthenticated, IsStaff]
 
 	def get_serializer_class(self):
 		if self.action == 'create':
 			return RentCreateSerializer
-
+		elif self.action == 'list':
+			return RentListSerializer
 		else:
 			return RentReadSerializer
 

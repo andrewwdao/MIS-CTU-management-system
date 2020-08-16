@@ -1,9 +1,11 @@
 from rest_framework import serializers
 from django.utils import timezone
 from django.db import transaction
-from django.db.models import Max
+from django.db.models import Max, Count
+from django.contrib.auth import get_user_model
 from .models import Equipment, Device, Rent, RentDetail
 
+User = get_user_model()
 
 class DeviceCreateSerializer(serializers.ModelSerializer):
 	equipment = serializers.PrimaryKeyRelatedField(
@@ -83,9 +85,26 @@ class EquipmentDetailSerializer(serializers.ModelSerializer):
 	def get_amount(self, obj):
 		return obj.devices.count()
 
+class RenterSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = User
+		fields = ['id', 'email', 'username', 'first_name', 'last_name' ]
+
+	
+class RentListSerializer(serializers.ModelSerializer):
+	renter =  RenterSerializer(read_only=True)
+	is_returned = serializers.SerializerMethodField()
+	
+	class Meta:
+		model = Rent
+		fields = ['id', 'renter', 'is_returned', 'deliver_time', 'return_time']
+
+	def get_is_returned(self, obj):
+		return obj.return_time is not None
+
 
 class RentDetailSerializer(serializers.ModelSerializer):
-	device = DeviceReadSerializer(read_only=True)
+	device = DeviceListSerializer(read_only=True)
 
 	class Meta:
 		model = RentDetail
@@ -93,37 +112,46 @@ class RentDetailSerializer(serializers.ModelSerializer):
 		'deliver_status', 'return_status']
 
 
-class RentDetailReturnSerializer(serializers.ModelSerializer):
-	id = serializers.IntegerField()
-	
-	class Meta:
-		model = RentDetail
-		fields = ['id', 'description', 'return_status']
+class RentDetailReturnSerializer(serializers.Serializer):
+	STATUS_CHOICES = (
+		(1, 'Good'),
+		(2, 'Not Good')
+	)
+	id = serializers.IntegerField(required=True)
+	description = serializers.CharField(max_length=1024, allow_blank=True, required=True)
+	return_status = serializers.ChoiceField(choices=STATUS_CHOICES, required=True)
 
 
 class RentReadSerializer(serializers.ModelSerializer):
-	details = RentDetailSerializer(many=True, read_only=True) 
+	renter = RenterSerializer(read_only=True)
+	is_returned = serializers.SerializerMethodField()
+	equipments = serializers.SerializerMethodField()
+	details = serializers.SerializerMethodField()
 
 	class Meta:
 		model = Rent
-		fields = "__all__"
+		fields = '__all__'
+
+	def get_is_returned(self, obj):
+		return obj.return_time is not None
+
+	def get_equipments(self, obj):
+		queryset = obj.details.prefetch_related('device__equipment').\
+		values('device__equipment', 'device__equipment__equipment_name').\
+		annotate(total=Count('device__equipment'))
+		return queryset
+
+	def get_details(self, obj):
+		return RentDetailSerializer(obj.details.all(), many=True).data
 
 
 class RentCreateSerializer(serializers.ModelSerializer):	
 	devices = serializers.PrimaryKeyRelatedField(
-		queryset=Device.objects.all(), many=True)
+		queryset=Device.objects.filter(in_used=False), many=True)
 
 	class Meta:
 		model = Rent
 		fields = ['renter', 'devices']
-
-	def validate_devices(self, value):
-		for device in value:
-			if device.in_used:
-				raise serializers.ValidationError(
-			'Device list consists item being used.')
-		
-		return value
 
 	@transaction.atomic()
 	def create(self, validated_data):
@@ -146,16 +174,6 @@ class RentReturnSerializer(serializers.ModelSerializer):
 		model = Rent
 		fields = ['return_time', 'details']
 
-	def check_duplicate(self, data):
-		dict = {}
-
-		for detail in data:
-			key = dict.get(detail['id'], None)
-			if key is None:
-				dict[detail['id']] = 1
-			else:
-				raise serializers.ValidationError('Duplicate detail id.')
-
 
 	def validate(self, data):
 		if self.instance.return_time:
@@ -164,20 +182,32 @@ class RentReturnSerializer(serializers.ModelSerializer):
 		return data
 
 	def validate_details(self, value):
-		if len(value) != self.instance.details.count():
-			raise serializers.ValidationError('Detail data are not enough.')
+		detail_ids = []
+		for detail in value:
+			detail_ids.append(detail['id'])
 		
-		self.check_duplicate(value)
-		instance_data = {detail.id: detail for detail in self.instance.details.all()}
-		details_data = {detail['id']: detail for detail in value}
+		instance_detail_ids = list(self.instance.details.values_list('id', flat=True))
+		
+		detail_ids.sort()
+		instance_detail_ids.sort()
+		
+		if detail_ids != instance_detail_ids:
+			raise serializers.ValidationError('Inconsistant return rent details.')
 
-		for detail_id, data in details_data.items():
-			detail = instance_data.get(detail_id, None)
+		
+		return value
+		# if len(value) != self.instance.details.count():
+		# 	raise serializers.ValidationError('Detail data are not enough.')
+		
+		# self.check(value)
+		# instance_data = {detail.id: detail for detail in self.instance.details.all()}
+		# details_data = {detail['id']: detail for detail in value}
 
-			if detail is None:
-				raise serializers.ValidationError('Details contain invalid id.')
+		# for detail_id, data in details_data.items():
+		# 	detail = instance_data.get(detail_id, None)
 
-		return value 
+		# 	if detail is None:
+		# 		raise serializers.ValidationError('Details contain invalid id.')
 
 	@transaction.atomic()
 	def update(self, instance, validated_data):
@@ -185,12 +215,14 @@ class RentReturnSerializer(serializers.ModelSerializer):
 		instance_data = {detail.id: detail for detail in instance.details.all()}
 		details_data = {detail['id']: detail for detail in validated_data.pop('details')}
 
-	
 		for detail_id, data in details_data.items():
 			detail = instance_data.get(detail_id, None)
 			if detail is not None:
+				detail.device.condition = data['description']
+				detail.device.status = data['return_status']
 				detail.device.in_used = False
 				detail.device.save()
+				detail.description = data['description']
 				detail.return_status = data['return_status']
 				detail.save()
 
